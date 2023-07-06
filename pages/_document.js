@@ -5,9 +5,9 @@ export default function Document() {
   return (
     <Html lang='de'>
         <Head>
-            <title>
+            {/* <title>
             this is different head
-            </title>
+            </title> */}
         </Head>
       {/* <Head /> */}
       <body>

@@ -1,10 +1,10 @@
-export default async function Page({params}) {
-    const movies = await getMovies()
+export default function Page() {
+    
     return (
     // <html lang={params.language || 'en'}>
     //         <body>
               <>
-              index.js
+              indexjs
               {/* <div>{params.language || 'en'}</div>
             <Link href="/">EN </Link>
             <Link href="/de">DE </Link>
