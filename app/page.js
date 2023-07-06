@@ -1,8 +1,10 @@
+import Layout from './layout'
+import Scaffold from './components/custom_scaffold'
+
 export default function Page() {
     
     return (
-    // <html lang={params.language || 'en'}>
-    //         <body>
+      <Scaffold lang="en-GB">
               <>
               indexjs
               {/* <div>{params.language || 'en'}</div>
@@ -16,6 +18,9 @@ export default function Page() {
               <h2>{movie.fields['Name_ch']}</h2>
             </div>)} */}
               </>
+      </Scaffold>
+    // <html lang={params.language || 'en'}>
+    //         <body>
            
           //   </body>
           // </html>

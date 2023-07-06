@@ -1,13 +1,16 @@
 import '../globals.css'
+import Scaffolding from '../components/custom_scaffold'
 
 export default function RootLayout({ children, params }) {
     return (
-        <div>{params.language}</div>
+      <Scaffolding lang={params.language}>
+        { children }
+      </Scaffolding>
         // <html lang={params.language}>
         //     <body>
         //         <div>{params.language}</div>
         //     </body>
         // </html>
       
-    )
+    );
   }
