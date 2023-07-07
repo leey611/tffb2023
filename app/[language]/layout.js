@@ -1,5 +1,5 @@
 import '../globals.css'
-import Scaffolding from '../../components/Custom_scaffold'
+import Scaffolding from '../../components/Scaffolding'
 
 export default function RootLayout({ children, params }) {
     return (
