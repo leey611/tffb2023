@@ -11,10 +11,10 @@ export default function Film(props) {
         <>
             <input type="checkbox" defaultChecked={isOpeningFilm} id={id} className="film__checkbox"></input>
             
-            <div className="film__item p-4 w-full">
+            <div className="film__item item p-4 w-full">
                 {/* when accordion is close */}
                 <label className="film__toggle__area" htmlFor={id}>
-                    <h3 className="film__name">{name}</h3>
+                    <h3 className="film__name name">{name}</h3>
 
                     <div className="film__date">{"22.9.2023"}</div>
                     <div className="film__time">{"17:30"}</div>
@@ -32,12 +32,12 @@ export default function Film(props) {
 
                 {/* when accordion is open */}
 
-                <div className="film__info bg-pink-100">
+                <div className="film__info info bg-pink-100">
                     {/* <label htmlFor={id} className="film__toggle__area">accordion is open</label> */}
                     <div className="Main_img h-64">img</div>
-                    <h3 className="">{name}</h3>
-                    <h4>{director}</h4>
-                    <p>{synopsis}</p>
+                    <h3 className="name">{name}</h3>
+                    <h4 className="director">{director}</h4>
+                    <p className="synopsis">{synopsis}</p>
                 </div>
                 
             </div>

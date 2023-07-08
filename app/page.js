@@ -1,4 +1,5 @@
 import './globals.css'
+import './style.scss'
 import Scaffold from '../components/Scaffolding'
 import Film from '../components/Film'
 import localFont from 'next/font/local'
@@ -40,7 +41,7 @@ export default async function Page() {
   const movies = await getMovies()
     return (
       <Scaffold lang="en">
-        <div className={myFont.className}>hello</div>
+        <div className={`${myFont.className} test__hello`}>hello</div>
         {movies.records.map(movie =>
           <Film
               id={movie.id}
