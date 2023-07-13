@@ -157,6 +157,9 @@
             }
             .themes {
                 grid-area: themes;
+                div {
+                    font-size: 1.25rem;
+                }
             }
             .subImages {
                 grid-area: subImages;

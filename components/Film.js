@@ -1,10 +1,13 @@
 import Image from 'next/image'
 import localFont from 'next/font/local'
+
+const formatDate = (date, options) =>
+        date.toLocaleString("en-GB", { timeZone: "Europe/Berlin", ...options });
  
 // Font files can be colocated inside of `pages`
 const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
 export default function Film(props) {
-    const {
+    let {
         id,
         name,
         director,
@@ -12,9 +15,18 @@ export default function Film(props) {
         time,
         themes,
         mainImg,
+        mainImgUrl,
         subImages,
+        subImageUrls
     } = props
     let isOpeningFilm = themes.includes('Opening')
+    const dateObj = new Date(time)
+    const berlinYear = formatDate(dateObj, { year: "numeric" });
+    const berlinMonth = formatDate(dateObj, { month: "2-digit" });
+    const berlinDay = formatDate(dateObj, { day: "2-digit" });
+    const berlinHour = formatDate(dateObj, { hour: "2-digit" });
+    const berlinMinute = formatDate(dateObj, { minute: "2-digit" }).padStart(2, "0");
+    subImageUrls = subImageUrls.split('\n')
     //console.log('main img',mainImg)
     return (
         <div>  
@@ -25,8 +37,8 @@ export default function Film(props) {
                 {/* when accordion is close */}
                 <label className="film__toggle__area" htmlFor={id}>
                     <h3 className="film__name">{name}</h3>
-                    <div className="film__date">{"22.9.2023"}</div>
-                    <div className="film__time">{"17:30"}</div>
+                    <div className="film__date">{`${berlinDay}.${berlinMonth}.${berlinYear}`}</div>
+                    <div className="film__time">{`${berlinHour}:${berlinMinute}`}</div>
                     <div className="film__place">
                          <h4>{"Kino Central"}</h4>
                     </div>
@@ -47,7 +59,7 @@ export default function Film(props) {
                     <div>{mainImg}</div> */}
                     
                     {/* <div className="Main_img"> */}
-                        <img src={mainImg} className='mainImg'/>
+                        <img src={mainImgUrl} className='mainImg'/>
                         {/* <Image src={mainImg} width={400} height={300}/> */}
                     {/* </div> */}
                     <h3 className="name">{name}</h3>
@@ -59,11 +71,15 @@ export default function Film(props) {
                         
                     </div>
                     <div className="themes">
-                        {themes.map(theme => <div className="bg-primary text-tertiary inline-block px-1  rounded-md"># {theme}</div>)}
+                        {themes.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-2"># {theme}</div>)}
                     </div>
-                    <div className='subImages'>
+                    {/* <div className='subImages'>
                         {subImages.map(img => <img src={img.url} />)}
+                    </div> */}
+                    <div className='subImages'>
+                        {subImageUrls.map(img => <img src={img} />)}
                     </div>
+                    {/* <div>{subImageUrls[0]}</div> */}
                 </div>
                 
             </div>

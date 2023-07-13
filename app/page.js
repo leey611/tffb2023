@@ -28,9 +28,10 @@ async function getMovies() {
       headers: {
         Authorization: `Bearer ${airtableApiKey}`,
       },
+      cache: 'no-store' 
     });
     const data = await res.json();
-    //console.log('data records', data.records[0]);
+    //console.log('data records', data.records[0].fields);
     return data
   } catch (error) {
     console.log(error);
@@ -44,6 +45,7 @@ export default async function Page() {
         <h2 className={`${myFont.className} section__title`}>ALL FILMS</h2>
         {movies.records.map(movie =>
           <Film
+              key={movie.id}
               id={movie.id}
               name={movie.fields['Name_en']}
               director={movie.fields['Director_en']}
@@ -51,7 +53,9 @@ export default async function Page() {
               time={movie.fields['Time']}
               themes={movie.fields['Theme_en']}
               mainImg={movie.fields['MainImage'][0].url}
+              mainImgUrl={movie.fields['MainImageUrl']}
               subImages={movie.fields['SubImages']}
+              subImageUrls={movie.fields['SubImageUrls']}
           >
           </Film>)}
         {/* {movies.records.map(movie => <div>
