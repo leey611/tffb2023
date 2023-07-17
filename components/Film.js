@@ -1,5 +1,6 @@
 import localFont from 'next/font/local'
-import { formatDate } from '../utils/helpers'
+import '../app/film.scss'
+import { formatBerlinTime } from '../utils/helpers'
 
 const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
 
@@ -10,18 +11,14 @@ export default function Film(props) {
         MainImageUrl,
         SubImageUrls,
     } = film
+    
     SubImageUrls = SubImageUrls.split('\n')
     const name = film[`FilmName_${language}`]
     const director = film[`Director_${language}`]
     const synopsis = film[`Synopsis_${language}`]
     const themes = film[`Theme_${language}`]
-    let isOpeningFilm = themes.includes('Opening')
-    const dateObj = new Date(ScreenTime)
-    const berlinYear = formatDate(dateObj, { year: "numeric" });
-    const berlinMonth = formatDate(dateObj, { month: "2-digit" });
-    const berlinDay = formatDate(dateObj, { day: "2-digit" });
-    const berlinHour = formatDate(dateObj, { hour: "2-digit" });
-    const berlinMinute = formatDate(dateObj, { minute: "2-digit" }).padStart(2, "0");
+    let isOpeningFilm = film.isOpeningFilm
+    const { year, month, day, hour, minute } = formatBerlinTime(ScreenTime)
     
     return (
         <div> 
@@ -31,8 +28,8 @@ export default function Film(props) {
                 {/* when accordion is close */}
                 <label className="film__toggle__area" htmlFor={id}>
                     <h3 className="film__name">{name}</h3>
-                    <div className="film__date">{`${berlinDay}.${berlinMonth}.${berlinYear}`}</div>
-                    <div className="film__time">{`${berlinHour}:${berlinMinute}`}</div>
+                    <div className="film__date">{`${day}.${month}.${year}`}</div>
+                    <div className="film__time">{`${hour}:${minute}`}</div>
                     <div className="film__place">
                          <h4>{"Kino Central"}</h4>
                     </div>

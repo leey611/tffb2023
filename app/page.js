@@ -3,6 +3,7 @@ import './style.scss'
 import Scaffold from '../components/Scaffolding'
 import Film from '../components/Film'
 import localFont from 'next/font/local'
+import { isEmpty, sectionTitles } from '../utils/helpers'
  
 // Font files can be colocated inside of `pages`
 const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
@@ -22,9 +23,6 @@ if (process.env.NODE_ENV !== 'production') {
   //airtableBaseId = process.env.CLIENT_SECRET;
 }
 
-function isEmpty(obj) {
-  return Object.keys(obj).length === 0
-}
 
 async function getFilms() {
   try {
@@ -46,7 +44,7 @@ export default async function Page() {
   const films = await getFilms()
     return (
       <Scaffold lang="en">
-        <h2 className={`${myFont.className} section__title`}>ALL FILMS</h2>
+        <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].filmSectionTitle}</h2>
         {films.records.map(film =>
           !isEmpty(film.fields) && <Film
               key={film.id}
@@ -56,10 +54,6 @@ export default async function Page() {
           >
           </Film>
           )}
-        {/* {movies.records.map(movie => <div>
-              <div>movie id: {movie.id}</div>
-              <h2>{movie.fields['Name_en']}</h2>
-            </div>)} */}
       </Scaffold>
     )
   }
