@@ -2,6 +2,7 @@ import './globals.css'
 import './style.scss'
 import Scaffold from '../components/Scaffolding'
 import Film from '../components/Film'
+import Sponsors from '../components/Sponsors'
 import localFont from 'next/font/local'
 import { isEmpty, sectionTitles } from '../utils/helpers'
  
@@ -16,7 +17,7 @@ let airtableTableFilmsViewId
 if (process.env.NODE_ENV !== 'production') {
   airtableApiKey = process.env.AIRTABLE_API_KEY
   airtableBaseId = process.env.AIRTABLE_BASE_ID
-  airtableTableId = process.env.AIRTABLE_TABLE_EN_ID
+  airtableTableId = process.env.AIRTABLE_TABLE_FILMS_ID
   airtableTableFilmsViewId = process.env.AIRTABLE_TABLE_FILMS_VIEW_ID
 } else {
   //airtableApiKey = process.env.CLIENT_KEY;
@@ -44,6 +45,7 @@ export default async function Page() {
   const films = await getFilms()
     return (
       <Scaffold lang="en">
+        {/* ALL Films */}
         <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].filmSectionTitle}</h2>
         {films.records.map(film =>
           !isEmpty(film.fields) && <Film
@@ -53,7 +55,11 @@ export default async function Page() {
               film={film.fields}
           >
           </Film>
-          )}
+        )}
+
+        {/* ALL Sponsors  */}
+        <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].sponsorSectionTitle}</h2>
+        <Sponsors language={'en'}></Sponsors>
       </Scaffold>
     )
   }

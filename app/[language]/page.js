@@ -1,6 +1,8 @@
 import '../globals.css'
+import '../style.scss'
 import Scaffold from "../../components/Scaffolding";
 import Film from "../../components/Film";
+import Sponsors from '../../components/Sponsors';
 import localFont from 'next/font/local'
 import { validateLanguage, sectionTitles } from '../../utils/helpers';
 const myFont = localFont({ src: '../../fonts/terminal-grotesque-webfont.woff2' })
@@ -13,7 +15,7 @@ let airtableTableFilmsViewId
 if (process.env.NODE_ENV !== 'production') {
   airtableApiKey = process.env.AIRTABLE_API_KEY
   airtableBaseId = process.env.AIRTABLE_BASE_ID
-  airtableTableId = process.env.AIRTABLE_TABLE_EN_ID
+  airtableTableId = process.env.AIRTABLE_TABLE_FILMS_ID
   airtableTableFilmsViewId = process.env.AIRTABLE_TABLE_FILMS_VIEW_ID
 } else {
   //airtableApiKey = process.env.CLIENT_KEY;
@@ -55,6 +57,8 @@ export default async function Page({ params }) {
           >
           </Film>
           )}
+          <h2 className={`${myFont.className} section__title`}>{sectionTitles[lang].sponsorSectionTitle}</h2>
+          <Sponsors></Sponsors>
       </Scaffold>
   );
 }
