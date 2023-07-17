@@ -1,38 +1,32 @@
-import Image from 'next/image'
 import localFont from 'next/font/local'
+import { formatDate } from '../utils/helpers'
 
-const formatDate = (date, options) =>
-        date.toLocaleString("en-GB", { timeZone: "Europe/Berlin", ...options });
- 
-// Font files can be colocated inside of `pages`
 const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
+
 export default function Film(props) {
+    const { id, film, language } = props
     let {
-        id,
-        name,
-        director,
-        synopsis,
-        time,
-        themes,
-        mainImg,
-        mainImgUrl,
-        subImages,
-        subImageUrls
-    } = props
+        ScreenTime,
+        MainImageUrl,
+        SubImageUrls,
+    } = film
+    SubImageUrls = SubImageUrls.split('\n')
+    const name = film[`FilmName_${language}`]
+    const director = film[`Director_${language}`]
+    const synopsis = film[`Synopsis_${language}`]
+    const themes = film[`Theme_${language}`]
     let isOpeningFilm = themes.includes('Opening')
-    const dateObj = new Date(time)
+    const dateObj = new Date(ScreenTime)
     const berlinYear = formatDate(dateObj, { year: "numeric" });
     const berlinMonth = formatDate(dateObj, { month: "2-digit" });
     const berlinDay = formatDate(dateObj, { day: "2-digit" });
     const berlinHour = formatDate(dateObj, { hour: "2-digit" });
     const berlinMinute = formatDate(dateObj, { minute: "2-digit" }).padStart(2, "0");
-    subImageUrls = subImageUrls.split('\n')
-    //console.log('main img',mainImg)
+    
     return (
-        <div>  
-            {/* {isOpeningFilm && <h3 className={`openingFilmTheme ${myFont.className}`}>Opening Film</h3>} */}
+        <div> 
+             {/* using a checkbox + label and CSS to make an accordian, both X and label can toggle it */}
             <input type="checkbox" defaultChecked={isOpeningFilm} id={id} className="film__checkbox"></input>
-            {/* {isOpeningFilm && <h3 className={`openingFilmTheme ${myFont.className}`}>Opening Film</h3>} */}
             <div className="film__item item w-full">
                 {/* when accordion is close */}
                 <label className="film__toggle__area" htmlFor={id}>
@@ -50,36 +44,23 @@ export default function Film(props) {
                     </div> 
                 </label>
                 
-
                 {/* when accordion is open */}
-
                 <div className="film__info info">
-                    {/* <label htmlFor={id} className="film__toggle__area">accordion is open</label> */}
-                    {/* <img src={mainImg} width={500}/>
-                    <div>{mainImg}</div> */}
-                    
-                    {/* <div className="Main_img"> */}
-                        <img src={mainImgUrl} className='mainImg'/>
-                        {/* <Image src={mainImg} width={400} height={300}/> */}
-                    {/* </div> */}
+                    {isOpeningFilm && <h3 className={`openingFilmTheme ${myFont.className}`}>Opening Film</h3>}
                     <h3 className="name">{name}</h3>
                     <h4 className="director">{director}</h4>
-                    <p className="synopsis">{synopsis}</p>
-                    <div className="cta">
-                        <button className="border-secondary text-white bg-secondary py-4 px-8 rounded-full">Watch Trailer</button>
-                        <button className="border-2 border-secondary py-[calc(1rem_-_2px)] px-8 rounded-full ">Buy Ticket</button>
-                        
-                    </div>
+                    <img src={MainImageUrl} className='mainImg'/>
                     <div className="themes">
                         {themes.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-2"># {theme}</div>)}
                     </div>
-                    {/* <div className='subImages'>
-                        {subImages.map(img => <img src={img.url} />)}
-                    </div> */}
+                    {/* <p className="synopsis">{synopsis}</p> */}
                     <div className='subImages'>
-                        {subImageUrls.map(img => <img src={img} />)}
+                        {SubImageUrls.map(imgUrl => <img src={imgUrl} />)}
                     </div>
-                    {/* <div>{subImageUrls[0]}</div> */}
+                    <div className="cta">
+                        <button className="border-secondary text-white bg-secondary py-4 px-8 rounded-full">Watch Trailer</button>
+                        <button className="border-2 border-secondary py-[calc(1rem_-_2px)] px-8 rounded-full ">Buy Ticket</button>
+                    </div>
                 </div>
                 
             </div>

@@ -22,7 +22,11 @@ if (process.env.NODE_ENV !== 'production') {
   //airtableBaseId = process.env.CLIENT_SECRET;
 }
 
-async function getMovies() {
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0
+}
+
+async function getFilms() {
   try {
     const res = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableId}?view=${airtableTableFilmsViewId}`, {
       headers: {
@@ -31,7 +35,7 @@ async function getMovies() {
       cache: 'no-store' 
     });
     const data = await res.json();
-    //console.log('data records', data.records[0].fields);
+    //console.log('data records', data.records[0]);
     return data
   } catch (error) {
     console.log(error);
@@ -39,25 +43,19 @@ async function getMovies() {
 }
 
 export default async function Page() {
-  const movies = await getMovies()
+  const films = await getFilms()
     return (
       <Scaffold lang="en">
         <h2 className={`${myFont.className} section__title`}>ALL FILMS</h2>
-        {movies.records.map(movie =>
-          <Film
-              key={movie.id}
-              id={movie.id}
-              name={movie.fields['Name_en']}
-              director={movie.fields['Director_en']}
-              synopsis={movie.fields['Synopsis_en']}
-              time={movie.fields['Time']}
-              themes={movie.fields['Theme_en']}
-              mainImg={movie.fields['MainImage'][0].url}
-              mainImgUrl={movie.fields['MainImageUrl']}
-              subImages={movie.fields['SubImages']}
-              subImageUrls={movie.fields['SubImageUrls']}
+        {films.records.map(film =>
+          !isEmpty(film.fields) && <Film
+              key={film.id}
+              id={film.id}
+              language={'en'}
+              film={film.fields}
           >
-          </Film>)}
+          </Film>
+          )}
         {/* {movies.records.map(movie => <div>
               <div>movie id: {movie.id}</div>
               <h2>{movie.fields['Name_en']}</h2>
