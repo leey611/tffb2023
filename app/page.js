@@ -1,10 +1,11 @@
 'use client'
 import './globals.css'
 import './style.scss'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Scaffold from '../components/Scaffolding'
 import Film from '../components/Film'
 import Sponsors from '../components/Sponsors'
+import Modal from '../components/Modal'
 import localFont from 'next/font/local'
 import { isEmpty, sectionTitles } from '../utils/helpers'
  
@@ -20,29 +21,33 @@ let airtableTableFilmsViewId = process.env.AIRTABLE_TABLE_FILMS_VIEW_ID
 
 async function getFilms() {
   try {
-    const res = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableId}?view=${airtableTableFilmsViewId}`, {
-      headers: {
-        Authorization: `Bearer ${airtableApiKey}`,
-      },
-      cache: 'no-store' 
-    });
+    const res = await fetch('http://localhost:3000/api/films');
     const data = await res.json();
-    //console.log('data records', data.records[0]);
+    //console.log('data records', data);
     return data
   } catch (error) {
     console.log(error);
   }
 }
 
-export default async function Page() {
-  const films = await getFilms()
-  const [state, setState] = useState(0)
+export default function Page() {
+  const [films, setFilms] = useState([])
+  useEffect(() => {
+    async function setFilmState() {
+      const data = await getFilms()
+      setFilms(data.records)
+    } 
+    setFilmState()
+  }, [])
+  //const films = await getFilms()
+  //const [state, setState] = useState(0)
     return (
       <Scaffold lang="en">
+        <Modal></Modal>
         {/* ALL Films */}
         <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].filmSectionTitle}</h2>
-        <div>{state}</div>
-        {films.records.map(film =>
+        {/* <div>{state}</div> */}
+        {films.map(film =>
           !isEmpty(film.fields) && <Film
               key={film.id}
               id={film.id}
@@ -54,7 +59,7 @@ export default async function Page() {
 
         {/* ALL Sponsors  */}
         <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].sponsorSectionTitle}</h2>
-        <Sponsors language={'en'}></Sponsors>
+        {/* <Sponsors language={'en'}></Sponsors> */}
       </Scaffold>
     )
   }

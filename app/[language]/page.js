@@ -3,6 +3,7 @@ import '../style.scss'
 import Scaffold from "../../components/Scaffolding";
 import Film from "../../components/Film";
 import Sponsors from '../../components/Sponsors';
+import Modal from '../../components/Modal';
 import localFont from 'next/font/local'
 import { validateLanguage, sectionTitles } from '../../utils/helpers';
 const myFont = localFont({ src: '../../fonts/terminal-grotesque-webfont.woff2' })
@@ -38,6 +39,7 @@ export default async function Page({ params }) {
   return (
       <Scaffold lang={params.language}>
         <h2 className={`${myFont.className} section__title`}>{sectionTitles[lang].filmSectionTitle}</h2>
+        
         {films.records.map(film =>
           !isEmpty(film.fields) && <Film
               key={film.id}
