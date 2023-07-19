@@ -7,20 +7,10 @@ import localFont from 'next/font/local'
 import { validateLanguage, sectionTitles } from '../../utils/helpers';
 const myFont = localFont({ src: '../../fonts/terminal-grotesque-webfont.woff2' })
 
-let airtableApiKey
-let airtableBaseId
-let airtableTableId
-let airtableTableFilmsViewId
-
-if (process.env.NODE_ENV !== 'production') {
-  airtableApiKey = process.env.AIRTABLE_API_KEY
-  airtableBaseId = process.env.AIRTABLE_BASE_ID
-  airtableTableId = process.env.AIRTABLE_TABLE_FILMS_ID
-  airtableTableFilmsViewId = process.env.AIRTABLE_TABLE_FILMS_VIEW_ID
-} else {
-  //airtableApiKey = process.env.CLIENT_KEY;
-  //airtableBaseId = process.env.CLIENT_SECRET;
-}
+let airtableApiKey = process.env.AIRTABLE_API_KEY
+let airtableBaseId = process.env.AIRTABLE_BASE_ID
+let airtableTableId = process.env.AIRTABLE_TABLE_FILMS_ID
+let airtableTableFilmsViewId = process.env.AIRTABLE_TABLE_FILMS_VIEW_ID
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0
@@ -35,7 +25,7 @@ async function getFilms() {
       cache: 'no-store' 
     });
     const data = await res.json();
-    //console.log('data records', data.records[0]);
+    console.log('data records', data.records[0]);
     return data
   } catch (error) {
     console.log(error);
