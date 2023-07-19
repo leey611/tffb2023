@@ -1,5 +1,7 @@
+'use client'
 import './globals.css'
 import './style.scss'
+import { useState } from 'react'
 import Scaffold from '../components/Scaffolding'
 import Film from '../components/Film'
 import Sponsors from '../components/Sponsors'
@@ -34,10 +36,12 @@ async function getFilms() {
 
 export default async function Page() {
   const films = await getFilms()
+  const [state, setState] = useState(0)
     return (
       <Scaffold lang="en">
         {/* ALL Films */}
         <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].filmSectionTitle}</h2>
+        <div>{state}</div>
         {films.records.map(film =>
           !isEmpty(film.fields) && <Film
               key={film.id}
