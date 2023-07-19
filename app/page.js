@@ -9,20 +9,11 @@ import { isEmpty, sectionTitles } from '../utils/helpers'
 // Font files can be colocated inside of `pages`
 const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
 
-let airtableApiKey
-let airtableBaseId
-let airtableTableId
-let airtableTableFilmsViewId
+let airtableApiKey = process.env.AIRTABLE_API_KEY
+let airtableBaseId = process.env.AIRTABLE_BASE_ID
+let airtableTableId = process.env.AIRTABLE_TABLE_FILMS_ID
+let airtableTableFilmsViewId = process.env.AIRTABLE_TABLE_FILMS_VIEW_ID
 
-if (process.env.NODE_ENV !== 'production') {
-  airtableApiKey = process.env.AIRTABLE_API_KEY
-  airtableBaseId = process.env.AIRTABLE_BASE_ID
-  airtableTableId = process.env.AIRTABLE_TABLE_FILMS_ID
-  airtableTableFilmsViewId = process.env.AIRTABLE_TABLE_FILMS_VIEW_ID
-} else {
-  //airtableApiKey = process.env.CLIENT_KEY;
-  //airtableBaseId = process.env.CLIENT_SECRET;
-}
 
 
 async function getFilms() {
