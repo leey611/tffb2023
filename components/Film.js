@@ -1,3 +1,4 @@
+import OpeningClosingFilmLabel from './OpeningClosingFilmLabel'
 import Modal from './Modal'
 import localFont from 'next/font/local'
 import '../app/film.scss'
@@ -31,8 +32,8 @@ export default function Film(props) {
                 {/* when accordion is close */}
                 <label className={`film__toggle__area ${IsOpeningFilm && 'isOpeningFilm'} ${IsClosingFilm && 'isClosingFilm'}`} htmlFor={id}>
                     <h3 className="film__name">{name}</h3>
-                    {IsOpeningFilm && <div className='opening'>{sectionTitles[language].openingFilm}</div>}
-                    {IsClosingFilm && <div className='closing'>{sectionTitles[language].closingFilm}</div>}
+                    {IsOpeningFilm && <OpeningClosingFilmLabel isOpening={IsOpeningFilm} language={language}></OpeningClosingFilmLabel>}
+                    {IsClosingFilm && <OpeningClosingFilmLabel isClosing={IsClosingFilm} language={language}></OpeningClosingFilmLabel>}
                     <div className="film__date">{`${day}.${month}.${year}`}</div>
                     <div className="film__time">{`${hour}:${minute}`}</div>
                     <div className="film__place">
@@ -62,7 +63,6 @@ export default function Film(props) {
                     </div>
                     <div className="cta">
                         <Modal id={id} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'}></Modal>
-                        {/* <button className="border-secondary text-white bg-secondary py-4 px-8 rounded-full">Watch Trailer</button> */}
                         <button className="border-2 border-secondary py-[calc(1rem_-_2px)] px-8 rounded-full ">Buy Ticket</button>
                     </div>
                 </div>
