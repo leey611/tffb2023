@@ -1,7 +1,7 @@
 import { sectionTitles } from "../utils/helpers"
 
 export default function OpeningClosingFilmLabel(props) {
-    const { isOpening, isClosing, language } = props
+    const { isOpening, language } = props
     const text = isOpening ? sectionTitles[language].openingFilm : sectionTitles[language].closingFilm
 
     return (
