@@ -25,7 +25,7 @@ async function getFilms() {
       cache: 'no-store' 
     });
     const data = await res.json();
-    console.log('data records', data.records[0]);
+    //console.log('data records', data.records[0]);
     return data
   } catch (error) {
     console.log(error);
@@ -35,6 +35,7 @@ async function getFilms() {
 export default async function Page({ params }) {
   const films = await getFilms()
   const lang = validateLanguage(params.language) ? params.language : 'en'
+  
   return (
       <Scaffold lang={params.language}>
         <h2 className={`${myFont.className} section__title`}>{sectionTitles[lang].filmSectionTitle}</h2>

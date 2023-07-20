@@ -1,3 +1,4 @@
+import Modal from './Modal'
 import localFont from 'next/font/local'
 import '../app/film.scss'
 import { formatBerlinTime } from '../utils/helpers'
@@ -55,7 +56,8 @@ export default function Film(props) {
                         {SubImageUrls.map(imgUrl => <img src={imgUrl} />)}
                     </div>
                     <div className="cta">
-                        <button className="border-secondary text-white bg-secondary py-4 px-8 rounded-full">Watch Trailer</button>
+                        <Modal id={id} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'}></Modal>
+                        {/* <button className="border-secondary text-white bg-secondary py-4 px-8 rounded-full">Watch Trailer</button> */}
                         <button className="border-2 border-secondary py-[calc(1rem_-_2px)] px-8 rounded-full ">Buy Ticket</button>
                     </div>
                 </div>
