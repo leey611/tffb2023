@@ -1,7 +1,7 @@
 import Modal from './Modal'
 import localFont from 'next/font/local'
 import '../app/film.scss'
-import { formatBerlinTime } from '../utils/helpers'
+import { formatBerlinTime, sectionTitles } from '../utils/helpers'
 
 const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
 
@@ -11,6 +11,8 @@ export default function Film(props) {
         ScreenTime,
         MainImageUrl,
         SubImageUrls,
+        IsOpeningFilm,
+        IsClosingFilm,
     } = film
     
     SubImageUrls = SubImageUrls.split('\n')
@@ -18,17 +20,19 @@ export default function Film(props) {
     const director = film[`Director_${language}`]
     const synopsis = film[`Synopsis_${language}`]
     const themes = film[`Theme_${language}`]
-    let isOpeningFilm = film.isOpeningFilm
+    // let isOpeningFilm = film.isOpeningFilm
     const { year, month, day, hour, minute } = formatBerlinTime(ScreenTime)
     
     return (
         <div> 
              {/* using a checkbox + label and CSS to make an accordian, both X and label can toggle it */}
-            <input type="checkbox" defaultChecked={isOpeningFilm} id={id} className="film__checkbox"></input>
+            <input type="checkbox" defaultChecked={IsOpeningFilm} id={id} className="film__checkbox"></input>
             <div className="film__item item w-full">
                 {/* when accordion is close */}
-                <label className="film__toggle__area" htmlFor={id}>
+                <label className={`film__toggle__area ${IsOpeningFilm && 'isOpeningFilm'} ${IsClosingFilm && 'isClosingFilm'}`} htmlFor={id}>
                     <h3 className="film__name">{name}</h3>
+                    {IsOpeningFilm && <div className='opening'>{sectionTitles[language].openingFilm}</div>}
+                    {IsClosingFilm && <div className='closing'>{sectionTitles[language].closingFilm}</div>}
                     <div className="film__date">{`${day}.${month}.${year}`}</div>
                     <div className="film__time">{`${hour}:${minute}`}</div>
                     <div className="film__place">
@@ -44,7 +48,8 @@ export default function Film(props) {
                 
                 {/* when accordion is open */}
                 <div className="film__info info">
-                    {isOpeningFilm && <h3 className={`openingFilmTheme ${myFont.className}`}>Opening Film</h3>}
+                    {IsOpeningFilm && <h3 className={`openingFilmTheme ${myFont.className}`}>{sectionTitles[language].openingFilm}</h3>}
+                    {IsClosingFilm && <h3 className={`closingFilmTheme ${myFont.className}`}>{sectionTitles[language].closingFilm}</h3>}
                     <h3 className="name">{name}</h3>
                     <h4 className="director">{director}</h4>
                     <img src={MainImageUrl} className='mainImg'/>

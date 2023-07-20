@@ -28,17 +28,24 @@ export const sectionTitles = {
     en: {
         filmSectionTitle: 'ALL FILMS',
         eventSectionTitle: 'ALL EVENTS',
-        sponsorSectionTitle: 'SPONSORED BY'
+        sponsorSectionTitle: 'SPONSORED BY',
+        openingFilm: 'Opening Film',
+        closingFilm: 'Closing Film'
+
     },
     de: {
         filmSectionTitle: 'ALL FILME',
         eventSectionTitle: 'ALLE VERANSTALTUNGEN',
-        sponsorSectionTitle: 'GESPONSERT VON'
+        sponsorSectionTitle: 'GESPONSERT VON',
+        openingFilm: 'Eröffnungsfilm',
+        closingFilm: 'Schlussfilm'
     }, 
     tw: {
         filmSectionTitle: '所有電影',
         eventSectionTitle: '所有活動',
-        sponsorSectionTitle: '贊助商'
+        sponsorSectionTitle: '贊助商',
+        openingFilm: '開幕片',
+        closingFilm: '閉幕片'
     }
 }
 
