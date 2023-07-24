@@ -5,6 +5,7 @@ import Film from "../../components/Film";
 import Sponsors from '../../components/Sponsors';
 import localFont from 'next/font/local'
 import { validateLanguage, sectionTitles } from '../../utils/helpers';
+import Questions from '../../components/Questions';
 const myFont = localFont({ src: '../../fonts/terminal-grotesque-webfont.woff2' })
 
 let airtableApiKey = process.env.AIRTABLE_API_KEY
@@ -50,6 +51,7 @@ export default async function Page({ params }) {
           )}
           <h2 className={`${myFont.className} section__title`}>{sectionTitles[lang].sponsorSectionTitle}</h2>
           <Sponsors></Sponsors>
+          <Questions language={lang}/>
       </Scaffold>
   );
 }

@@ -5,6 +5,7 @@ import Film from '../components/Film'
 import Sponsors from '../components/Sponsors'
 import localFont from 'next/font/local'
 import { isEmpty, sectionTitles } from '../utils/helpers'
+import Questions from '../components/Questions'
  
 // Font files can be colocated inside of `pages`
 const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
@@ -51,6 +52,7 @@ export default async function Page() {
         {/* ALL Sponsors  */}
         <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].sponsorSectionTitle}</h2>
         <Sponsors language={'en'}></Sponsors>
+        <Questions language={'en'}/>
       </Scaffold>
     )
   }
