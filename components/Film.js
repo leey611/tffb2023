@@ -10,6 +10,7 @@ export default function Film(props) {
     const { id, film, language } = props
     let {
         ScreenTime,
+        Place,
         MainImageUrl,
         SubImageUrls,
         IsOpeningFilm,
@@ -37,7 +38,7 @@ export default function Film(props) {
                     <div className="film__date">{`${day}.${month}.${year}`}</div>
                     <div className="film__time">{`${hour}:${minute}`}</div>
                     <div className="film__place">
-                         <h4>{"Kino Central"}</h4>
+                         <h4>{Place}</h4>
                     </div>
                    
                     <div className="cross">
@@ -49,8 +50,6 @@ export default function Film(props) {
                 
                 {/* when accordion is open */}
                 <div className="film__info info">
-                    {IsOpeningFilm && <h3 className={`openingFilmTheme ${myFont.className}`}>{sectionTitles[language].openingFilm}</h3>}
-                    {IsClosingFilm && <h3 className={`closingFilmTheme ${myFont.className}`}>{sectionTitles[language].closingFilm}</h3>}
                     <h3 className="name">{name}</h3>
                     <h4 className="director">{director}</h4>
                     <img src={MainImageUrl} className='mainImg'/>
