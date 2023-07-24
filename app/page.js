@@ -2,6 +2,7 @@ import './globals.css'
 import './style.scss'
 import Scaffold from '../components/Scaffolding'
 import Film from '../components/Film'
+import Events from '../components/Events'
 import Sponsors from '../components/Sponsors'
 import localFont from 'next/font/local'
 import { isEmpty, sectionTitles } from '../utils/helpers'
@@ -48,10 +49,12 @@ export default async function Page() {
           >
           </Film>
         )}
-
+        {/* ALL Events  */}
+        <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].eventSectionTitle}</h2>
+        <Events language={'en'}/>
         {/* ALL Sponsors  */}
         <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].sponsorSectionTitle}</h2>
-        <Sponsors language={'en'}></Sponsors>
+        <Sponsors language={'en'}/>
         <Questions language={'en'}/>
       </Scaffold>
     )

@@ -2,6 +2,7 @@ import '../globals.css'
 import '../style.scss'
 import Scaffold from "../../components/Scaffolding";
 import Film from "../../components/Film";
+import Events from '../../components/Events';
 import Sponsors from '../../components/Sponsors';
 import localFont from 'next/font/local'
 import { validateLanguage, sectionTitles } from '../../utils/helpers';
@@ -49,6 +50,8 @@ export default async function Page({ params }) {
           >
           </Film>
           )}
+          <h2 className={`${myFont.className} section__title`}>{sectionTitles[lang].eventSectionTitle}</h2>
+          <Events language={lang}/>
           <h2 className={`${myFont.className} section__title`}>{sectionTitles[lang].sponsorSectionTitle}</h2>
           <Sponsors></Sponsors>
           <Questions language={lang}/>

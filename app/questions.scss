@@ -1,8 +1,4 @@
-.answer {
-    opacity: 0;
-    max-height: 0;
-    transition: opacity 0.5s ease, max-height 0.5s ease;
-}
+
 
 .question__checkbox {
     opacity: 0;
@@ -10,7 +6,19 @@
 }
 input:checked ~ .qa__item .answer {
     opacity: 1;
-    max-height: 2000px;
+    max-height: 1000px;
     /* position: unset; */
     transition: opacity 0.5s ease, max-height 0.5s ease; // Combine both transitions
+}
+
+.qa__item {
+    position: relative;
+    label {
+        cursor: pointer;
+    }
+    .answer {
+        opacity: 0;
+        max-height: 0;
+        transition: opacity 0.5s ease, max-height 0.5s ease;
+    }
 }
