@@ -1,4 +1,5 @@
 import { isEmpty } from '../utils/helpers'
+import '../app/events.scss'
 let airtableApiKey = process.env.AIRTABLE_API_KEY
 let airtableBaseId = process.env.AIRTABLE_BASE_ID
 let airtableTableId = process.env.AIRTABLE_TABLE_EVENTS_ID
@@ -39,7 +40,7 @@ export default async function Events({language}) {
                         </div> 
                     </label>
                     {/* when accordion is open */}
-                    <div>{e.fields[`Note_${language}`]}</div>
+                    <div className='description'>{e.fields[`Note_${language}`]}</div>
                 </div>
             </div>)}
         </>
