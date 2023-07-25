@@ -1,28 +1,8 @@
 import '../app/questions.scss'
 import { isEmpty } from '../utils/helpers'
 import Answer from './Answer'
-let airtableApiKey = process.env.AIRTABLE_API_KEY
-let airtableBaseId = process.env.AIRTABLE_BASE_ID
-let airtableTableId = process.env.AIRTABLE_TABLE_QUESTIONS_ID
-let airtableTableSponsorsViewId = process.env.AIRTABLE_TABLE_QUESTIONS_VIEW_ID
 
-async function getQuestions() {
-  try {
-    const res = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableId}?view=${airtableTableSponsorsViewId}`, {
-      headers: {
-        Authorization: `Bearer ${airtableApiKey}`,
-      },
-      cache: 'no-store' 
-    });
-    const data = await res.json();
-    return data.records
-  } catch (error) {
-    console.log(error);
-  }
-}
-export default async function Questions({language}) {
-    const questions = await getQuestions()
-    //console.log(questions[0])
+export default async function Questions({language, questions}) {
     return (
         <>
             {questions.map(q => !isEmpty(q.fields) && 

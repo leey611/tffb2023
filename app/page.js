@@ -18,29 +18,8 @@ const airtableTableId = process.env.AIRTABLE_TABLE_FILMS_ID
 const airtableTableFilmsViewId = process.env.AIRTABLE_TABLE_FILMS_VIEW_ID
 const airtableTableFilmEventId = process.env.AIRTABLE_TABLE_FILMEVENTS_ID
 const airtableTableFilmEventViewId = process.env.AIRTABLE_TABLE_FILMEVENTS_VIEW_ID
-
-async function getEventsForFilm(film) {
-  
-  const eventIds = film.fields.FilmEvents; // Assuming the field is named FilmEvent
-  console.log('eventIds', eventIds)
-  if (!eventIds || eventIds.length === 0) {
-    return []; // No events for this film
-  }
-  
-  try {
-    const eventIdsString = eventIds.map((eventId) => `'${eventId}'`).join(',');
-    const events = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableFilmEventId}?filterByFormula=OR(RECORD_ID()IN${'[' + eventIdsString + ']'})`, {
-      headers: {
-        Authorization: `Bearer ${airtableApiKey}`,
-      },
-      cache: 'no-store' 
-    });
-    return events.data.records;
-  } catch (error) {
-    console.error('Error fetching events:', error);
-    return [];
-  }
-}
+const airtableTableOthersId = process.env.AIRTABLE_TABLE_OTHERS_ID
+const airtableTableOthersViewId = process.env.AIRTABLE_TABLE_OTHERS_VIEW_ID
 
 async function getFilmEvents() {
   try {
@@ -73,17 +52,32 @@ async function getFilms() {
   }
 }
 
+async function getOthers() {
+  try {
+    const res = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableOthersId}?view=${airtableTableOthersViewId}`, {
+      headers: {
+        Authorization: `Bearer ${airtableApiKey}`,
+      },
+      cache: 'no-store' 
+    });
+    const data = await res.json();
+    return data.records
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default async function Page() {
-  //const filmEvents = await getFilmEvents()
   let films = await getFilms()
   const filmEvents = await getFilmEvents()
-  //console.log(filmEvents)
   for (let film of films.records) {
-    console.log('film', film)
+    const filmId = film.id
+    film.fields['Events'] = filmEvents.filter(event => event.fields.Film[0] === filmId)
   }
-  // console.log('films', films)
-  // console.log('filmEvents', filmEvents)
-  
+  console.log('film 0', films.records[0])
+  const others = await getOthers()
+  const sponsors = others.filter(data => data.fields['Type'] === 'Sponsor')
+  const questions = others.filter(data => data.fields['Type'] === 'Question')
     return (
       <Scaffold lang="en">
         {/* ALL Films */}
@@ -107,8 +101,8 @@ export default async function Page() {
 
         {/* ALL Sponsors  */}
         <SectionTitle content={sectionTitles['en'].sponsorSectionTitle}></SectionTitle>
-        <Sponsors language={'en'}/>
-        <Questions language={'en'}/>
+        <Sponsors language={'en'} sponsors={sponsors}/>
+        <Questions language={'en'} questions={questions}/>
         </section>
         
       </Scaffold>

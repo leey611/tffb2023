@@ -10,13 +10,32 @@ import { validateLanguage, sectionTitles } from '../../utils/helpers';
 import Questions from '../../components/Questions';
 const myFont = localFont({ src: '../../fonts/terminal-grotesque-webfont.woff2' })
 
-let airtableApiKey = process.env.AIRTABLE_API_KEY
-let airtableBaseId = process.env.AIRTABLE_BASE_ID
-let airtableTableId = process.env.AIRTABLE_TABLE_FILMS_ID
-let airtableTableFilmsViewId = process.env.AIRTABLE_TABLE_FILMS_VIEW_ID
+const airtableApiKey = process.env.AIRTABLE_API_KEY
+const airtableBaseId = process.env.AIRTABLE_BASE_ID
+const airtableTableId = process.env.AIRTABLE_TABLE_FILMS_ID
+const airtableTableFilmsViewId = process.env.AIRTABLE_TABLE_FILMS_VIEW_ID
+const airtableTableFilmEventId = process.env.AIRTABLE_TABLE_FILMEVENTS_ID
+const airtableTableFilmEventViewId = process.env.AIRTABLE_TABLE_FILMEVENTS_VIEW_ID
+const airtableTableOthersId = process.env.AIRTABLE_TABLE_OTHERS_ID
+const airtableTableOthersViewId = process.env.AIRTABLE_TABLE_OTHERS_VIEW_ID
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0
+}
+
+async function getFilmEvents() {
+  try {
+    const res = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableFilmEventId}?view=${airtableTableFilmEventViewId}`, {
+      headers: {
+        Authorization: `Bearer ${airtableApiKey}`,
+      },
+      cache: 'no-store' 
+    });
+    const data = await res.json();
+    return data.records
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function getFilms() {
@@ -35,9 +54,34 @@ async function getFilms() {
   }
 }
 
+async function getOthers() {
+  try {
+    const res = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableOthersId}?view=${airtableTableOthersViewId}`, {
+      headers: {
+        Authorization: `Bearer ${airtableApiKey}`,
+      },
+      cache: 'no-store' 
+    });
+    const data = await res.json();
+    console.log('all others', data)
+    return data.records
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default async function Page({ params }) {
-  const films = await getFilms()
   const lang = validateLanguage(params.language) ? params.language : 'en'
+  let films = await getFilms()
+  const filmEvents = await getFilmEvents()
+  for (let film of films.records) {
+    const filmId = film.id
+    film.fields['Events'] = filmEvents.filter(event => event.fields.Film[0] === filmId)
+  }
+  const others = await getOthers()
+  const sponsors = others.filter(data => data.fields['Type'] === 'Sponsor')
+  const questions = others.filter(data => data.fields['Type'] === 'Question')
+
   
   return (
       <Scaffold lang={params.language}>
@@ -55,8 +99,8 @@ export default async function Page({ params }) {
           <Events language={lang}/>
           <SectionTitle content={sectionTitles[lang].sponsorSectionTitle}></SectionTitle>
           <h2 className={`${myFont.className} section__title`}>{sectionTitles[lang].sponsorSectionTitle}</h2>
-          <Sponsors></Sponsors>
-          <Questions language={lang}/>
+          <Sponsors language={lang} sponsors={sponsors}/>
+          <Questions language={lang} questions={questions}/>
       </Scaffold>
   );
 }
