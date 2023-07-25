@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Terminal Grotesque';
+    src: url('../fonts/terminal-grotesque-webfont.woff') format('woff2'),
+        url('../fonts/terminal-grotesque-webfont.woff') format('woff'),
+        url('../fonts/terminal-grotesque-webfont.ttf') format('truetype');
+}
 
 /* .film__item {
     position: relative;

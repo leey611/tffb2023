@@ -7,15 +7,55 @@ import Sponsors from '../components/Sponsors'
 import localFont from 'next/font/local'
 import { isEmpty, sectionTitles } from '../utils/helpers'
 import Questions from '../components/Questions'
+import SectionTitle from '../components/SectionTitle'
  
 // Font files can be colocated inside of `pages`
 const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
 
-let airtableApiKey = process.env.AIRTABLE_API_KEY
-let airtableBaseId = process.env.AIRTABLE_BASE_ID
-let airtableTableId = process.env.AIRTABLE_TABLE_FILMS_ID
-let airtableTableFilmsViewId = process.env.AIRTABLE_TABLE_FILMS_VIEW_ID
+const airtableApiKey = process.env.AIRTABLE_API_KEY
+const airtableBaseId = process.env.AIRTABLE_BASE_ID
+const airtableTableId = process.env.AIRTABLE_TABLE_FILMS_ID
+const airtableTableFilmsViewId = process.env.AIRTABLE_TABLE_FILMS_VIEW_ID
+const airtableTableFilmEventId = process.env.AIRTABLE_TABLE_FILMEVENTS_ID
+const airtableTableFilmEventViewId = process.env.AIRTABLE_TABLE_FILMEVENTS_VIEW_ID
 
+async function getEventsForFilm(film) {
+  
+  const eventIds = film.fields.FilmEvents; // Assuming the field is named FilmEvent
+  console.log('eventIds', eventIds)
+  if (!eventIds || eventIds.length === 0) {
+    return []; // No events for this film
+  }
+  
+  try {
+    const eventIdsString = eventIds.map((eventId) => `'${eventId}'`).join(',');
+    const events = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableFilmEventId}?filterByFormula=OR(RECORD_ID()IN${'[' + eventIdsString + ']'})`, {
+      headers: {
+        Authorization: `Bearer ${airtableApiKey}`,
+      },
+      cache: 'no-store' 
+    });
+    return events.data.records;
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    return [];
+  }
+}
+
+async function getFilmEvents() {
+  try {
+    const res = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableFilmEventId}?view=${airtableTableFilmEventViewId}`, {
+      headers: {
+        Authorization: `Bearer ${airtableApiKey}`,
+      },
+      cache: 'no-store' 
+    });
+    const data = await res.json();
+    return data.records
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 
 async function getFilms() {
@@ -27,7 +67,6 @@ async function getFilms() {
       cache: 'no-store' 
     });
     const data = await res.json();
-    //console.log('data records', data.records[0]);
     return data
   } catch (error) {
     console.log(error);
@@ -35,11 +74,23 @@ async function getFilms() {
 }
 
 export default async function Page() {
-  const films = await getFilms()
+  //const filmEvents = await getFilmEvents()
+  let films = await getFilms()
+  const filmEvents = await getFilmEvents()
+  //console.log(filmEvents)
+  for (let film of films.records) {
+    console.log('film', film)
+  }
+  // console.log('films', films)
+  // console.log('filmEvents', filmEvents)
+  
     return (
       <Scaffold lang="en">
         {/* ALL Films */}
-        <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].filmSectionTitle}</h2>
+
+        <section className="max-w-1440 mx-auto px-[5vw]">
+        {/* <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].filmSectionTitle}</h2> */}
+        <SectionTitle content={sectionTitles['en'].filmSectionTitle}></SectionTitle>
         {films.records.map(film =>
           !isEmpty(film.fields) && <Film
               key={film.id}
@@ -49,13 +100,17 @@ export default async function Page() {
           >
           </Film>
         )}
+
         {/* ALL Events  */}
-        <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].eventSectionTitle}</h2>
+        <SectionTitle content={sectionTitles['en'].eventSectionTitle}></SectionTitle>
         <Events language={'en'}/>
+
         {/* ALL Sponsors  */}
-        <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].sponsorSectionTitle}</h2>
+        <SectionTitle content={sectionTitles['en'].sponsorSectionTitle}></SectionTitle>
         <Sponsors language={'en'}/>
         <Questions language={'en'}/>
+        </section>
+        
       </Scaffold>
     )
   }

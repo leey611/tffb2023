@@ -1,9 +1,3 @@
-.openingFilmTheme {
-    // opacity: 0;
-    // position: absolute;
-    // font-weight: 700;
-}
-
 
 .film__item {
     padding: 1rem;
@@ -85,9 +79,6 @@
             width: 100%;
             height: auto;
         }
-        .name, .director {
-            font-weight: 700;
-        }
 
         .themes {
             // display: none;
@@ -166,11 +157,11 @@
                 grid-area: mainImg;
             }
             .name {
-                font-size: 4rem;
+                // font-size: 4rem;
                 grid-area: name;
             }
             .director {
-                font-size: 1.5rem;
+                // font-size: 1.5rem;
                 grid-area: director;
             }
             .cta {
@@ -182,7 +173,7 @@
             .themes {
                 grid-area: themes;
                 div {
-                    font-size: 1.25rem;
+                    // font-size: 1.25rem;
                 }
             }
             .subImages {

@@ -14,7 +14,7 @@ async function getEvents() {
       cache: 'no-store' 
     });
     const data = await res.json();
-    console.log('events', data.records)
+    //console.log('events', data.records)
     return data.records
   } catch (error) {
     console.log(error);

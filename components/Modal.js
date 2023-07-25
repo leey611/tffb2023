@@ -15,7 +15,7 @@ export default function Modal(props) {
 
     return (
         <>
-            <button className="border-secondary text-white bg-secondary py-4 px-8 rounded-full" onClick={toggleModal}>Watch Trailer</button>
+            <button className="border-secondary text-white bg-secondary py-2 px-4 rounded-full font-sans font-medium" onClick={toggleModal}>Watch Trailer</button>
             <div className={`modal ${isTrailerOpen && 'show'}`}>
                 <div className='video__container'>
                     <iframe

@@ -13,11 +13,16 @@ export default function Film(props) {
         Place,
         MainImageUrl,
         SubImageUrls,
+        DirectorImageUrl,
         IsOpeningFilm,
         IsClosingFilm,
     } = film
     
-    SubImageUrls = SubImageUrls.split('\n')
+    // dropbox image url replacement
+    MainImageUrl = MainImageUrl.replace(/&dl=0(?!.*&dl=0)/, "&raw=1");
+    DirectorImageUrl = DirectorImageUrl.replace(/&dl=0(?!.*&dl=0)/, "&raw=1");
+    SubImageUrls = SubImageUrls.split('\n').map(url => url.replace(/&dl=0(?!.*&dl=0)/, "&raw=1"))
+    
     const name = film[`FilmName_${language}`]
     const director = film[`Director_${language}`]
     const synopsis = film[`Synopsis_${language}`]
@@ -42,7 +47,7 @@ export default function Film(props) {
                     </div>
                    
                     <div className="cross">
-                        <svg xmlns="http://www.w3.org/2000/svg"  fill="#000" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg"  fill="#000" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
                     </div> 
@@ -50,11 +55,11 @@ export default function Film(props) {
                 
                 {/* when accordion is open */}
                 <div className="film__info info">
-                    <h3 className="name">{name}</h3>
-                    <h4 className="director">{director}</h4>
+                    <h3 className="name text-h1 font-sans font-medium">{name}</h3>
+                    <h4 className="director text-h2 font-sans font-medium">{director}</h4>
                     <img src={MainImageUrl} className='mainImg'/>
                     <div className="themes">
-                        {themes.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-2"># {theme}</div>)}
+                        {themes.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-2 text-b1 font-sans font-medium"># {theme}</div>)}
                     </div>
                     {/* <p className="synopsis">{synopsis}</p> */}
                     <div className='subImages'>
@@ -62,7 +67,7 @@ export default function Film(props) {
                     </div>
                     <div className="cta">
                         <Modal id={id} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'}></Modal>
-                        <button className="border-2 border-secondary py-[calc(1rem_-_2px)] px-8 rounded-full ">Buy Ticket</button>
+                        <button className="border-2 border-secondary py-[calc(0.5rem_-_2px)] px-4 rounded-full text-b1 font-sans font-medium">Buy Ticket</button>
                     </div>
                 </div>
                 
