@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from 'react'
 import p5 from 'p5'
 
-export const P5Wrapper = ({
+const P5Wrapper = ({
     sketch,
     autoResizeToWindow = true,
     children
