@@ -97,7 +97,7 @@ export default async function Page({ params }) {
     <Scaffold lang={lang}>
       {/* ALL Films */}
 
-      <div className='w-full h-screen flex flex-col justify-center'>
+      <div className='w-full h-screen flex flex-col justify-center isolate'>
         <div className="navbar flex justify-center w-full font-special text-h2 py-10">
           <Link href="/">EN</Link>/
           <Link href="/de">DE</Link>/
