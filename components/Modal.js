@@ -1,9 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { sectionTitles } from '../utils/helpers'
 import '../app/modal.scss'
 
 export default function Modal(props) {
-    const { id, trailerUrl } = props
+    const { id, trailerUrl, language } = props
     const [isTrailerOpen, setTrailerOpen] = useState(false)
     const toggleModal = () => {
         setTrailerOpen(!isTrailerOpen)
@@ -15,7 +16,7 @@ export default function Modal(props) {
 
     return (
         <>
-            <button className="text-h4 text-white bg-secondary py-3 px-5 rounded-full font-special font-medium mr-4" onClick={toggleModal}>Watch Trailer</button>
+            <button className="text-h4 text-white bg-secondary py-3 px-5 rounded-full font-special font-medium mr-4" onClick={toggleModal}>{sectionTitles[language].watchTrailer}</button>
             <div className={`modal ${isTrailerOpen && 'show'}`}>
                 <div className='video__container'>
                     <iframe

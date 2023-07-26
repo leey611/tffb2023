@@ -106,8 +106,8 @@ export default async function Page() {
         </div>
 
         <div className='text-center text-h4 py-[5rem] flex gap-5 justify-center'>
-          <Link className="text-white bg-secondary py-3 px-5 rounded-full font-special font-medium" href="/">Watch Trailer</Link>
-          <Link href="/" className='border-2 border-secondary py-3 px-5 rounded-full font-special font-medium'>Buy Tickets</Link>
+          <Link className="text-white bg-secondary py-3 px-5 rounded-full font-special font-medium" href="/">{sectionTitles['en'].watchTrailer}</Link>
+          <Link href="/" className='border-2 border-secondary py-3 px-5 rounded-full font-special font-medium'>{sectionTitles['en'].buyTicket}</Link>
         </div>
 
         <ResponsiveIframe />

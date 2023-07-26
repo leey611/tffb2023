@@ -33,6 +33,8 @@ export const sectionTitles = {
         openingFilm: 'Opening Film',
         closingFilm: 'Closing Film',
         aboutUs: 'About Us',
+        buyTicket: 'Buy Ticket',
+        watchTrailer: 'Trailer'
     },
     de: {
         filmSectionTitle: 'ALL FILME',
@@ -42,6 +44,8 @@ export const sectionTitles = {
         openingFilm: 'Eröffnungsfilm',
         closingFilm: 'Schlussfilm',
         aboutUs: 'Über uns',
+        buyTicket: 'Zum Ticketkaufen',
+        watchTrailer: 'Trailer'
     }, 
     tw: {
         filmSectionTitle: '所有電影',
@@ -51,6 +55,8 @@ export const sectionTitles = {
         openingFilm: '開幕片',
         closingFilm: '閉幕片',
         aboutUs: '關於我們',
+        buyTicket: '購票去',
+        watchTrailer: '預告片'
     }
 }
 

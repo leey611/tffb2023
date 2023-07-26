@@ -79,8 +79,8 @@ export default function Film(props) {
                         
                     </div>
                     <div className="cta mt-5">
-                        <Modal id={id} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'}></Modal>
-                        <button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">Buy Ticket</button>
+                        <Modal id={id} language={language} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'}></Modal>
+                        <button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[language].buyTicket}</button>
                     </div>
                     <div className='prizes my-10'>
                         {prizes.map(prize => <p>{prize}</p>)}
