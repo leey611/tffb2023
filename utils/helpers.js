@@ -28,7 +28,7 @@ export const sectionTitles = {
     en: {
         filmSectionTitle: 'ALL FILMS',
         eventSectionTitle: 'ALL EVENTS',
-        sponsorSectionTitle: 'SPONSORED BY',
+        sponsorSectionTitle: 'SPONSORS & PARTNERS',
         questionSectionTitle: 'FAQ',
         openingFilm: 'Opening Film',
         closingFilm: 'Closing Film',
@@ -37,9 +37,9 @@ export const sectionTitles = {
         watchTrailer: 'Trailer'
     },
     de: {
-        filmSectionTitle: 'ALL FILME',
+        filmSectionTitle: 'ALLE FILME',
         eventSectionTitle: 'ALLE VERANSTALTUNGEN',
-        sponsorSectionTitle: 'GESPONSERT VON',
+        sponsorSectionTitle: 'SPONSOREN & PARTNER',
         questionSectionTitle: 'FAQ',
         openingFilm: 'Eröffnungsfilm',
         closingFilm: 'Schlussfilm',
@@ -50,7 +50,7 @@ export const sectionTitles = {
     tw: {
         filmSectionTitle: '所有電影',
         eventSectionTitle: '所有活動',
-        sponsorSectionTitle: '贊助商',
+        sponsorSectionTitle: '贊助商&合作夥伴',
         questionSectionTitle: '常見問題',
         openingFilm: '開幕片',
         closingFilm: '閉幕片',
