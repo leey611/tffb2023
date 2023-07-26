@@ -13,6 +13,12 @@ import Marquee from '../components/Marquee'
 import ResponsiveIframe from '../components/ResponsiveIframe'
 import Testp5 from '../components/testp5'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
+
+const DynamicComponentWithNoSSR = dynamic(
+  () => import('../components/testp5'),
+  { ssr: false }
+)
 
 // Font files can be colocated inside of `pages`
 const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
@@ -112,7 +118,8 @@ export default async function Page() {
         </div>
 
         {/* <ResponsiveIframe /> */}
-        <Testp5></Testp5>
+        {/* <Testp5></Testp5> */}
+        <DynamicComponentWithNoSSR></DynamicComponentWithNoSSR>
       </div>
 
       <Marquee content={marquee} link={"/"}></Marquee>
