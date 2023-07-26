@@ -11,6 +11,7 @@ import SectionTitle from '../components/SectionTitle'
 import SocialHandle from '../components/SocialHandle'
 import Marquee from '../components/Marquee'
 import ResponsiveIframe from '../components/ResponsiveIframe'
+import Testp5 from '../components/testp5'
 import Link from 'next/link'
 
 // Font files can be colocated inside of `pages`
@@ -110,7 +111,8 @@ export default async function Page() {
           <Link href="/" className='border-2 border-secondary py-3 px-5 rounded-full font-special font-medium'>{sectionTitles['en'].buyTicket}</Link>
         </div>
 
-        <ResponsiveIframe />
+        {/* <ResponsiveIframe /> */}
+        <Testp5></Testp5>
       </div>
 
       <Marquee content={marquee} link={"/"}></Marquee>
