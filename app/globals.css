@@ -55,7 +55,12 @@
 }
 
 .mix {
-    mix-blend-mode: saturation;
+    mix-blend-mode: soft-light;
+    transform: translate3d(0, 0, 0);
+}
+
+.isolate {
+    isolation: isolate;
 }
 
 :visited {
