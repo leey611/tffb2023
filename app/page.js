@@ -100,6 +100,13 @@ export default async function Page() {
       loading: () => <div>{`loading....${heroText}`}</div>
     }
   )
+  const Dynamicp5TestTwo = dynamic(
+    () => import('../components/Testp5Two'),
+    {
+      ssr: false,
+      loading: () => <div>{`loading....${heroText}`}</div>
+    }
+  )
   return (
     <Scaffold lang="en">
       {/* ALL Films */}
@@ -123,7 +130,8 @@ export default async function Page() {
 
         {/* <ResponsiveIframe /> */}
         {/* <Testp5></Testp5> */}
-        <Testp5Two />
+        {/* <Testp5Two /> */}
+        <Dynamicp5TestTwo />
         {/* <DynamicComponentWithNoSSR></DynamicComponentWithNoSSR> */}
       </div>
 
