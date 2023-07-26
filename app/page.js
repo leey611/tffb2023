@@ -12,6 +12,7 @@ import SocialHandle from '../components/SocialHandle'
 import Marquee from '../components/Marquee'
 import ResponsiveIframe from '../components/ResponsiveIframe'
 import Testp5 from '../components/testp5'
+import Testp5Two from '../components/Testp5Two'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 
@@ -122,7 +123,8 @@ export default async function Page() {
 
         {/* <ResponsiveIframe /> */}
         {/* <Testp5></Testp5> */}
-        <DynamicComponentWithNoSSR></DynamicComponentWithNoSSR>
+        {/* <Testp5Two /> */}
+        {/* <DynamicComponentWithNoSSR></DynamicComponentWithNoSSR> */}
       </div>
 
       <Marquee content={marquee} link={"/"}></Marquee>
