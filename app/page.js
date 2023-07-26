@@ -76,15 +76,24 @@ export default async function Page() {
   }
   console.log('film 0', films.records[0])
   const others = await getOthers()
-  const sponsors = others.filter(data => data.fields['Type'] === 'Sponsor')
+  const sponsors = others.filter(data => data.fields['Type'] === 'Sponsor').map(sponsor => {
+    sponsor.fields['Img'] = sponsor.fields['Img'] ? sponsor.fields['Img'].replace(/&dl=0(?!.*&dl=0)/, "&raw=1") : 'hi'
+    return sponsor
+  })
   const questions = others.filter(data => data.fields['Type'] === 'Question')
+  const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
     return (
       <Scaffold lang="en">
         {/* ALL Films */}
-
+        <h1>{websiteGlobal.fields[`Title_${'en'}`]}</h1>
         <section className="max-w-1440 mx-auto px-[5vw]">
-        {/* <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].filmSectionTitle}</h2> */}
+        <SectionTitle content={websiteGlobal.fields['Year']}></SectionTitle>
         <SectionTitle content={sectionTitles['en'].filmSectionTitle}></SectionTitle>
+        <SectionTitle content={'TFFB'}></SectionTitle>
+        
+        {/* <h2 className={`${myFont.className} section__title`}>{sectionTitles['en'].filmSectionTitle}</h2> */}
+        
+        
         {films.records.map(film =>
           !isEmpty(film.fields) && <Film
               key={film.id}

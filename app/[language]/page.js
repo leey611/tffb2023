@@ -79,12 +79,19 @@ export default async function Page({ params }) {
     film.fields['Events'] = filmEvents.filter(event => event.fields.Film[0] === filmId)
   }
   const others = await getOthers()
-  const sponsors = others.filter(data => data.fields['Type'] === 'Sponsor')
+  const sponsors = others.filter(data => data.fields['Type'] === 'Sponsor').map(sponsor => {
+    sponsor.fields['Img'] = sponsor.fields['Img'] ? sponsor.fields['Img'].replace(/&dl=0(?!.*&dl=0)/, "&raw=1") : 'hi'
+    return sponsor
+  })
   const questions = others.filter(data => data.fields['Type'] === 'Question')
-
+  const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
   
   return (
       <Scaffold lang={params.language}>
+        <h1>{websiteGlobal.fields[`Title_${lang}`]}</h1>
+        <SectionTitle content={websiteGlobal.fields['Year']}></SectionTitle>
+        <SectionTitle content={sectionTitles[lang].filmSectionTitle}></SectionTitle>
+        <SectionTitle content={'TFFB'}></SectionTitle>
         <h2 className={`${myFont.className} section__title`}>{sectionTitles[lang].filmSectionTitle}</h2>
         {films.records.map(film =>
           !isEmpty(film.fields) && <Film

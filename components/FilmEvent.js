@@ -5,7 +5,7 @@ export default function FilmEvent({ language, event}) {
     return (
         <div>
             <h5>{name}</h5>
-            <h5>{`${day}.${month}.${year}`}</h5>
+            <h5>{`${day}.${month}.${year} | ${hour}:${minute}`}</h5>
         
         </div>
     )

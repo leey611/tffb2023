@@ -33,7 +33,6 @@ export default function Film(props) {
     let genre = film[`Genre_${language}`].join(' | ')
     let prizes = film[`Prize_Nomination_${language}`]
     genre = genre.concat(' | ', Length/60)
-    console.log('genre', Length/60)
     // let isOpeningFilm = film.isOpeningFilm
     prizes = prizes.split('\n')
     const { year, month, day, hour, minute } = formatBerlinTime(ScreenTime)
