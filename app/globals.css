@@ -50,6 +50,23 @@
     text-decoration: underline;
 }
 
+.noPointer {
+    pointer-events: none;
+}
+
+.mix {
+    mix-blend-mode: saturation;
+}
+
+:visited {
+    background-color: #D6366F;
+}
+
+a:hover {
+    color: #ccc;
+    cursor: pointer;
+}
+
 /* .film__item {
     position: relative;
     border-top: 1px solid #000;
@@ -92,4 +109,3 @@
     justify-self: end;
     z-index: 99999;
 } */
-

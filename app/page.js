@@ -99,16 +99,18 @@ export default async function Page() {
           <Link href="/de">DE</Link>/
           <Link href="/tw">TW</Link>
         </div>
-        <ResponsiveIframe />
-        <div className="py-10">
+
+        <div className="py-10 mix">
           {heroText.map(text => <h1 className='text-center text-h1 font-special'>{text}</h1>)}
-          <h1 className='text-center text-h1 font-special'>{websiteGlobal.fields[`Theme_${'en'}`]}</h1>
+          <h1 className='text-center text-h1 font-special text-primary'>{websiteGlobal.fields[`Theme_${'en'}`]}</h1>
         </div>
 
         <div className='text-center text-h4 py-[5rem] flex gap-5 justify-center'>
           <Link className="text-white bg-secondary py-3 px-5 rounded-full font-special font-medium" href="/">Watch Trailer</Link>
           <Link href="/" className='border-2 border-secondary py-3 px-5 rounded-full font-special font-medium'>Buy Tickets</Link>
         </div>
+
+        <ResponsiveIframe />
       </div>
 
       <Marquee content={marquee} link={"/"}></Marquee>
@@ -123,9 +125,9 @@ export default async function Page() {
             <h2 className="font-special text-black text-center">TFFB</h2>
           </div>
           <div className="mx-auto my-10 max-w-[200px]">
-          <img src="img/hero2Img.png" className='block w-full'></img>
+            <img src="img/hero2Img.png" className='block w-full'></img>
+          </div>
         </div>
-      </div>
 
         {films.records.map(film =>
           !isEmpty(film.fields) && <Film
@@ -149,17 +151,17 @@ export default async function Page() {
         <Questions language={'en'} questions={questions} />
 
         <div className="w-full flex flex-col gap-10 items-center my-[10rem]">
-            <div className="w-[200px]">
-              <img src="https://www.dropbox.com/scl/fi/qn9ac4ua1gtrplvbhh27h/IMTW_LOGO_-05.png?rlkey=j0ky1zca3mg4tdmfp9mawb92v&raw=1"/>
-            </div>
-            <div>
-              <a href=""><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">About Us</button>
-              </a>
-            </div>
-            <div className="flex gap-5">
-              <SocialHandle logo="img/social_fb.png" link="https://www.facebook.com/ImpressionTaiwan/"/>
-              <SocialHandle logo="img/social_ig.png" link="https://www.instagram.com/impressiontaiwan/"/>
-            </div>
+          <div className="w-[200px]">
+            <img src="https://www.dropbox.com/scl/fi/qn9ac4ua1gtrplvbhh27h/IMTW_LOGO_-05.png?rlkey=j0ky1zca3mg4tdmfp9mawb92v&raw=1" />
+          </div>
+          <div>
+            <a href=""><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">About Us</button>
+            </a>
+          </div>
+          <div className="flex gap-5">
+            <SocialHandle logo="img/social_fb.png" link="https://www.facebook.com/ImpressionTaiwan/" />
+            <SocialHandle logo="img/social_ig.png" link="https://www.instagram.com/impressiontaiwan/" />
+          </div>
         </div>
       </section>
 
