@@ -15,11 +15,6 @@ import Testp5 from '../components/testp5'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 
-const DynamicComponentWithNoSSR = dynamic(
-  () => import('../components/testp5'),
-  { ssr: false }
-)
-
 // Font files can be colocated inside of `pages`
 const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
 
@@ -96,6 +91,14 @@ export default async function Page() {
   const questions = others.filter(data => data.fields['Type'] === 'Question')
   const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
   const heroText = websiteGlobal.fields[`Title_${'en'}`].split('\n')
+
+  const DynamicComponentWithNoSSR = dynamic(
+    () => import('../components/testp5'),
+    {
+      ssr: false,
+      loading: () => <div>{`loading....${heroText}`}</div>
+    }
+  )
   return (
     <Scaffold lang="en">
       {/* ALL Films */}
