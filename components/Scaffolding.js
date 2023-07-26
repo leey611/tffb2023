@@ -7,7 +7,7 @@ const roboto = Roboto({
 export default function Scaffold(props) {
   return (
     <html lang={htmlLanguages[props.lang] || 'en'}>
-      <body className={roboto.className}>
+      <body className="font-sans">
         { props.children }
       </body>
     </html>

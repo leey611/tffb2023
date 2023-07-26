@@ -29,23 +29,28 @@ export const sectionTitles = {
         filmSectionTitle: 'ALL FILMS',
         eventSectionTitle: 'ALL EVENTS',
         sponsorSectionTitle: 'SPONSORED BY',
+        questionSectionTitle: 'FAQ',
         openingFilm: 'Opening Film',
-        closingFilm: 'Closing Film'
-
+        closingFilm: 'Closing Film',
+        aboutUs: 'About Us',
     },
     de: {
         filmSectionTitle: 'ALL FILME',
         eventSectionTitle: 'ALLE VERANSTALTUNGEN',
         sponsorSectionTitle: 'GESPONSERT VON',
+        questionSectionTitle: 'FAQ',
         openingFilm: 'Eröffnungsfilm',
-        closingFilm: 'Schlussfilm'
+        closingFilm: 'Schlussfilm',
+        aboutUs: 'Über uns',
     }, 
     tw: {
         filmSectionTitle: '所有電影',
         eventSectionTitle: '所有活動',
         sponsorSectionTitle: '贊助商',
+        questionSectionTitle: '常見問題',
         openingFilm: '開幕片',
-        closingFilm: '閉幕片'
+        closingFilm: '閉幕片',
+        aboutUs: '關於我們',
     }
 }
 

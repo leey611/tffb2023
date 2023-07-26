@@ -22,8 +22,8 @@ module.exports = {
         // Add more custom font weights as needed
       },
       fontFamily: {
-        sans: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
-        special: ['Terminal Grotesque', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        sans: ['Roboto', 'Helvetica', 'Arial', "微軟正黑體", "PingFang", "STHeiti", "黑體-繁", "Noto Sans TC",'sans-serif'],
+        special: ['Terminal Grotesque', 'Helvetica Neue', "微軟正黑體", "PingFang", "STHeiti", "黑體-繁", "Noto Sans TC", 'Arial', 'sans-serif'],
         // Add more custom font families as needed
       },
       colors: {

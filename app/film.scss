@@ -69,7 +69,7 @@
     }
 
     .film__info {
-        display: grid;
+        // display: grid;
         opacity: 0;
         max-height: 0;
         top: 0;
@@ -85,6 +85,10 @@
             div:not(:last-child) {
                 margin-right: 1rem;
             }
+        }
+        .prizes p::before{
+            content: '★';
+            color: #D6366F;
         }
 
         .subImages img {
@@ -140,18 +144,20 @@
         }
         .film__info {
             display: grid;
-            gap: 0 2rem;
+            gap: 0 4rem;
             grid-template-rows: auto;
             // grid-template-rows: repeat(8, 1fr);
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             grid-template-areas: 
-                "mainImg name name"
-                "mainImg director director"
-                "mainImg cta cta"
-                "mainImg themes themes"
-                "mainImg synopsis synopsis"
-                "mainImg . ."
-                "mainImg subImages subImages";
+                "mainImg mainImg name name"
+                "mainImg mainImg events events"
+                "subImages subImages cta cta"
+                "prizes prizes prizes ."
+                "synopsis synopsis . . "
+                "genres genres . ."
+                "themes themes . ."
+                ". . directorImg director"
+                ". . directorIntro directorIntro";
                 
             .mainImg {
                 grid-area: mainImg;
@@ -160,12 +166,28 @@
                 // font-size: 4rem;
                 grid-area: name;
             }
+            .events {
+                grid-area: events;
+            }
             .director {
+                align-self: flex-end;
                 // font-size: 1.5rem;
                 grid-area: director;
             }
             .cta {
                 grid-area: cta;
+            }
+            .prizes {
+                grid-area: prizes;
+            }
+            .directorIntro {
+                grid-area: directorIntro;
+            }
+            .directorImg {
+                grid-area: directorImg;
+            }
+            .genres {
+                grid-area: genres;
             }
             .synopsis {
                 grid-area: synopsis;
@@ -181,7 +203,7 @@
                 align-self: end;
                 img {
                     // display: block;
-                    width: 170px;
+                    // width: 170px;
                     &:not(:first-child) {
                         display: unset;
                         margin-left: 1rem;
@@ -229,8 +251,8 @@ input:checked + div > .Main_img {
 input:checked ~ .film__item {
     border: 1px solid #000;
     border-radius: 25px;
-    margin-top: 1rem;
-    
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 input:checked ~ .film__item svg {
@@ -255,8 +277,9 @@ input:checked ~ .film__item .film__place {
 }
 
 input:checked ~ .film__item > .film__info {
+    padding-bottom: 2rem;
     opacity: 1;
-    max-height: 2000px;
+    max-height: 3000px;
     /* position: unset; */
     transition: opacity 0.5s ease, max-height 0.5s ease; // Combine both transitions
 }

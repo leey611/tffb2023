@@ -9,6 +9,47 @@
         url('../fonts/terminal-grotesque-webfont.ttf') format('truetype');
 }
 
+.marquee {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    z-index: 99;
+    background-color: #000;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 24px;
+    padding: 15px 0px;
+}
+
+.marquee span {
+    display: inline-block;
+    animation: marquee 50s linear infinite;
+    color: #fff;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100vw);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Optional: Add styles for links */
+.marquee a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.marquee a:hover {
+    color: #eee;
+    text-decoration: underline;
+}
+
 /* .film__item {
     position: relative;
     border-top: 1px solid #000;

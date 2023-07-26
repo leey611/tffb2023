@@ -44,7 +44,7 @@ export default function Film(props) {
             <div className="film__item item w-full">
                 {/* when accordion is close */}
                 <label className={`film__toggle__area ${IsOpeningFilm && 'isOpeningFilm'} ${IsClosingFilm && 'isClosingFilm'}`} htmlFor={id}>
-                    <h3 className="film__name">{name}</h3>
+                    <h3 className="film__name font-semibold">{name}</h3>
                     {IsOpeningFilm && <OpeningClosingFilmLabel isOpening={IsOpeningFilm} language={language}></OpeningClosingFilmLabel>}
                     {IsClosingFilm && <OpeningClosingFilmLabel isClosing={IsClosingFilm} language={language}></OpeningClosingFilmLabel>}
                     <div className="film__date">{`${day}.${month}.${year}`}</div>
@@ -61,32 +61,34 @@ export default function Film(props) {
                 </label>
                 
                 {/* when accordion is open */}
-                <div className="film__info info">
-                    <h3 className="name text-h1 font-sans font-medium">{name}</h3>
-                    <h4 className="director text-h2 font-sans font-medium">{director}</h4>
+                <div className="film__info lg:px-6">
+                    <h3 className="name text-h1 text-primary font-sans font-semibold">{name}</h3>
+                    <h4 className="director text-h2 font-sans font-medium my-5 font-special">{director}</h4>
                     <img src={MainImageUrl} className='mainImg'/>
                     <div className='events'>
                         {Events.map(event => <FilmEvent id={event.id} language={language} event={event.fields}/>)}
                     </div>
                     <div className="themes">
-                        {themes.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-2 text-b1 font-sans font-medium"># {theme}</div>)}
+                        {themes.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-2 text-h4 font-sans font-medium"># {theme}</div>)}
                     </div>
-                    <p className="synopsis">{synopsis}</p>
-                    <div className='subImages'>
-                        {SubImageUrls.map(imgUrl => <img src={imgUrl} />)}
+                    <p className="synopsis my-5">{synopsis}’</p>
+                    <div className='subImages flex gap-4 mt-4'>
+                        
+                        {SubImageUrls.map(imgUrl => <div><img src={imgUrl} className='' /></div>)}
+                        
+                        
                     </div>
-                    <div className="cta">
+                    <div className="cta mt-5">
                         <Modal id={id} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'}></Modal>
-                        <button className="border-2 border-secondary py-[calc(0.5rem_-_2px)] px-4 rounded-full text-b1 font-sans font-medium">Buy Ticket</button>
+                        <button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">Buy Ticket</button>
                     </div>
-                    <div className='prizes'>
+                    <div className='prizes my-10'>
                         {prizes.map(prize => <p>{prize}</p>)}
                     </div>
-                    <div className='genres'>{genre}</div>
-                    <img src={DirectorImageUrl} className='directorImg'/>
+                    <div className='genres my-10'>{genre}</div>
+                    <img src={DirectorImageUrl} className='directorImg my-5'/>
                     <p className='directorIntro'>{directorIntro}</p>
                 </div>
-                
             </div>
         </div>
         

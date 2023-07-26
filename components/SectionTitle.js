@@ -7,8 +7,8 @@ export default function SectionTitle(props) {
     const  { content } = props
   
     return (
-    <div>
-        <h2 className="font-special text-primary text-h2">{content}</h2>
+    <div className="mt-[6rem] mb-[1rem]">
+        <h2 className="font-special text-primary text-h2 font-semibold">{content}</h2>
     </div>
   );
 };
