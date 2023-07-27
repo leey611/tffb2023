@@ -68,7 +68,7 @@ async function getOthers() {
       cache: 'no-store'
     });
     const data = await res.json();
-    console.log('all others', data)
+    //console.log('all others', data)
     return data.records
   } catch (error) {
     console.log(error);

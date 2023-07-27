@@ -81,7 +81,6 @@ export default async function Page() {
   //console.log('film 0', films.records[0])
   const others = await getOthers()
   const marquee = others.filter(data => data.fields['Type'] === 'Donate-Float').map(marquee => marquee.fields[`Title_${'en'}`]).join('');
-
   const sponsors = others.filter(data => data.fields['Type'] === 'Sponsor').map(sponsor => {
     sponsor.fields['Img'] = sponsor.fields['Img'] ? sponsor.fields['Img'].replace(/&dl=0(?!.*&dl=0)/, "&raw=1") : 'hi'
     return sponsor
@@ -89,6 +88,7 @@ export default async function Page() {
   const questions = others.filter(data => data.fields['Type'] === 'Question')
   const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
   const heroText = websiteGlobal.fields[`Title_${'en'}`].split('\n')
+
   return (
     <Scaffold lang="en">
       {/* ALL Films */}

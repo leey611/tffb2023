@@ -5,7 +5,7 @@ import Answer from './Answer'
 export default async function Questions({language, questions}) {
     return (
         <>
-            {questions.map(q => !isEmpty(q.fields) && 
+            {questions?.map(q => !isEmpty(q.fields) && 
             <div>
                 {/* using a checkbox + label and CSS to make an accordian, both X and label can toggle it */}
                 <input type="checkbox" id={q.id} className="question__checkbox"></input>

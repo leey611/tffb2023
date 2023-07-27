@@ -66,15 +66,15 @@ export default function Film(props) {
                     <h4 className="director text-h2 font-sans font-medium my-5 font-special">{director}</h4>
                     <img src={MainImageUrl} className='mainImg'/>
                     <div className='events'>
-                        {Events.map(event => <FilmEvent id={event.id} language={language} event={event.fields}/>)}
+                        {Events?.map(event => <FilmEvent id={event.id} language={language} event={event.fields}/>)}
                     </div>
                     <div className="themes">
-                        {themes.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-2 text-h4 font-sans font-medium"># {theme}</div>)}
+                        {themes?.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-2 text-h4 font-sans font-medium"># {theme}</div>)}
                     </div>
                     <p className="synopsis my-5">{synopsis}’</p>
                     <div className='subImages flex gap-4 mt-4'>
                         
-                        {SubImageUrls.map(imgUrl => <div><img src={imgUrl} className='' /></div>)}
+                        {SubImageUrls?.map(imgUrl => <div><img src={imgUrl} className='' /></div>)}
                         
                         
                     </div>
@@ -83,7 +83,7 @@ export default function Film(props) {
                         <button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[language].buyTicket}</button>
                     </div>
                     <div className='prizes my-10'>
-                        {prizes.map(prize => <p>{prize}</p>)}
+                        {prizes?.map(prize => <p>{prize}</p>)}
                     </div>
                     <div className='genres my-10'>{genre}</div>
                     <img src={DirectorImageUrl} className='directorImg my-5'/>
