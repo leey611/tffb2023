@@ -39,6 +39,8 @@ const P5Wrapper = ({
 const sketch = (onComplete) => (p5) => {
     p5.setup = () => {
         p5.createCanvas(p5.windowWidth, p5.windowHeight)
+        p5.frameRate(30)
+        p5.pixelDensity(1)
     }
     p5.draw = () => {
         p5.background(250);
