@@ -155,7 +155,7 @@ export default async function Page() {
             <img src="https://www.dropbox.com/scl/fi/qn9ac4ua1gtrplvbhh27h/IMTW_LOGO_-05.png?rlkey=j0ky1zca3mg4tdmfp9mawb92v&raw=1" />
           </div>
           <div>
-            <a href=""><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">About Us</button>
+            <a href=""><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles['en'].aboutUs}</button>
             </a>
           </div>
           <div className="flex gap-5">
