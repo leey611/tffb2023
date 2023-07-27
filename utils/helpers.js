@@ -32,7 +32,7 @@ export const sectionTitles = {
         questionSectionTitle: 'FAQ',
         openingFilm: 'Opening Film',
         closingFilm: 'Closing Film',
-        aboutUs: 'About Us',
+        aboutUs: 'About Impression Taiwan',
         buyTicket: 'Buy Ticket',
         watchTrailer: 'Trailer'
     },
@@ -43,7 +43,7 @@ export const sectionTitles = {
         questionSectionTitle: 'FAQ',
         openingFilm: 'Eröffnungsfilm',
         closingFilm: 'Schlussfilm',
-        aboutUs: 'Über uns',
+        aboutUs: 'Über Impression Taiwan e.V.',
         buyTicket: 'Zum Ticketkaufen',
         watchTrailer: 'Trailer'
     }, 
@@ -54,7 +54,7 @@ export const sectionTitles = {
         questionSectionTitle: '常見問題',
         openingFilm: '開幕片',
         closingFilm: '閉幕片',
-        aboutUs: '關於我們',
+        aboutUs: '關於映像臺灣協會',
         buyTicket: '購票去',
         watchTrailer: '預告片'
     }
