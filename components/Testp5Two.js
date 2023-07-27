@@ -1,16 +1,22 @@
 'use client'
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import p5 from 'p5'
 
 const P5Wrapper = ({
     sketch,
     autoResizeToWindow = true,
-    children
+    children,
+    fallback
 }) => {
+    const [isLoading, setIsLoading] = useState(true);
     const wrapperElement = useRef(null);
 
     useEffect(() => {
-        const canvas = new p5(sketch, wrapperElement.current);
+        const onComplete = () => setIsLoading(false);
+
+        console.log('TEST CANVAS: P5 Setup')
+
+        const canvas = new p5(sketch(onComplete), wrapperElement.current);
 
         if (autoResizeToWindow) {
             canvas.windowResized = () => {
@@ -23,13 +29,14 @@ const P5Wrapper = ({
 
     return (
         <>
+            {isLoading && <div>Canvas still loading</div>}
             <div ref={wrapperElement} />
             {children}
         </>
     );
 };
 
-const sketch = (p5) => {
+const sketch = (onComplete) => (p5) => {
     p5.setup = () => {
         p5.createCanvas(p5.windowWidth, p5.windowHeight)
     }
@@ -44,11 +51,16 @@ const sketch = (p5) => {
         // p5.rotateY(p5.frameCount * 0.01);
         // p5.plane(100);
         p5.pop();
+
+        console.log('TEST CANVAS: Finished Drawing');
+
+        onComplete();
     };
 }
 
 export default function Testp5Two() {
     return (
-        <P5Wrapper sketch={sketch}/>
+        
+         <P5Wrapper sketch={sketch}/>
     )
 }

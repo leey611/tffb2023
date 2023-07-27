@@ -104,7 +104,7 @@ export default async function Page() {
     () => import('../components/Testp5Two'),
     {
       ssr: false,
-      loading: () => <div>{`loading....${heroText}`}</div>
+      loading: () => <div>JavaScript module loading...</div>
     }
   )
   return (
