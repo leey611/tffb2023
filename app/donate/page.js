@@ -40,19 +40,6 @@ export default async function Page() {
 
     return (
         <Scaffold lang="en">
-            {/* ALL Films */}
-
-            <div className='w-full h-screen flex flex-col justify-center isolate'>
-                <div className="navbar flex justify-center w-full font-special text-h2 py-10">
-                    <Link href="/">EN</Link>/
-                    <Link href="/de">DE</Link>/
-                    <Link href="/tw">TW</Link>
-                </div>
-
-            </div>
-
-
-
             <section className="max-w-1440 mx-auto px-[5vw]">
 
                 
