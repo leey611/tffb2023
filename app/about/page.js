@@ -7,6 +7,8 @@ import SocialHandle from '../../components/SocialHandle'
 import Marquee from '../../components/Marquee'
 import Link from 'next/link'
 import Team from '../../components/Team'
+import SpecialTitle from '../../components/SpecialTitle'
+import LanguageSelect from '../../components/LanguageSelect'
 
 // Font files can be colocated inside of `pages`
 // const myFont = localFont({ src: '../../fonts/terminal-grotesque-webfont.woff2' })
@@ -41,40 +43,21 @@ export default async function Page() {
         <Scaffold lang="en">
             {/* ALL Films */}
 
-            <div className='w-full h-screen flex flex-col justify-center isolate'>
-                <div className="navbar flex justify-center w-full font-special text-h2 py-10">
-                    <Link href="/">EN</Link>/
-                    <Link href="/de">DE</Link>/
-                    <Link href="/tw">TW</Link>
-                </div>
-
-            </div>
+            <LanguageSelect />
 
             <Marquee content={marquee} link={"/"}></Marquee>
 
-
             <section className="max-w-1440 mx-auto px-[5vw]">
 
-                <div className="flex flex-col gap-10">
-                    <div className="flex justify-between items-center w-full font-special text-h1">
-                        <h2 className="font-special text-black text-center">{websiteGlobal.fields['Year']}</h2>
-                        <h2 className="font-special text-primary text-center">{sectionTitles['en'].filmSectionTitle}</h2>
-                        <h2 className="font-special text-black text-center">TFFB</h2>
-                    </div>
-                    <div className="mx-auto my-10 max-w-[200px]">
-                        <img src="img/hero2Img.png" className='block w-full'></img>
-                    </div>
-                </div>
+                <div className="my-20"><Link href="/" className="text-h3 font-special px-10 py-5 border-4 rounded-full border-black">{String.fromCharCode(8592)} Back Home</Link></div>
 
-               <Team team={team} language={'en'}/>
-               
+                <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles['en'].aboutUs} img="img/about-img.png" />
+
+                <Team team={team} language={'en'} />
+
                 <div className="w-full flex flex-col gap-10 items-center my-[10rem]">
                     <div className="w-[200px]">
                         <img src="https://www.dropbox.com/scl/fi/qn9ac4ua1gtrplvbhh27h/IMTW_LOGO_-05.png?rlkey=j0ky1zca3mg4tdmfp9mawb92v&raw=1" />
-                    </div>
-                    <div>
-                        <Link href=""><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles['en'].aboutUs}</button>
-                        </Link>
                     </div>
                     <div className="flex gap-5">
                         <SocialHandle logo="img/social_fb.svg" link="https://www.facebook.com/ImpressionTaiwan/" />

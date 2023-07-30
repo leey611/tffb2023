@@ -96,9 +96,9 @@ export default async function Page() {
     <Scaffold lang="en">
       {/* ALL Films */}
 
-      <div className='w-full h-screen flex flex-col justify-center isolate'>
+      <div className='w-full flex h-screen flex-col justify-center isolate'>
 
-        <LanguageSelect/>
+        <LanguageSelect />
 
         <div className="py-10 mix">
           <h1 className='text-center text-h1 font-special text-primary'>{websiteGlobal.fields[`Theme_${'en'}`]}</h1>
@@ -146,7 +146,7 @@ export default async function Page() {
             <img src="https://www.dropbox.com/scl/fi/qn9ac4ua1gtrplvbhh27h/IMTW_LOGO_-05.png?rlkey=j0ky1zca3mg4tdmfp9mawb92v&raw=1" />
           </div>
           <div>
-            <Link href=""><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles['en'].aboutUs}</button>
+            <Link href="about"><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles['en'].aboutUs}</button>
             </Link>
           </div>
           <div className="flex gap-5">
