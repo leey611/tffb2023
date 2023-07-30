@@ -34,7 +34,14 @@ export const sectionTitles = {
         closingFilm: 'Closing Film',
         aboutUs: 'About Impression Taiwan',
         buyTicket: 'Buy Ticket',
-        watchTrailer: 'Trailer'
+        watchTrailer: 'Trailer',
+        bankName: 'Bank Name',
+        swiftCode: 'SWIFT Code BIC',
+        accountNumber: 'Account Number IBAN',
+        accountName: "Account Holder's Name",
+        accountAddress: "Account Holder's Address",
+        accountTel: "Account Holder's Telephone Number",
+        accountEmail: "Account Holder's Email Address",
     },
     de: {
         filmSectionTitle: 'ALLE FILME',
@@ -45,7 +52,14 @@ export const sectionTitles = {
         closingFilm: 'Schlussfilm',
         aboutUs: 'Über Impression Taiwan e.V.',
         buyTicket: 'Zum Ticketkaufen',
-        watchTrailer: 'Trailer'
+        watchTrailer: 'Trailer',
+        bankName: 'Bank Name',
+        swiftCode: 'SWIFT Code BIC',
+        accountNumber: 'Account Number IBAN',
+        accountName: "Account Holder's Name",
+        accountAddress: "Account Holder's Address",
+        accountTel: "Account Holder's Telephone Number",
+        accountEmail: "Account Holder's Email Address",
     }, 
     tw: {
         filmSectionTitle: '所有電影',
@@ -56,7 +70,14 @@ export const sectionTitles = {
         closingFilm: '閉幕片',
         aboutUs: '關於映像臺灣協會',
         buyTicket: '購票去',
-        watchTrailer: '預告片'
+        watchTrailer: '預告片',
+        bankName: '銀行名稱',
+        swiftCode: 'SWIFT Code BIC',
+        accountNumber: '帳戶號碼 IBAN',
+        accountName: "帳戶持有人名稱",
+        accountAddress: "帳戶地址",
+        accountTel: "帳戶持有人電話號碼",
+        accountEmail: "帳戶持有人Email",
     }
 }
 
