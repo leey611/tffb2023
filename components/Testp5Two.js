@@ -17,15 +17,15 @@ const P5Wrapper = ({
 
         console.log('TEST CANVAS: P5 Setup')
 
-        const canvas = new p5(sketch(onComplete), wrapperElement.current);
+        // const canvas = new p5(sketch(onComplete), wrapperElement.current);
 
-        if (autoResizeToWindow) {
-            canvas.windowResized = () => {
-                canvas.resizeCanvas(canvas.windowWidth, canvas.windowHeight);
-            };
-        }
+        // if (autoResizeToWindow) {
+        //     canvas.windowResized = () => {
+        //         canvas.resizeCanvas(canvas.windowWidth, canvas.windowHeight);
+        //     };
+        // }
 
-        return () => canvas.remove();
+        // return () => canvas.remove();
     }, [sketch, autoResizeToWindow]);
 
     return (
