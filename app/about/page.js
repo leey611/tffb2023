@@ -43,7 +43,7 @@ export default async function Page() {
         <Scaffold lang="en">
             {/* ALL Films */}
 
-            <LanguageSelect />
+            <LanguageSelect link={['/about', '/de/about', '/tw/about']} />
 
             <Marquee content={marquee} link={"/"}></Marquee>
 
