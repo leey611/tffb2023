@@ -4,6 +4,7 @@ import Scaffold from '../../../components/Scaffolding'
 import { validateLanguage, isEmpty, sectionTitles } from '../../../utils/helpers'
 import SectionTitle from '../../../components/SectionTitle'
 import SocialHandle from '../../../components/SocialHandle'
+import BackHome from '../../../components/BackHome'
 import Link from 'next/link'
 import dynamic from "next/dynamic"
 import Bank from '../../../components/Bank'
@@ -43,6 +44,7 @@ export default async function Page({ params}) {
         <Scaffold lang={lang}>
             <section className="max-w-1440 mx-auto px-[5vw]">
 
+                <BackHome link={`/${lang}`} language={lang}/>
                 
                 <CopyBank bank={donate[0]} language={lang}/>
                

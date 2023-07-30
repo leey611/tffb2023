@@ -6,6 +6,7 @@ import SectionTitle from '../../components/SectionTitle'
 import SocialHandle from '../../components/SocialHandle'
 import Marquee from '../../components/Marquee'
 import Link from 'next/link'
+import BackHome from '../../components/BackHome'
 import Team from '../../components/Team'
 import SpecialTitle from '../../components/SpecialTitle'
 import LanguageSelect from '../../components/LanguageSelect'
@@ -49,7 +50,7 @@ export default async function Page() {
 
             <section className="max-w-1440 mx-auto px-[5vw]">
 
-                <div className="my-20"><Link href="/" className="text-h3 font-special px-10 py-5 border-4 rounded-full border-black">{String.fromCharCode(8592)} Back Home</Link></div>
+                <BackHome link={'/'} language={'en'}/>
 
                 <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles['en'].aboutUs} img="img/about-img.png" />
 

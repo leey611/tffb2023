@@ -42,6 +42,7 @@ export const sectionTitles = {
         accountAddress: "Account Holder's Address",
         accountTel: "Account Holder's Telephone Number",
         accountEmail: "Account Holder's Email Address",
+        backHome: 'Back Home',
     },
     de: {
         filmSectionTitle: 'ALLE FILME',
@@ -60,6 +61,7 @@ export const sectionTitles = {
         accountAddress: "Account Holder's Address",
         accountTel: "Account Holder's Telephone Number",
         accountEmail: "Account Holder's Email Address",
+        backHome: 'Zurück zur Startseite',
     }, 
     tw: {
         filmSectionTitle: '所有電影',
@@ -78,6 +80,7 @@ export const sectionTitles = {
         accountAddress: "帳戶地址",
         accountTel: "帳戶持有人電話號碼",
         accountEmail: "帳戶持有人Email",
+        backHome: '回到首頁',
     }
 }
 

@@ -1,6 +1,7 @@
 import '../globals.css'
 import '../style.scss'
 import Scaffold from '../../components/Scaffolding'
+import BackHome from '../../components/BackHome'
 import { isEmpty, sectionTitles } from '../../utils/helpers'
 import SectionTitle from '../../components/SectionTitle'
 import SocialHandle from '../../components/SocialHandle'
@@ -41,7 +42,7 @@ export default async function Page() {
     return (
         <Scaffold lang="en">
             <section className="max-w-1440 mx-auto px-[5vw]">
-
+            <BackHome link={`/`} language={'en'}/>
                 
                 <CopyBank bank={donate[0]} language={'en'}/>
                

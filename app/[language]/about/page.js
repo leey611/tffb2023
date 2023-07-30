@@ -52,7 +52,7 @@ export default async function Page({ params }) {
 
             <section className="max-w-1440 mx-auto px-[5vw]">
 
-                <BackHome link={`/${lang}`} />
+                <BackHome link={`/${lang}`} language={lang}/>
 
                 <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles[lang].aboutUs} img="../img/about-img.png" />
 
