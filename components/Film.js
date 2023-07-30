@@ -31,9 +31,8 @@ export default function Film(props) {
     const themes = film[`Theme_${language}`]
     const genres = film[`Genre_${language}`]
     const directorIntro = film[`Director_Intro_${language}`]
-    let genre = film[`Genre_${language}`].join(' | ')
+    let genre = film[`FilmInfo_${language}`]
     let prizes = film[`Prize_Nomination_${language}`]
-    genre = genre.concat(' | ', Length/60)
     // let isOpeningFilm = film.isOpeningFilm
     prizes = prizes.split('\n')
     const { year, month, day, hour, minute } = formatBerlinTime(ScreenTime)
