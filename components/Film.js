@@ -80,7 +80,7 @@ export default function Film(props) {
                         {genres?.map(genre => <div className="bg-primary text-white inline-block rounded-md px-5 py-2 mb-4 text-h4 font-sans font-medium genre"># {genre}</div>)}
 
                     </div>
-                    <p className="synopsis my-5">{synopsis}’</p>
+                    <p className="synopsis my-5">{synopsis}</p>
                     <div className='subImages flex gap-4 mt-4'>
 
                         {SubImageUrls?.map(imgUrl => <div><img src={imgUrl} className='' /></div>)}
