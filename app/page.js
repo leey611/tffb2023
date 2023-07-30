@@ -155,7 +155,7 @@ export default async function Page() {
         <Sponsors language={'en'} sponsors={sponsors} />
 
         <SectionTitle content={sectionTitles['en'].questionSectionTitle}></SectionTitle>
-        {/* <Questions language={'en'} questions={questions} /> */}
+        <Questions language={'en'} questions={questions} />
 
         <div className="w-full flex flex-col gap-10 items-center my-[10rem]">
           <div className="w-[200px]">
