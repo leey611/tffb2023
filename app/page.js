@@ -11,8 +11,7 @@ import SectionTitle from '../components/SectionTitle'
 import SocialHandle from '../components/SocialHandle'
 import Marquee from '../components/Marquee'
 import ResponsiveIframe from '../components/ResponsiveIframe'
-import Testp5 from '../components/testp5'
-import Testp5Two from '../components/Testp5Two'
+
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 
@@ -93,13 +92,6 @@ export default async function Page() {
   const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
   const heroText = websiteGlobal.fields[`Title_${'en'}`].split('\n')
 
-  const DynamicComponentWithNoSSR = dynamic(
-    () => import('../components/testp5'),
-    {
-      ssr: false,
-      loading: () => <div>{`loading....${heroText}`}</div>
-    }
-  )
   const Dynamicp5TestTwo = dynamic(
     () => import('../components/Testp5Two'),
     {
@@ -129,8 +121,6 @@ export default async function Page() {
         </div>
 
         {/* <ResponsiveIframe /> */}
-        {/* <Testp5></Testp5> */}
-        {/* <Testp5Two /> */}
         <Dynamicp5TestTwo />
         {/* <DynamicComponentWithNoSSR></DynamicComponentWithNoSSR> */}
       </div>

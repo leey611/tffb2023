@@ -1,5 +1,6 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react'
+import ResponsiveIframe from './ResponsiveIframe';
 import p5 from 'p5'
 
 const P5Wrapper = ({
@@ -29,8 +30,9 @@ const P5Wrapper = ({
 
     return (
         <>
-            {isLoading && <div>Canvas still loading</div>}
-            <div ref={wrapperElement} />
+            {isLoading && <div></div>}
+            {<ResponsiveIframe />}
+            {/* <div ref={wrapperElement} /> */}
             {children}
         </>
     );
