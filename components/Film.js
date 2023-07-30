@@ -20,6 +20,7 @@ export default function Film(props) {
         IsOpeningFilm,
         IsClosingFilm,
         Events,
+        VenueLink,
         Length
     } = film
     // dropbox image url replacement
@@ -33,6 +34,7 @@ export default function Film(props) {
     const themes = film[`Theme_${language}`]
     const genres = film[`Genre_${language}`]
     const directorIntro = film[`Director_Intro_${language}`]
+    const mainImgAltText = film[`MainImageText_${language}`]
     let genre = film[`FilmInfo_${language}`]
     let prizes = film[`Prize_Nomination_${language}`]
 
@@ -67,11 +69,9 @@ export default function Film(props) {
                 <div className="film__info lg:px-6">
                     <h3 className="name text-h1 text-primary font-sans font-semibold">{name}</h3>
                     
-                    <img src={MainImageUrl} className='mainImg' />
-                    <div className="cta mt-5">
-                        <Modal id={id} language={language} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'}></Modal>
-                        <button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[language].buyTicket}</button>
-                    </div>
+                    <img src={MainImageUrl} className='mainImg' alt={mainImgAltText}/>
+                    <Modal id={id} language={language} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'} venueLink={VenueLink}></Modal>
+                    
                     <div className='events'>
                         {Events?.map(event => <FilmEvent id={event.id} language={language} event={event.fields} />)}
                     </div>
