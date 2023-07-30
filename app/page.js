@@ -150,8 +150,8 @@ export default async function Page() {
             </Link>
           </div>
           <div className="flex gap-5">
-            <SocialHandle logo="img/social_fb.png" link="https://www.facebook.com/ImpressionTaiwan/" />
-            <SocialHandle logo="img/social_ig.png" link="https://www.instagram.com/impressiontaiwan/" />
+            <SocialHandle logo="img/social_fb.svg" link="https://www.facebook.com/ImpressionTaiwan/" />
+            <SocialHandle logo="img/social_ig.svg" link="https://www.instagram.com/impressiontaiwan/" />
           </div>
         </div>
       </section>

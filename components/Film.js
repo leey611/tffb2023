@@ -31,10 +31,11 @@ export default function Film(props) {
     const director = film[`Director_${language}`]
     const synopsis = film[`Synopsis_${language}`]
     const themes = film[`Theme_${language}`]
+    const genres = film[`Genre_${language}`]
     const directorIntro = film[`Director_Intro_${language}`]
-    let genre = film[`Genre_${language}`].join(' | ')
+    let genre = film[`FilmInfo_${language}`]
     let prizes = film[`Prize_Nomination_${language}`]
-    genre = genre.concat(' | ', Length / 60)
+
     // let isOpeningFilm = film.isOpeningFilm
     prizes = prizes.split('\n')
     const { year, month, day, hour, minute } = formatBerlinTime(ScreenTime)
@@ -71,7 +72,9 @@ export default function Film(props) {
                         {Events?.map(event => <FilmEvent id={event.id} language={language} event={event.fields} />)}
                     </div>
                     <div className="themes">
-                        {themes?.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-2 text-h4 font-sans font-medium"># {theme}</div>)}
+                        {themes?.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-2 mb-4 text-h4 font-sans font-medium theme"># {theme}</div>)}
+                        {genres?.map(genre => <div className="bg-primary text-white inline-block rounded-md px-5 py-2 mb-4 text-h4 font-sans font-medium genre"># {genre}</div>)}
+
                     </div>
                     <p className="synopsis my-5">{synopsis}’</p>
                     <div className='subImages flex gap-4 mt-4'>

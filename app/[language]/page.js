@@ -114,7 +114,7 @@ export default async function Page({ params }) {
           <Link href="/" className='border-2 border-secondary py-3 px-5 rounded-full font-special font-medium'>{sectionTitles[lang].buyTicket}</Link>
         </div>
 
-        <ResponsiveIframe />
+        {/* <ResponsiveIframe /> */}
       </div>
 
       <Marquee content={marquee} link={"/"}></Marquee>
@@ -163,8 +163,8 @@ export default async function Page({ params }) {
             </a>
           </div>
           <div className="flex gap-5">
-            <SocialHandle logo="img/social_fb.png" link="https://www.facebook.com/ImpressionTaiwan/" />
-            <SocialHandle logo="img/social_ig.png" link="https://www.instagram.com/impressiontaiwan/" />
+            <SocialHandle logo="img/social_fb.svg" link="https://www.facebook.com/ImpressionTaiwan/" />
+            <SocialHandle logo="img/social_ig.svg" link="https://www.instagram.com/impressiontaiwan/" />
           </div>
         </div>
       </section>
