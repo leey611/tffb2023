@@ -10,6 +10,7 @@ import Link from 'next/link'
 import Team from '../../../components/Team'
 import SpecialTitle from '../../../components/SpecialTitle'
 import LanguageSelect from '../../../components/LanguageSelect'
+import BackHome from '../../../components/BackHome'
 
 // Font files can be colocated inside of `pages`
 // const myFont = localFont({ src: '../../fonts/terminal-grotesque-webfont.woff2' })
@@ -43,15 +44,15 @@ export default async function Page({ params }) {
     const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
 
     return (
-        <Scaffold lang="en">
+        <Scaffold lang={lang}>
 
-            <LanguageSelect />
+            <LanguageSelect link={['/about', '/de/about', '/tw/about']} />
 
             <Marquee content={marquee} link={"/"}></Marquee>
 
             <section className="max-w-1440 mx-auto px-[5vw]">
 
-                <div className="my-20"><Link href="/" className="text-h3 font-special px-10 py-5 border-4 rounded-full border-black">{String.fromCharCode(8592)} Back Home</Link></div>
+                <BackHome link={`/${lang}`} />
 
                 <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles[lang].aboutUs} img="../img/about-img.png" />
 

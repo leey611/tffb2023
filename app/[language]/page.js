@@ -156,11 +156,11 @@ export default async function Page({ params }) {
           <div className="w-[200px]">
             <img src="https://www.dropbox.com/scl/fi/qn9ac4ua1gtrplvbhh27h/IMTW_LOGO_-05.png?rlkey=j0ky1zca3mg4tdmfp9mawb92v&raw=1" />
           </div>
-          <div>
-            <Link href="/about"><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[lang].aboutUs}</button>
+          <div className="z-50">
+            <Link href={`${lang}/about`}><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[lang].aboutUs}</button>
             </Link>
           </div>
-          <div className="flex gap-5">
+          <div className="flex gap-5 z-40">
             <SocialHandle logo="img/social_fb.svg" link="https://www.facebook.com/ImpressionTaiwan/" />
             <SocialHandle logo="img/social_ig.svg" link="https://www.instagram.com/impressiontaiwan/" />
           </div>
