@@ -1,20 +1,20 @@
-import './globals.css'
-import './style.scss'
-import Scaffold from '../components/Scaffolding'
-import Film from '../components/Film'
-import Events from '../components/Events'
-import Sponsors from '../components/Sponsors'
+import '../globals.css'
+import '../style.scss'
+import Scaffold from '../../components/Scaffolding'
+import Film from '../../components/Film'
+import Events from '../../components/Events'
+import Sponsors from '../../components/Sponsors'
 import localFont from 'next/font/local'
-import { isEmpty, sectionTitles } from '../utils/helpers'
-import Questions from '../components/Questions'
-import SectionTitle from '../components/SectionTitle'
-import SocialHandle from '../components/SocialHandle'
-import Marquee from '../components/Marquee'
-import ResponsiveIframe from '../components/ResponsiveIframe'
+import { isEmpty, sectionTitles } from '../../utils/helpers'
+import Questions from '../../components/Questions'
+import SectionTitle from '../../components/SectionTitle'
+import SocialHandle from '../../components/SocialHandle'
+import Marquee from '../../components/Marquee'
+import ResponsiveIframe from '../../components/ResponsiveIframe'
 import Link from 'next/link'
 
 // Font files can be colocated inside of `pages`
-const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
+// const myFont = localFont({ src: '../../fonts/terminal-grotesque-webfont.woff2' })
 
 const airtableApiKey = process.env.AIRTABLE_API_KEY
 const airtableBaseId = process.env.AIRTABLE_BASE_ID
@@ -155,8 +155,8 @@ export default async function Page() {
                         <img src="https://www.dropbox.com/scl/fi/qn9ac4ua1gtrplvbhh27h/IMTW_LOGO_-05.png?rlkey=j0ky1zca3mg4tdmfp9mawb92v&raw=1" />
                     </div>
                     <div>
-                        <O href=""><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles['en'].aboutUs}</button>
-                        </O>
+                        <Link href=""><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles['en'].aboutUs}</button>
+                        </Link>
                     </div>
                     <div className="flex gap-5">
                         <SocialHandle logo="img/social_fb.png" link="https://www.facebook.com/ImpressionTaiwan/" />
