@@ -10,10 +10,11 @@ input:checked ~ .event__item {
         transition: all 0.25s ease;
     }
     .description {
+        margin: 1.5rem 0;
         opacity: 1;
         max-height: 1000px;
         /* position: unset; */
-        transition: opacity 0.5s ease, max-height 0.5s ease; // Combine both transitions
+        transition: opacity 0.5s ease, max-height 0.5s ease, margin 0.5s ease; // Combine both transitions
     }
     
 }
@@ -63,7 +64,7 @@ input:checked ~ .event__item {
     .description {
         opacity: 0;
         max-height: 0;
-        transition: opacity 0.5s ease, max-height 0.5s ease;
+        transition: opacity 0.5s ease, max-height 0.5s ease, margin 0.5s ease;
     }
     @media (min-width: 768px) {
         label {
