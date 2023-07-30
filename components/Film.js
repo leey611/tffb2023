@@ -66,8 +66,12 @@ export default function Film(props) {
                 {/* when accordion is open */}
                 <div className="film__info lg:px-6">
                     <h3 className="name text-h1 text-primary font-sans font-semibold">{name}</h3>
-                    <h4 className="director text-h2 font-sans font-medium my-5 font-special">{director}</h4>
+                    
                     <img src={MainImageUrl} className='mainImg' />
+                    <div className="cta mt-5">
+                        <Modal id={id} language={language} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'}></Modal>
+                        <button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[language].buyTicket}</button>
+                    </div>
                     <div className='events'>
                         {Events?.map(event => <FilmEvent id={event.id} language={language} event={event.fields} />)}
                     </div>
@@ -83,14 +87,12 @@ export default function Film(props) {
 
 
                     </div>
-                    <div className="cta mt-5">
-                        <Modal id={id} language={language} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'}></Modal>
-                        <button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[language].buyTicket}</button>
-                    </div>
+                    
                     <div className='prizes my-10'>
                         {prizes?.map(prize => <p>{prize}</p>)}
                     </div>
                     <div className='genres my-10'>{genre}</div>
+                    <h4 className="director text-h2 font-sans font-medium my-5 font-special">{director}</h4>
                     <CroppedImage src={DirectorImageUrl} alt={""} cropped={ImageCropped} moreClass='my-5' />
                     <p className='directorIntro'>{directorIntro}</p>
                 </div>
