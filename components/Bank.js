@@ -27,9 +27,9 @@ export default function Bank({ bank, language }) {
     
     return (
         <>
-            <h2>{Title}</h2>
-            <p>{Content}</p>
-            <h3>{Subtitle}</h3>
+            <h2 className="font-special font-medium text-h2 text-center my-8">{Title}</h2>
+            <p className="py-8">{Content}</p>
+            <h3 className="font-special font-medium text-h2 text-center my-8">{Subtitle}</h3>
             <div>
                 <Copyable title={bankName} content={BankName}/>
                 <Copyable title={swiftCode} content={SwiftCode}/>
