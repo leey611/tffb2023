@@ -29,7 +29,8 @@ module.exports = {
       colors: {
         'primary': '#D6366F',
         'secondary': '#0F2537',
-        'tertiary': '#D8DF50'
+        'tertiary': '#D8DF50',
+        'material': '#FFE1E6',
       },
       maxWidth: {
         '1440': '1440px',

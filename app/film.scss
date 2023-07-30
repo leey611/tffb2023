@@ -42,7 +42,6 @@
         &.isOpeningFilm, &.isClosingFilm {
             .film {
                 &__name {
-                    background-color: yellow;
                     grid-column: 1 / 5;
                 }
             }
@@ -50,7 +49,7 @@
                 // display: flex;
                 // align-items: center;
                 // text-align: center;
-                background-color: #FFE1E6;
+                // background-color: #FFE1E6;
                 grid-column: 5 / 10;
                 
                 svg {
@@ -86,10 +85,10 @@
             }
 
             .genre {
-                background-color: #D8DF50;
+                // background-color: #D8DF50;
             }
         }
-        .prizes p::before{
+        .prizes li::before {
             content: '★';
             color: #D6366F;
         }
@@ -138,7 +137,6 @@
             &.isOpeningFilm, &.isClosingFilm {
                 .film {
                     &__name {
-                        background-color: unset;
                         grid-column: 1 / span 2;
                     }
                 }

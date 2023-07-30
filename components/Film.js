@@ -49,7 +49,7 @@ export default function Film(props) {
             <div className="film__item item w-full">
                 {/* when accordion is close */}
                 <label className={`film__toggle__area ${IsOpeningFilm && 'isOpeningFilm'} ${IsClosingFilm && 'isClosingFilm'}`} htmlFor={id}>
-                    <h3 className="film__name font-semibold">{name}</h3>
+                    <h3 className={`film__name font-semibold ${IsOpeningFilm && 'bg-material md:bg-transparent'} ${IsClosingFilm && 'bg-material md:bg-transparent'}`}>{name}</h3>
                     {IsOpeningFilm && <OpeningClosingFilmLabel isOpening={IsOpeningFilm} language={language}></OpeningClosingFilmLabel>}
                     {IsClosingFilm && <OpeningClosingFilmLabel isClosing={IsClosingFilm} language={language}></OpeningClosingFilmLabel>}
                     <div className="film__date">{`${day}.${month}.${year}`}</div>
@@ -77,7 +77,7 @@ export default function Film(props) {
                     </div>
                     <div className="themes">
                         {themes?.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-2 mb-4 text-h4 font-sans font-medium theme"># {theme}</div>)}
-                        {genres?.map(genre => <div className="bg-primary text-white inline-block rounded-md px-5 py-2 mb-4 text-h4 font-sans font-medium genre"># {genre}</div>)}
+                        {genres?.map(genre => <div className="bg-tertiary text-white inline-block rounded-md px-5 py-2 mb-4 text-h4 font-sans font-medium genre"># {genre}</div>)}
 
                     </div>
                     <p className="synopsis my-5">{synopsis}</p>
@@ -88,9 +88,9 @@ export default function Film(props) {
 
                     </div>
                     
-                    <div className='prizes my-10'>
-                        {prizes?.map(prize => <p>{prize}</p>)}
-                    </div>
+                    <ul className='prizes my-10'>
+                        {prizes?.map(prize => <li>{prize}</li>)}
+                    </ul>
                     <div className='genres my-10'>{genre}</div>
                     <h4 className="director text-h2 font-sans font-medium my-5 font-special">{director}</h4>
                     <CroppedImage src={DirectorImageUrl} alt={DirecotImageText} cropped={ImageCropped} moreClass='my-5' />
