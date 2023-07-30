@@ -85,10 +85,18 @@
             div:not(:last-child) {
                 margin-right: 1rem;
             }
+
+            .genre {
+                background-color: #D8DF50;
+            }
         }
         .prizes p::before{
             content: '★';
             color: #D6366F;
+        }
+
+        .directorImg {
+            max-width: 50%;
         }
 
         .subImages img {

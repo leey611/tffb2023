@@ -114,7 +114,7 @@ export default async function Page({ params }) {
           <Link href="/" className='border-2 border-secondary py-3 px-5 rounded-full font-special font-medium'>{sectionTitles[lang].buyTicket}</Link>
         </div>
 
-        <ResponsiveIframe />
+        {/* <ResponsiveIframe /> */}
       </div>
 
       <Marquee content={marquee} link={"/"}></Marquee>
