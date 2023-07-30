@@ -21,7 +21,7 @@ export default function Film(props) {
         IsClosingFilm,
         Events,
         VenueLink,
-        Length
+        DirecotImageText,
     } = film
     // dropbox image url replacement
     MainImageUrl = MainImageUrl.replace(/&dl=0(?!.*&dl=0)/, "&raw=1");
@@ -93,7 +93,7 @@ export default function Film(props) {
                     </div>
                     <div className='genres my-10'>{genre}</div>
                     <h4 className="director text-h2 font-sans font-medium my-5 font-special">{director}</h4>
-                    <CroppedImage src={DirectorImageUrl} alt={""} cropped={ImageCropped} moreClass='my-5' />
+                    <CroppedImage src={DirectorImageUrl} alt={DirecotImageText} cropped={ImageCropped} moreClass='my-5' />
                     <p className='directorIntro'>{directorIntro}</p>
                 </div>
             </div>
