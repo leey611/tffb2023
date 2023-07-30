@@ -9,6 +9,20 @@
         url('../fonts/terminal-grotesque-webfont.ttf') format('truetype');
 }
 
+#content, #billy {
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards 1s;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
 .marquee {
     width: 100%;
     white-space: nowrap;

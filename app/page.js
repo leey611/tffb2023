@@ -100,7 +100,14 @@ export default async function Page() {
     () => import('../components/Testp5Two'),
     {
       ssr: false,
-      loading: () => <div>JavaScript module loading...</div>
+      loading: () => (<div className="fixed w-full h-screen bg-white z-[100] flex justify-center items-center">
+      <div className="flex w-[300px] flex-col" >
+        <img src="img/hero2Img.png"></img>
+        <br/>
+        <img src="img/loading-text.gif"></img>
+      </div>
+    </div>
+      )
     }
   )
 
@@ -108,7 +115,11 @@ export default async function Page() {
 
   return (
     <Scaffold lang="en">
-      {/* ALL Films */}
+      {/* ALL Films */}     
+
+      <Dynamicp5TestTwo />
+
+      <div id="content">
 
       <div className='w-full flex h-screen flex-col justify-center isolate'>
 
@@ -124,7 +135,7 @@ export default async function Page() {
         </div>
 
         {/* <ResponsiveIframe /> */}
-        <Dynamicp5TestTwo />
+        
         {/* <DynamicComponentWithNoSSR></DynamicComponentWithNoSSR> */}
 
       </div>
@@ -171,6 +182,8 @@ export default async function Page() {
           </div>
         </div>
       </section>
+
+      </div>
 
     </Scaffold>
   )
