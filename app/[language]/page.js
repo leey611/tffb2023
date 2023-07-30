@@ -15,6 +15,7 @@ import LanguageSelect from '../../components/LanguageSelect'
 import SpecialTitle from '../../components/SpecialTitle'
 
 import Link from 'next/link'
+import Modal from '../../components/Modal';
 const myFont = localFont({ src: '../../fonts/terminal-grotesque-webfont.woff2' })
 
 const airtableApiKey = process.env.AIRTABLE_API_KEY
@@ -95,6 +96,7 @@ export default async function Page({ params }) {
   const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
   const aboutThisYear = others.filter(data => data.fields['Type'] === 'About-This-Year')
   const heroText = websiteGlobal.fields[`Title_${lang}`].split('\n')
+  const venueLink = websiteGlobal.fields['VenueLink']
 
   return (
     <Scaffold lang={lang}>
@@ -109,10 +111,14 @@ export default async function Page({ params }) {
           <h1 className='text-center text-h1 font-special font-semibold text-primary'>{websiteGlobal.fields[`Theme_${lang}`]}</h1>
         </div>
 
-        <div className='text-center text-h4 py-[5rem] flex gap-5 justify-center'>
+        {/* <div className='text-center text-h4 py-[5rem] flex gap-5 justify-center'>
           <Link className="text-white bg-secondary py-3 px-5 rounded-full font-special font-medium" href="/">{sectionTitles[lang].watchTrailer}</Link>
           <Link href="/" className='border-2 border-secondary py-3 px-5 rounded-full font-special font-medium'>{sectionTitles[lang].buyTicket}</Link>
+        </div> */}
+        <div className='text-center'>
+          <Modal language={lang} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'} venueLink={venueLink}/>
         </div>
+        
 
         <ResponsiveIframe />
       </div>
