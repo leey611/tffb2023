@@ -12,7 +12,9 @@ import SectionTitle from '../components/SectionTitle'
 import SocialHandle from '../components/SocialHandle'
 import Marquee from '../components/Marquee'
 import ResponsiveIframe from '../components/ResponsiveIframe'
+
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import LanguageSelect from '../components/LanguageSelect'
 import Modal from '../components/Modal'
 
@@ -92,6 +94,16 @@ export default async function Page() {
   const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
   const aboutThisYear = others.filter(data => data.fields['Type'] === 'About-This-Year')
   const heroText = websiteGlobal.fields[`Title_${'en'}`].split('\n')
+
+
+  const Dynamicp5TestTwo = dynamic(
+    () => import('../components/Testp5Two'),
+    {
+      ssr: false,
+      loading: () => <div>JavaScript module loading...</div>
+    }
+  )
+
   const venueLink = websiteGlobal.fields['VenueLink']
 
   return (
@@ -112,6 +124,9 @@ export default async function Page() {
         </div>
 
         {/* <ResponsiveIframe /> */}
+        <Dynamicp5TestTwo />
+        {/* <DynamicComponentWithNoSSR></DynamicComponentWithNoSSR> */}
+
       </div>
 
       <Marquee content={marquee} link={"/"}></Marquee>
@@ -140,7 +155,7 @@ export default async function Page() {
         <Sponsors language={'en'} sponsors={sponsors} />
 
         <SectionTitle content={sectionTitles['en'].questionSectionTitle}></SectionTitle>
-        <Questions language={'en'} questions={questions} />
+        {/* <Questions language={'en'} questions={questions} /> */}
 
         <div className="w-full flex flex-col gap-10 items-center my-[10rem]">
           <div className="w-[200px]">
