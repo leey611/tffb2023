@@ -88,8 +88,8 @@ export default function Film(props) {
 
                     </div>
                     
-                    <ul className='prizes my-10'>
-                        {prizes?.map(prize => <li>{prize}</li>)}
+                    <ul className='prizes my-10 table'>
+                        {prizes?.map(prize => <li className='block relative pl-5'>{prize}</li>)}
                     </ul>
                     <div className='genres my-10'>{genre}</div>
                     <h4 className="director text-h2 font-sans font-medium my-5 font-special">{director}</h4>

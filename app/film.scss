@@ -89,8 +89,11 @@
             }
         }
         .prizes li::before {
+            position: absolute;
             content: '★';
             color: #D6366F;
+            display: table-cell;
+            left: 0;
         }
 
         .directorImg {
