@@ -90,6 +90,10 @@ export default async function Page() {
     sponsor.fields['Img'] = sponsor.fields['Img'] ? sponsor.fields['Img'].replace(/&dl=0(?!.*&dl=0)/, "&raw=1") : 'hi'
     return sponsor
   })
+  const partners = others.filter(data => data.fields['Type'] === 'Partner').map(sponsor => {
+    sponsor.fields['Img'] = sponsor.fields['Img'] ? sponsor.fields['Img'].replace(/&dl=0(?!.*&dl=0)/, "&raw=1") : 'hi'
+    return sponsor
+  })
   const questions = others.filter(data => data.fields['Type'] === 'Question')
   const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
   const aboutThisYear = others.filter(data => data.fields['Type'] === 'About-This-Year')
@@ -164,6 +168,9 @@ export default async function Page() {
         {/* ALL Sponsors  */}
         <SectionTitle content={sectionTitles['en'].sponsorSectionTitle}></SectionTitle>
         <Sponsors language={'en'} sponsors={sponsors} />
+
+        <SectionTitle content={"Partners"}></SectionTitle>
+        <Sponsors language={'en'} sponsors={partners} />
 
         <SectionTitle content={sectionTitles['en'].questionSectionTitle}></SectionTitle>
         <Questions language={'en'} questions={questions} />
