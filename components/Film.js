@@ -68,30 +68,26 @@ export default function Film(props) {
                 {/* when accordion is open */}
                 <div className="film__info lg:px-6">
                     <h3 className="name text-h1 text-primary font-sans font-semibold">{name}</h3>
-                    
                     <img src={MainImageUrl} className='mainImg' alt={mainImgAltText}/>
                     <Modal id={id} language={language} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'} venueLink={VenueLink}></Modal>
-                    
-                    <div className='events'>
-                        {Events?.map(event => <FilmEvent id={event.id} language={language} event={event.fields} />)}
-                    </div>
+                    <div className='genres my-10'>{genre}</div>
                     <div className="themes">
                         {themes?.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-2 mb-4 text-h4 font-sans font-medium theme"># {theme}</div>)}
                         {genres?.map(genre => <div className="bg-tertiary text-white inline-block rounded-md px-5 py-2 mb-4 text-h4 font-sans font-medium genre"># {genre}</div>)}
-
                     </div>
+                    <div className='events'>
+                        {Events?.map(event => <FilmEvent id={event.id} language={language} event={event.fields} />)}
+                    </div>
+                    
                     <p className="synopsis my-5">{synopsis}</p>
                     <div className='subImages flex gap-4 mt-4'>
-
                         {SubImageUrls?.map(imgUrl => <div><img src={imgUrl} className='' /></div>)}
-
-
                     </div>
                     
                     <ul className='prizes my-10 table'>
                         {prizes?.map(prize => <li className='block relative pl-5'>{prize}</li>)}
                     </ul>
-                    <div className='genres my-10'>{genre}</div>
+                    
                     <h4 className="director text-h2 font-sans font-medium my-5 font-special">{director}</h4>
                     <CroppedImage src={DirectorImageUrl} alt={DirecotImageText} cropped={ImageCropped} moreClass='my-5' />
                     <p className='directorIntro'>{directorIntro}</p>
