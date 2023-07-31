@@ -1,10 +1,11 @@
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 export default function Answer({ answer }) {
-    const answers = answer?.split('\n')
     return (
         <div className="answer text-primary">
-            <ul>
-                {answers?.map(a => <li className="py-[0.2rem] leading-1 md:max-w-[80%]" >{a}</li>)}
-            </ul>
+            <div>
+                <ReactMarkdown children={answer} remarkPlugins={[remarkGfm]} />
+            </div>
         </div>
     )
 }
