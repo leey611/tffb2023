@@ -28,7 +28,7 @@
     position:absolute;
     top:0;
     left:0;
-    mix-blend-mode: soft-light;
+    mix-blend-mode: color;
 }
 
 .marquee {
