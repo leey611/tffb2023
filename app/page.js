@@ -101,7 +101,7 @@ export default async function Page() {
 
 
   const Dynamicp5TestTwo = dynamic(
-    () => import('../components/Testp5Two'),
+    () => import('../components/Testp5Two/Testp5Two'),
     {
       ssr: false,
       loading: () => (<div className="fixed w-full h-screen bg-white z-[100] flex justify-center items-center">

@@ -120,7 +120,7 @@ export default async function Page({ params }) {
         </div>
         
 
-        <ResponsiveIframe />
+        {/* <ResponsiveIframe /> */}
       </div>
 
       <Marquee content={marquee} link={"/"}></Marquee>
