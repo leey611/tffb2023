@@ -6,7 +6,7 @@ import Marquee from '../../components/Marquee';
 import Film from "../../components/Film";
 import Events from '../../components/Events';
 import Sponsors from '../../components/Sponsors';
-import SocialHandle from '../../components/SocialHandle';
+import Footer from '../../components/Footer';
 import SectionTitle from '../../components/SectionTitle';
 import localFont from 'next/font/local'
 import { validateLanguage, sectionTitles } from '../../utils/helpers';
@@ -107,8 +107,8 @@ export default async function Page({ params }) {
         <LanguageSelect />
 
         <div className="py-10">
+        <h1 className='text-center text-h1 font-special font-semibold text-primary'>{websiteGlobal.fields[`Theme_${lang}`]}</h1>
           {heroText.map(text => <h1 className='text-center text-h1 font-special font-semibold'>{text}</h1>)}
-          <h1 className='text-center text-h1 font-special font-semibold text-primary'>{websiteGlobal.fields[`Theme_${lang}`]}</h1>
         </div>
 
         {/* <div className='text-center text-h4 py-[5rem] flex gap-5 justify-center'>
@@ -123,7 +123,7 @@ export default async function Page({ params }) {
         <ResponsiveIframe />
       </div>
 
-      <Marquee content={marquee} link={"/"}></Marquee>
+      <Marquee content={marquee} link={`/${lang}/donate`}></Marquee>
 
       <section className="max-w-1440 mx-auto px-[5vw]">
 
@@ -152,19 +152,7 @@ export default async function Page({ params }) {
         <SectionTitle content={sectionTitles[lang].questionSectionTitle}></SectionTitle>
         <Questions language={lang} questions={questions} />
 
-        <div className="w-full flex flex-col gap-10 items-center my-[10rem]">
-          <div className="w-[200px]">
-            <img src="https://www.dropbox.com/scl/fi/qn9ac4ua1gtrplvbhh27h/IMTW_LOGO_-05.png?rlkey=j0ky1zca3mg4tdmfp9mawb92v&raw=1" />
-          </div>
-          <div className="z-50">
-            <Link href={`${lang}/about`}><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[lang].aboutUs}</button>
-            </Link>
-          </div>
-          <div className="flex gap-5 z-40">
-            <SocialHandle logo="img/social_fb.svg" link="https://www.facebook.com/ImpressionTaiwan/" />
-            <SocialHandle logo="img/social_ig.svg" link="https://www.instagram.com/impressiontaiwan/" />
-          </div>
-        </div>
+        <Footer language={lang}/>
       </section>
 
     </Scaffold>

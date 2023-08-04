@@ -22,7 +22,7 @@ export default function Event({ id, language, event }) {
                     </div>
                 </label>
                 {/* when accordion is open */}
-                <div className='description'>{description}</div>
+                <div className='description max-w-3xl'>{description}</div>
             </div>
         </div>
     )
