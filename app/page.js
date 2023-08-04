@@ -121,7 +121,6 @@ export default async function Page() {
     <Scaffold lang="en">
       {/* ALL Films */}     
 
-      <Dynamicp5TestTwo />
 
       <div id="content">
 
@@ -131,7 +130,8 @@ export default async function Page() {
 
         <div className="py-10 mix">
           <h1 className='text-center text-h1 font-special text-primary'>{websiteGlobal.fields[`Theme_${'en'}`]}</h1>
-          {heroText.map(text => <h1 className='text-center text-h1 font-special'>{text}</h1>)}
+          {heroText.map(text => <h1 className='text-center text-h1 font-special text-shadow'>{text}</h1>)}
+          <Dynamicp5TestTwo />
         </div>
 
         <div className='text-center'>

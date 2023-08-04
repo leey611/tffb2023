@@ -28,13 +28,13 @@ const P5Wrapper = ({
 
         const canvas = new p5(sketch(onComplete), wrapperElement.current);
         console.log(wrapperElement);
-        // if (autoResizeToWindow) {
-        //     canvas.windowResized = () => {
-        //         canvas.resizeCanvas(canvas.windowWidth, canvas.windowHeight);
-        //     };
-        // }
+        if (autoResizeToWindow) {
+            canvas.windowResized = () => {
+                canvas.resizeCanvas(canvas.windowWidth, canvas.windowHeight);
+            };
+        }
 
-        // return () => canvas.remove();
+        return () => canvas.remove();
     }, [sketch, autoResizeToWindow]);
 
     return (
@@ -66,7 +66,7 @@ const sketch = (onComplete) => (p5) => {
     
         render(){
             // p5.image(this.img, this.position.x, this.position.y);
-            p5.image(this.img, 400, 400);
+            p5.image(this.img, this.pos.x, this.pos.y);
         }
     }
 
@@ -99,7 +99,8 @@ const sketch = (onComplete) => (p5) => {
             1);
     }
     p5.draw = () => {
-        p5.background(255);
+        // p5.background(255);
+        p5.clear();
 
         // Gravity and Speed Params
         ySpeed += gravityScale;
@@ -122,8 +123,8 @@ const sketch = (onComplete) => (p5) => {
         // FLOATING TEST
         p5.image(illu1, 1000 + Math.cos(p5.frameCount * 0.035)* 20, 400 + Math.sin(p5.frameCount * 0.02)* 50);
         p5.image(illu2, 250 + Math.cos(p5.frameCount * 0.015)* 14, 300 + Math.sin(p5.frameCount * 0.013)* 30);
-        p5.image(illu3, 400 + Math.cos(p5.frameCount * 0.05)* 20, 600 + Math.sin(p5.frameCount * 0.03)* 40);
-        p5.image(illu4, 700 + Math.cos(p5.frameCount * 0.075)* 20, 700 + Math.sin(p5.frameCount * 0.027)* 60);
+        p5.image(illu3, 400 + Math.cos(p5.frameCount * 0.011)* 20, 600 + Math.sin(p5.frameCount * 0.007)* 40);
+        p5.image(illu4, 700 + Math.cos(p5.frameCount * 0.025)* 20, 700 + Math.sin(p5.frameCount * 0.009)* 60);
         
         // p5.image(illu3, 700, 700);
         // p5.image(illu4, 0, 260);
@@ -134,7 +135,6 @@ const sketch = (onComplete) => (p5) => {
         p5.pop();
 
         // console.log('TEST CANVAS: Finished Drawing');
-
         onComplete();
     };
 }

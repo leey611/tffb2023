@@ -28,7 +28,12 @@
     position:absolute;
     top:0;
     left:0;
-    mix-blend-mode: color;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+}
+
+.text-shadow {
+    text-shadow: 3px 3px #FFF;
 }
 
 .marquee {
@@ -37,7 +42,7 @@
     overflow: hidden;
     position: fixed;
     bottom: 0;
-    z-index: 99;
+    z-index: 199;
     background-color: #000;
     color: #fff;
     font-family: sans-serif;
@@ -76,7 +81,7 @@
 }
 
 .mix {
-    mix-blend-mode: soft-light;
+    mix-blend-mode: difference;
     transform: translate3d(0, 0, 0);
 }
 
