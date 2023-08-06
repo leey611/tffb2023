@@ -154,7 +154,7 @@ export default async function Page({ params }) {
         <Sponsors language={lang} sponsors={sponsors} />
 
         <SectionTitle content={sectionTitles[lang].partnerSectionTitle}></SectionTitle>
-        <Sponsors language={'en'} sponsors={partners} />
+        <Sponsors language={lang} sponsors={partners} />
 
         <SectionTitle content={sectionTitles[lang].questionSectionTitle}></SectionTitle>
         <Questions language={lang} questions={questions} />
