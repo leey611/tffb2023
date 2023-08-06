@@ -102,7 +102,7 @@ export default async function Page({ params }) {
     <Scaffold lang={lang}>
       {/* ALL Films */}
 
-      <div className='w-full h-screen flex flex-col justify-center isolate'>
+      <div className='w-full h-screen flex flex-col justify-center isolate relative'>
 
         <LanguageSelect />
 
