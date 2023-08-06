@@ -91,7 +91,7 @@ const sketch = (onComplete) => (p5) => {
         p5.frameRate(30)
         p5.pixelDensity(1)
         p5.imageMode(p5.CENTER);
-
+        p5.print(p5.width, p5.height);
         il1 = new Illustration(
             illu1, 
             p5.createVector(100, 100),
@@ -121,10 +121,10 @@ const sketch = (onComplete) => (p5) => {
         // il1.render();
         
         // FLOATING TEST
-        p5.image(illu1, 1000 + Math.cos(p5.frameCount * 0.035)* 20, 400 + Math.sin(p5.frameCount * 0.02)* 50);
-        p5.image(illu2, 250 + Math.cos(p5.frameCount * 0.015)* 14, 300 + Math.sin(p5.frameCount * 0.013)* 30);
-        p5.image(illu3, 400 + Math.cos(p5.frameCount * 0.011)* 20, 600 + Math.sin(p5.frameCount * 0.007)* 40);
-        p5.image(illu4, 700 + Math.cos(p5.frameCount * 0.025)* 20, 700 + Math.sin(p5.frameCount * 0.009)* 60);
+        p5.image(illu1, p5.width * 3 / 4 + Math.cos(p5.frameCount * 0.035)* 20, p5.height / 2 + Math.sin(p5.frameCount * 0.02)* 50);
+        p5.image(illu2, p5.width * 1.2 / 4 + Math.cos(p5.frameCount * 0.015)* 14, p5.height / 3.7 + Math.sin(p5.frameCount * 0.013)* 30);
+        p5.image(illu3, p5.width * 0.8 / 4 + Math.cos(p5.frameCount * 0.011)* 20, p5.height * 2.9 / 4  + Math.sin(p5.frameCount * 0.007)* 40);
+        // p5.image(illu4, 1100 + Math.cos(p5.frameCount * 0.025)* 20, 900 + Math.sin(p5.frameCount * 0.009)* 60);
         
         // p5.image(illu3, 700, 700);
         // p5.image(illu4, 0, 260);

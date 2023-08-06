@@ -128,10 +128,14 @@ export default async function Page() {
 
         <LanguageSelect />
 
-        <div className="py-10 mix">
+
+        <div className="py-10 mix-blend text-shadow">
+          <div className='mix top'>
+            <Dynamicp5TestTwo />
+          </div>
           <h1 className='text-center text-h1 font-special text-primary'>{websiteGlobal.fields[`Theme_${'en'}`]}</h1>
-          {heroText.map(text => <h1 className='text-center text-h1 font-special text-shadow'>{text}</h1>)}
-          <Dynamicp5TestTwo />
+          {heroText.map(text => <h1 className='text-center text-h1 font-special'>{text}</h1>)}
+
         </div>
 
         <div className='text-center'>

@@ -9,6 +9,15 @@
         url('../fonts/terminal-grotesque-webfont.ttf') format('truetype');
 }
 
+.hidden{
+    display: none;
+}
+
+.top{
+    position:absolute;
+    inset: 0;
+}
+
 #content, #billy {
     opacity: 0;
     animation: fadeIn 2s ease-in-out forwards 1s;
@@ -29,11 +38,11 @@
     top:0;
     left:0;
     pointer-events: none;
-    mix-blend-mode: soft-light;
+    /* mix-blend-mode: screen; */
 }
 
 .text-shadow {
-    text-shadow: 3px 3px #FFF;
+    text-shadow: 3px 1.5px 1px #FFF;
 }
 
 .marquee {
