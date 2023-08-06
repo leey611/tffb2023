@@ -2,9 +2,10 @@ import OpeningClosingFilmLabel from './OpeningClosingFilmLabel'
 import Modal from './Modal'
 import localFont from 'next/font/local'
 import '../app/film.scss'
-import { formatBerlinTime, sectionTitles } from '../utils/helpers'
+import { formatBerlinTime } from '../utils/helpers'
 import FilmEvent from './FilmEvent'
 import CroppedImage from './CroppedImage'
+import RichText from './RichText'
 
 const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
 
@@ -22,13 +23,13 @@ export default function Film(props) {
         IsClosingFilm,
         Events,
         VenueLink,
+        TrailerLink,
         DirecotImageText,
     } = film
     // dropbox image url replacement
     MainImageUrl = MainImageUrl.replace(/&dl=0(?!.*&dl=0)/, "&raw=1");
     DirectorImageUrl = DirectorImageUrl.replace(/&dl=0(?!.*&dl=0)/, "&raw=1");
     SubImageUrls = SubImageUrls.split('\n').map(url => url.replace(/&dl=0(?!.*&dl=0)/, "&raw=1"))
-
     const name = film[`FilmName_${language}`]
     const director = film[`Director_${language}`]
     const synopsis = film[`Synopsis_${language}`]
@@ -70,7 +71,7 @@ export default function Film(props) {
                 <div className="film__info lg:px-6">
                     <h3 className="name text-h1 text-primary font-sans font-semibold">{name}</h3>
                     <img src={MainImageUrl} className='mainImg' alt={mainImgAltText} />
-                    <Modal id={id} language={language} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'} venueLink={VenueLink}></Modal>
+                    <Modal id={id} language={language} trailerUrl={TrailerLink} venueLink={VenueLink}></Modal>
                     <div className='genres my-10'>{genre}</div>
                     <div className="themes">
                         {themes?.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-1 mb-4 text-h4 font-sans font-medium theme"># {theme}</div>)}
@@ -80,7 +81,7 @@ export default function Film(props) {
                         {Events?.map(event => <FilmEvent id={event.id} language={language} event={event.fields} />)}
                     </div>
 
-                    <p className="synopsis my-5">{synopsis}</p>
+                    <div className="synopsis my-5"><RichText content={synopsis}/></div>
                     <div className='subImages grid grid-cols-3 gap-4 mt-4'>
                         {SubImageUrls?.map(imgUrl => <div className={SubImagesCropped && 'md:h-[5rem] lg:h-[6rem]'}>
                             <img src={imgUrl} className={SubImagesCropped && 'w-full h-full object-cover'} />
@@ -93,7 +94,9 @@ export default function Film(props) {
 
                     <h4 className="director text-h2 font-sans font-medium my-5 font-special">{director}</h4>
                     <CroppedImage src={DirectorImageUrl} title={DirecotImageText} alt={DirecotImageText} cropped={ImageCropped} moreClass='my-5' />
-                    <p className='directorIntro'>{directorIntro}</p>
+                    <div className='directorIntro'>
+                        <RichText content={directorIntro}/>
+                    </div>
                 </div>
             </div>
         </div>

@@ -24,6 +24,28 @@ export const formatBerlinTime = (time) => {
 
 export const isEmpty = (obj) => Object.keys(obj).length === 0
 
+export const convertToEmbedURL = (originalURL) => {
+    // Regular expression pattern to match the video ID from the original URL
+    const videoIDPattern = /(?:\/|%3D|v=|vi=)([0-9A-Za-z_-]{11})(?:[%#?&]|$)/;
+  
+    // Check if the input URL is already an embed URL
+    if (originalURL.includes("youtube.com/embed/")) {
+      return originalURL;
+    }
+  
+    // Match the video ID from the original URL using the regex pattern
+    const match = originalURL.match(videoIDPattern);
+  
+    if (match && match[1]) {
+      // If a match is found, construct the embed URL with the video ID
+      const embedURL = `https://www.youtube.com/embed/${match[1]}`;
+      return embedURL;
+    } else {
+      // Return null if the original URL is not a valid YouTube video URL
+      return null;
+    }
+}
+
 export const sectionTitles = {
     en: {
         siteTitle: 'Taiwan Film Festival Berlin',

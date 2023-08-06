@@ -97,7 +97,7 @@ export default async function Page({ params }) {
   const aboutThisYear = others.filter(data => data.fields['Type'] === 'About-This-Year')
   const heroText = websiteGlobal.fields[`Title_${lang}`].split('\n')
   const venueLink = websiteGlobal.fields['VenueLink']
-
+  const trailer = websiteGlobal.fields['TrailerLink']
   return (
     <Scaffold lang={lang}>
       {/* ALL Films */}
@@ -116,7 +116,7 @@ export default async function Page({ params }) {
           <Link href="/" className='border-2 border-secondary py-3 px-5 rounded-full font-special font-medium'>{sectionTitles[lang].buyTicket}</Link>
         </div> */}
         <div className='text-center'>
-          <Modal language={lang} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'} venueLink={venueLink}/>
+          <Modal language={lang} trailerUrl={trailer} venueLink={venueLink}/>
         </div>
         
 

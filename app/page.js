@@ -99,6 +99,7 @@ export default async function Page() {
   const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
   const aboutThisYear = others.filter(data => data.fields['Type'] === 'About-This-Year')
   const heroText = websiteGlobal.fields[`Title_${'en'}`].split('\n')
+  const trailer = websiteGlobal.fields['TrailerLink']
 
 
   const Dynamicp5TestTwo = dynamic(
@@ -140,7 +141,7 @@ export default async function Page() {
         </div>
 
         <div className='text-center'>
-          <Modal language={'en'} trailerUrl={'https://www.youtube.com/embed/kKsivrgoyDw'} venueLink={venueLink}/>
+          <Modal language={'en'} trailerUrl={trailer} venueLink={venueLink}/>
         </div>
 
         {/* <ResponsiveIframe /> */}

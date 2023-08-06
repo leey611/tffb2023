@@ -1,10 +1,11 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { sectionTitles } from '../utils/helpers'
+import { convertToEmbedURL, sectionTitles } from '../utils/helpers'
 import '../app/modal.scss'
 
 export default function Modal(props) {
-    const { trailerUrl, language, venueLink } = props
+    let { trailerUrl, language, venueLink } = props
+    trailerUrl = convertToEmbedURL(trailerUrl)
     const [isTrailerOpen, setTrailerOpen] = useState(false)
     const toggleModal = () => {
         setTrailerOpen(!isTrailerOpen)
@@ -23,16 +24,14 @@ export default function Modal(props) {
                     <iframe
                         className='trailer'
                         src={trailerUrl}>
-                        
                     </iframe>
                 </div>
-                
             </div>
             <a href={venueLink} target="_blank">
                 <button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[language].buyTicket}</button>
             </a>
             <div className={`gray ${isTrailerOpen && 'show'}`} onClick={toggleModal}></div>
-            </div>
+        </div>
         </>
     )
 }
