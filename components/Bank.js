@@ -1,5 +1,6 @@
 'use client'
 import { useState } from "react"
+import RichText from "./RichText"
 import { sectionTitles } from "../utils/helpers"
 export default function Bank({ bank, language }) {
     const Title = bank.fields[`Title_${language}`]
@@ -27,8 +28,8 @@ export default function Bank({ bank, language }) {
     
     return (
         <>
-            <h2 className="font-special font-medium text-h2 text-center my-8">{Title}</h2>
-            <p className="py-8">{Content}</p>
+            <h1 className="font-special font-medium text-h2 text-primary text-center my-8">{Title}</h1>
+            <div className="py-8"><RichText content={Content}/></div>
             <h3 className="font-special font-medium text-h2 text-primary text-center my-8">{Subtitle}</h3>
             <div>
                 <Copyable title={bankName} content={BankName}/>

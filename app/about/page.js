@@ -1,7 +1,7 @@
 import '../globals.css'
 import '../style.scss'
 import Scaffold from '../../components/Scaffolding'
-import { isEmpty, sectionTitles } from '../../utils/helpers'
+import { isEmpty, validateLanguage, sectionTitles } from '../../utils/helpers'
 import SectionTitle from '../../components/SectionTitle'
 import SocialHandle from '../../components/SocialHandle'
 import Marquee from '../../components/Marquee'
@@ -34,7 +34,8 @@ async function getOthers() {
     }
 }
 
-export default async function Page() {
+export default async function Page({ params }) {
+    const lang = validateLanguage(params.language) ? params.language : 'en'
     const others = await getOthers()
     const marquee = others.filter(data => data.fields['Type'] === 'Donate-Float').map(marquee => marquee.fields[`Title_${'en'}`]).join('');
     const team = others.filter(data => data.fields['Type'] === 'Team')
@@ -43,10 +44,11 @@ export default async function Page() {
     return (
         <Scaffold lang="en">
             <LanguageSelect link={['/about', '/de/about', '/tw/about']} />
+            
             <Marquee content={marquee} link={"/"}></Marquee>
             <section className="max-w-1440 mx-auto px-[5vw]">
                 <BackHome link={'/'} language={'en'}/>
-                <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles['en'].aboutUs} img="img/about-img.png" />
+                <h1 className='text-center text-h1 font-special text-primary'>{sectionTitles[lang].aboutUs}</h1>
                 <Team team={team} language={'en'} />
                 <Footer language={'en'}/>
             </section>

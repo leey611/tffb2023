@@ -157,11 +157,14 @@
             grid-template-columns: repeat(4, 1fr);
             grid-template-areas: 
                 "mainImg mainImg name name"
+                "mainImg mainImg genres genres"
                 "mainImg mainImg events events"
-                "subImages subImages cta cta"
-                "prizes prizes prizes ."
+                "subImages subImages events events"
+                ". . cta cta"
+                // ". . cta cta"
+                // ". . cta cta"
+                "prizes prizes . ."
                 "synopsis synopsis . . "
-                "genres genres . ."
                 "themes themes . ."
                 ". . directorImg director"
                 ". . directorIntro directorIntro";

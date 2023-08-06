@@ -115,7 +115,7 @@ export default async function Page({ params }) {
           <Link className="text-white bg-secondary py-3 px-5 rounded-full font-special font-medium" href="/">{sectionTitles[lang].watchTrailer}</Link>
           <Link href="/" className='border-2 border-secondary py-3 px-5 rounded-full font-special font-medium'>{sectionTitles[lang].buyTicket}</Link>
         </div> */}
-        <div className='text-center'>
+        <div className='text-center z-50'>
           <Modal language={lang} trailerUrl={trailer} venueLink={venueLink}/>
         </div>
         

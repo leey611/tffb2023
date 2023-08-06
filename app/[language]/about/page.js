@@ -54,11 +54,8 @@ export default async function Page({ params }) {
             <section className="max-w-1440 mx-auto px-[5vw]">
 
                 <BackHome link={`/${lang}`} language={lang}/>
-
-                <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles[lang].aboutUs} img="../img/about-img.png" />
-
+                <h1 className='text-center text-h1 font-special text-primary'>{sectionTitles[lang].aboutUs}</h1>
                 <Team team={team} language={lang} />
-
                 <Footer language={lang}/>
             </section>
 

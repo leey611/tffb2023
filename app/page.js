@@ -140,7 +140,7 @@ export default async function Page() {
 
         </div>
 
-        <div className='text-center'>
+        <div className='text-center z-50'>
           <Modal language={'en'} trailerUrl={trailer} venueLink={venueLink}/>
         </div>
 
