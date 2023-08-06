@@ -11,7 +11,7 @@ function renderMarkdownToHTML(markdown) {
 export default function Answer({ answer }) {
     const markup = renderMarkdownToHTML(answer);
     return (
-        <div className="answer text-primary">
+        <div className="answer text-primary max-w-3xl">
             <div dangerouslySetInnerHTML={markup}></div>
         </div>
     )

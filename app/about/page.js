@@ -9,6 +9,7 @@ import BackHome from '../../components/BackHome'
 import Team from '../../components/Team'
 import SpecialTitle from '../../components/SpecialTitle'
 import LanguageSelect from '../../components/LanguageSelect'
+import Footer from '../../components/Footer'
 
 // Font files can be colocated inside of `pages`
 // const myFont = localFont({ src: '../../fonts/terminal-grotesque-webfont.woff2' })
@@ -41,31 +42,14 @@ export default async function Page() {
 
     return (
         <Scaffold lang="en">
-            {/* ALL Films */}
-
             <LanguageSelect link={['/about', '/de/about', '/tw/about']} />
-
             <Marquee content={marquee} link={"/"}></Marquee>
-
             <section className="max-w-1440 mx-auto px-[5vw]">
-
                 <BackHome link={'/'} language={'en'}/>
-
                 <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles['en'].aboutUs} img="img/about-img.png" />
-
                 <Team team={team} language={'en'} />
-
-                <div className="w-full flex flex-col gap-10 items-center my-[10rem]">
-                    <div className="w-[200px]">
-                        <img src="https://www.dropbox.com/scl/fi/qn9ac4ua1gtrplvbhh27h/IMTW_LOGO_-05.png?rlkey=j0ky1zca3mg4tdmfp9mawb92v&raw=1" />
-                    </div>
-                    <div className="flex gap-5">
-                        <SocialHandle logo="img/social_fb.svg" link="https://www.facebook.com/ImpressionTaiwan/" />
-                        <SocialHandle logo="img/social_ig.svg" link="https://www.instagram.com/impressiontaiwan/" />
-                    </div>
-                </div>
+                <Footer language={'en'}/>
             </section>
-
         </Scaffold>
     )
 }

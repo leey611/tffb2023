@@ -8,6 +8,7 @@ import SocialHandle from '../../components/SocialHandle'
 import Link from 'next/link'
 import dynamic from "next/dynamic"
 import Bank from '../../components/Bank'
+import Footer from '../../components/Footer'
 
 // Font files can be colocated inside of `pages`
 // const myFont = localFont({ src: '../../fonts/terminal-grotesque-webfont.woff2' })
@@ -34,7 +35,6 @@ async function getOthers() {
 
 export default async function Page() {
     const others = await getOthers()
-    const marquee = others.filter(data => data.fields['Type'] === 'Donate-Float').map(marquee => marquee.fields[`Title_${'en'}`]).join('');
     const donate = others.filter(data => data.fields['Type'] === 'Donate-Info')
     const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
     const CopyBank = dynamic(() => import("../../components/Bank"), { ssr: false })
@@ -42,25 +42,10 @@ export default async function Page() {
     return (
         <Scaffold lang="en">
             <section className="max-w-1440 mx-auto px-[5vw]">
-            <BackHome link={`/`} language={'en'}/>
-                
+                <BackHome link={`/`} language={'en'}/>        
                 <CopyBank bank={donate[0]} language={'en'}/>
-               
-                <div className="w-full flex flex-col gap-10 items-center my-[10rem]">
-                    <div className="w-[200px]">
-                        <img src="https://www.dropbox.com/scl/fi/qn9ac4ua1gtrplvbhh27h/IMTW_LOGO_-05.png?rlkey=j0ky1zca3mg4tdmfp9mawb92v&raw=1" />
-                    </div>
-                    <div>
-                        <Link href=""><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles['en'].aboutUs}</button>
-                        </Link>
-                    </div>
-                    <div className="flex gap-5">
-                        <SocialHandle logo="img/social_fb.svg" link="https://www.facebook.com/ImpressionTaiwan/" />
-                        <SocialHandle logo="img/social_ig.svg" link="https://www.instagram.com/impressiontaiwan/" />
-                    </div>
-                </div>
+                <Footer language={'en'}/>   
             </section>
-
         </Scaffold>
     )
 }
