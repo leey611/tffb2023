@@ -92,6 +92,10 @@ export default async function Page({ params }) {
     sponsor.fields['Img'] = sponsor.fields['Img'] ? sponsor.fields['Img'].replace(/&dl=0(?!.*&dl=0)/, "&raw=1") : 'hi'
     return sponsor
   })
+  const partners = others.filter(data => data.fields['Type'] === 'Partner').map(sponsor => {
+    sponsor.fields['Img'] = sponsor.fields['Img'] ? sponsor.fields['Img'].replace(/&dl=0(?!.*&dl=0)/, "&raw=1") : 'hi'
+    return sponsor
+  })
   const questions = others.filter(data => data.fields['Type'] === 'Question')
   const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
   const aboutThisYear = others.filter(data => data.fields['Type'] === 'About-This-Year')
@@ -102,7 +106,7 @@ export default async function Page({ params }) {
     <Scaffold lang={lang}>
       {/* ALL Films */}
 
-      <div className='w-full h-screen flex flex-col justify-center isolate relative'>
+      <div className='w-full min-h-screen flex flex-col justify-center isolate relative'>
 
         <LanguageSelect />
 
@@ -148,6 +152,9 @@ export default async function Page({ params }) {
         {/* ALL Sponsors  */}
         <SectionTitle content={sectionTitles[lang].sponsorSectionTitle}></SectionTitle>
         <Sponsors language={lang} sponsors={sponsors} />
+
+        <SectionTitle content={sectionTitles[lang].partnerSectionTitle}></SectionTitle>
+        <Sponsors language={'en'} sponsors={partners} />
 
         <SectionTitle content={sectionTitles[lang].questionSectionTitle}></SectionTitle>
         <Questions language={lang} questions={questions} />

@@ -126,7 +126,7 @@ export default async function Page() {
 
       <div id="content">
 
-      <div className='w-full flex h-screen flex-col justify-center isolate relative'>
+      <div className='w-full flex min-h-screen flex-col justify-center isolate relative'>
 
         <LanguageSelect />
 
@@ -175,7 +175,7 @@ export default async function Page() {
         <SectionTitle content={sectionTitles['en'].sponsorSectionTitle}></SectionTitle>
         <Sponsors language={'en'} sponsors={sponsors} />
 
-        <SectionTitle content={"Partners"}></SectionTitle>
+        <SectionTitle content={sectionTitles['en'].partnerSectionTitle}></SectionTitle>
         <Sponsors language={'en'} sponsors={partners} />
 
         <SectionTitle content={sectionTitles['en'].questionSectionTitle}></SectionTitle>

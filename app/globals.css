@@ -111,7 +111,7 @@ a:hover {
     .social:first-child::before, .social:last-child::after {
         content: "";
         display: block;
-        width: 40%;
+        width: 30%;
         height: 1px;
         background: #000;
         top: 50%;
@@ -122,6 +122,12 @@ a:hover {
     }
     .socials .social:last-child::after {
         right: 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .social:first-child::before, .social:last-child::after {
+        width: 37%;
     }
 }
 
