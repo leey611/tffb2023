@@ -5,6 +5,11 @@ export const htmlLanguages = {
     tw: 'zh-TW'
 }
 
+export const paramToHtmlLang = (param) => {
+    if (!param) return htmlLanguages['en']
+    return htmlLanguages[param]
+}
+
 export const validateLanguage = (param) => {
     return htmlLanguages[param]
 }
@@ -49,6 +54,7 @@ export const convertToEmbedURL = (originalURL) => {
 export const sectionTitles = {
     en: {
         siteTitle: 'Taiwan Film Festival Berlin',
+        description: 'test description',
         filmSectionTitle: 'ALL FILMS',
         eventSectionTitle: 'ALL EVENTS',
         sponsorSectionTitle: 'SPONSORS',
@@ -71,6 +77,7 @@ export const sectionTitles = {
     },
     de: {
         siteTitle: 'Taiwan Film Festival Berlin',
+        description: 'test description',
         filmSectionTitle: 'ALLE FILME',
         eventSectionTitle: 'ALLE VERANSTALTUNGEN',
         sponsorSectionTitle: 'SPONSOREN & PARTNER',
@@ -93,6 +100,7 @@ export const sectionTitles = {
     },
     tw: {
         siteTitle: '柏林臺灣影展',
+        description: '柏林臺灣影展description',
         filmSectionTitle: '所有電影',
         eventSectionTitle: '所有活動',
         sponsorSectionTitle: '贊助商',

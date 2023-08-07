@@ -1,5 +1,29 @@
 
 import './globals.css'
+import { validateLanguage, paramToHtmlLang, sectionTitles } from '../utils/helpers'
+
+export async function generateMetadata({ params }) {
+  const languageRoute = validateLanguage(params.language) ? params.language : 'en'
+  const title = sectionTitles[languageRoute].siteTitle
+  const description = sectionTitles[languageRoute].description
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: '/',
+      languages: {
+        'en-US': '/',
+        'de-DE': '/de',
+        'zh-TW': '/tw'
+      },
+    },
+    openGraph: {
+      siteName: title,
+      images: '/img/opengraph.jpg',
+    },
+  }
+}
+
 
 export default function RootLayout({ children, params }) {
 
@@ -13,8 +37,8 @@ export default function RootLayout({ children, params }) {
         <link rel="manifest" href="img/site.webmanifest" />
         <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff"></meta>
-        <meta property="og:image" content="img/opengraph.jpg" />
+        {/* <meta name="theme-color" content="#ffffff"></meta> */}
+        {/* <meta property="og:image" content="img/opengraph.jpg" /> */}
         <body>{children}</body>
       </html>
     )
