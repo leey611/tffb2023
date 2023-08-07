@@ -119,19 +119,18 @@ const sketch = (onComplete) => (p5) => {
         //CLASS WITH ATTRACTOR TEST
         // il1.update();
         // il1.render();
-        
+        const imgScale = 0.1;
+        const img3Scale = 0.2;
         // FLOATING TEST
-        p5.image(illu1, p5.width * 3 / 4 + Math.cos(p5.frameCount * 0.035)* 20, p5.height / 2 + Math.sin(p5.frameCount * 0.02)* 50);
-        p5.image(illu2, p5.width * 1.2 / 4 + Math.cos(p5.frameCount * 0.015)* 14, p5.height / 3.7 + Math.sin(p5.frameCount * 0.013)* 30);
-        p5.image(illu3, p5.width * 0.8 / 4 + Math.cos(p5.frameCount * 0.011)* 20, p5.height * 2.9 / 4  + Math.sin(p5.frameCount * 0.007)* 40);
+        // The second constant in Math.min of sizing clamps the size when the windowWidth exceeds text elements' propo 
+        p5.image(illu1, p5.width * 3 / 4 + Math.cos(p5.frameCount * 0.035)* 20, p5.height / 2 + Math.sin(p5.frameCount * 0.02)* 50, 
+                 Math.min(imgScale * p5.windowWidth, 160), Math.min(imgScale*illu1.height*p5.windowWidth/illu1.width, 160*illu1.height/illu1.width));
+        p5.image(illu2, p5.width * 1.2 / 4 + Math.cos(p5.frameCount * 0.015)* 14, p5.height / 3.7 + Math.sin(p5.frameCount * 0.013)* 30,
+                 Math.min(imgScale * p5.windowWidth, 140), Math.min(imgScale*illu2.height*p5.windowWidth/illu2.width, 140*illu2.height/illu2.width));
+        p5.image(illu3, p5.width * 0.8 / 4 + Math.cos(p5.frameCount * 0.011)* 20, p5.height * 2.9 / 4  + Math.sin(p5.frameCount * 0.007)* 40,
+                 Math.min(img3Scale * p5.windowWidth, 340), Math.min(img3Scale*illu3.height*p5.windowWidth/illu3.width, 340*illu3.height/illu3.width));
         // p5.image(illu4, 1100 + Math.cos(p5.frameCount * 0.025)* 20, 900 + Math.sin(p5.frameCount * 0.009)* 60);
         
-        // p5.image(illu3, 700, 700);
-        // p5.image(illu4, 0, 260);
-        // p5.rotateZ(p5.frameCount * 0.01);
-        // p5.rotateX(p5.frameCount * 0.01);
-        // p5.rotateY(p5.frameCount * 0.01);
-        // p5.plane(100);
         p5.pop();
 
         // console.log('TEST CANVAS: Finished Drawing');
