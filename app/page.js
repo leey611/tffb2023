@@ -109,12 +109,12 @@ export default async function Page() {
     {
       ssr: false,
       loading: () => (<div className="fixed w-full h-screen bg-white z-[100] flex justify-center items-center">
-      <div className="flex w-[300px] flex-col" >
-        <img src="img/hero2Img.png"></img>
-        <br/>
-        <img src="img/loading-text.gif"></img>
+        <div className="flex w-[300px] flex-col" >
+          <img src="img/hero2Img.png"></img>
+          <br />
+          <img src="img/loading-text.gif"></img>
+        </div>
       </div>
-    </div>
       )
     }
   )
@@ -124,72 +124,72 @@ export default async function Page() {
   return (
     // <Scaffold lang="en">
     <>
-      {/* ALL Films */}     
-      
-
-      <div id="content">
-
-      <div className='w-full flex min-h-screen flex-col justify-center isolate relative z-[60]'>
-
-        <LanguageSelect />
+      {/* ALL Films */}
 
 
-        <div className="py-10 mix-blend text-shadow">
-          <div className='mix top'>
-            <Dynamicp5TestTwo />
+      <div id="content relative">
+
+        <div className='w-full flex min-h-screen flex-col justify-center isolate relative z-[60]'>
+
+          <LanguageSelect />
+
+
+          <div className="py-10 mix-blend text-shadow">
+            <div className='mix top'>
+              <Dynamicp5TestTwo />
+            </div>
+            <h1 className='text-center text-h1 font-special text-primary'>{websiteGlobal.fields[`Theme_${'en'}`]}</h1>
+            {heroText.map(text => <h1 className='text-center text-h1 font-special'>{text}</h1>)}
+
           </div>
-          <h1 className='text-center text-h1 font-special text-primary'>{websiteGlobal.fields[`Theme_${'en'}`]}</h1>
-          {heroText.map(text => <h1 className='text-center text-h1 font-special'>{text}</h1>)}
+
+          <div className='text-center z-50'>
+            <Modal language={'en'} trailerUrl={trailer} venueLink={venueLink} />
+          </div>
+
+          {/* <ResponsiveIframe /> */}
+
+          {/* <DynamicComponentWithNoSSR></DynamicComponentWithNoSSR> */}
 
         </div>
 
-        <div className='text-center z-50'>
-          <Modal language={'en'} trailerUrl={trailer} venueLink={venueLink}/>
-        </div>
+        <Marquee content={marquee} link={"/donate"}></Marquee>
 
-        {/* <ResponsiveIframe /> */}
-        
-        {/* <DynamicComponentWithNoSSR></DynamicComponentWithNoSSR> */}
+        <section className="max-w-1440 mx-auto px-[5vw]">
 
-      </div>
+          <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles['en'].filmSectionTitle} img="img/hero2Img.png" />
+          <Questions language={'en'} questions={aboutThisYear} />
 
-      <Marquee content={marquee} link={"/donate"}></Marquee>
+          {films.records.map(film =>
+            !isEmpty(film.fields) && <Film
+              key={film.id}
+              id={film.id}
+              language={'en'}
+              film={film.fields}
+            >
+            </Film>
+          )}
 
-      <section className="max-w-1440 mx-auto px-[5vw]">
+          {/* ALL Events  */}
+          <SectionTitle content={sectionTitles['en'].eventSectionTitle}></SectionTitle>
+          <Events language={'en'} />
 
-        <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles['en'].filmSectionTitle} img="img/hero2Img.png" />
-        <Questions language={'en'} questions={aboutThisYear} />
+          {/* ALL Sponsors  */}
+          <SectionTitle content={sectionTitles['en'].sponsorSectionTitle}></SectionTitle>
+          <Sponsors language={'en'} sponsors={sponsors} />
 
-        {films.records.map(film =>
-          !isEmpty(film.fields) && <Film
-            key={film.id}
-            id={film.id}
-            language={'en'}
-            film={film.fields}
-          >
-          </Film>
-        )}
+          <SectionTitle content={sectionTitles['en'].partnerSectionTitle}></SectionTitle>
+          <Sponsors language={'en'} sponsors={partners} />
 
-        {/* ALL Events  */}
-        <SectionTitle content={sectionTitles['en'].eventSectionTitle}></SectionTitle>
-        <Events language={'en'} />
+          <SectionTitle content={sectionTitles['en'].questionSectionTitle}></SectionTitle>
+          <Questions language={'en'} questions={questions} />
 
-        {/* ALL Sponsors  */}
-        <SectionTitle content={sectionTitles['en'].sponsorSectionTitle}></SectionTitle>
-        <Sponsors language={'en'} sponsors={sponsors} />
-
-        <SectionTitle content={sectionTitles['en'].partnerSectionTitle}></SectionTitle>
-        <Sponsors language={'en'} sponsors={partners} />
-
-        <SectionTitle content={sectionTitles['en'].questionSectionTitle}></SectionTitle>
-        <Questions language={'en'} questions={questions} />
-
-        <Footer language={'en'} />
-      </section>
+          <Footer language={'en'} />
+        </section>
 
       </div>
 
-    {/* // </Scaffold> */}
+      {/* // </Scaffold> */}
     </>
   )
 }
