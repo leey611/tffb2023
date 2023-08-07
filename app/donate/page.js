@@ -40,12 +40,12 @@ export default async function Page() {
     const CopyBank = dynamic(() => import("../../components/Bank"), { ssr: false })
 
     return (
-        <Scaffold lang="en">
+        <>
             <section className="max-w-1440 mx-auto px-[5vw]">
                 <BackHome link={`/`} language={'en'}/>        
                 <CopyBank bank={donate[0]} language={'en'}/>
                 <Footer language={'en'}/>   
             </section>
-        </Scaffold>
+        </>
     )
 }

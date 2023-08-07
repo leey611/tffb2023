@@ -6,7 +6,7 @@ import Events from '../components/Events'
 import Sponsors from '../components/Sponsors'
 import Footer from '../components/Footer'
 import localFont from 'next/font/local'
-import { isEmpty, sectionTitles } from '../utils/helpers'
+import { isEmpty, validateLanguage, sectionTitles } from '../utils/helpers'
 import SpecialTitle from '../components/SpecialTitle'
 import Questions from '../components/Questions'
 import SectionTitle from '../components/SectionTitle'
@@ -77,6 +77,14 @@ async function getOthers() {
   }
 }
 
+export async function generateMetadata({ params }) {
+  const languageRoute = validateLanguage(params.language) ? params.language : 'en'
+  const title = sectionTitles[languageRoute].siteTitle
+  return {
+    title,
+  }
+}
+
 export default async function Page() {
   let films = await getFilms()
   const filmEvents = await getFilmEvents()
@@ -120,9 +128,10 @@ export default async function Page() {
   const venueLink = websiteGlobal.fields['VenueLink']
 
   return (
-    <Scaffold lang="en">
+    // <Scaffold lang="en">
+    <>
       {/* ALL Films */}     
-
+      
 
       <div id="content">
 
@@ -186,6 +195,7 @@ export default async function Page() {
 
       </div>
 
-    </Scaffold>
+    {/* // </Scaffold> */}
+    </>
   )
 }

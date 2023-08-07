@@ -45,7 +45,7 @@ export default async function Page({ params }) {
     const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
 
     return (
-        <Scaffold lang={lang}>
+        <>
 
             <LanguageSelect link={['/about', '/de/about', '/tw/about']} />
 
@@ -59,6 +59,6 @@ export default async function Page({ params }) {
                 <Footer language={lang}/>
             </section>
 
-        </Scaffold>
+        </>
     )
 }

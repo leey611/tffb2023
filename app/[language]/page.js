@@ -103,7 +103,7 @@ export default async function Page({ params }) {
   const venueLink = websiteGlobal.fields['VenueLink']
   const trailer = websiteGlobal.fields['TrailerLink']
   return (
-    <Scaffold lang={lang}>
+    <>
       {/* ALL Films */}
 
       <div className='w-full min-h-screen flex flex-col justify-center isolate relative'>
@@ -162,6 +162,6 @@ export default async function Page({ params }) {
         <Footer language={lang}/>
       </section>
 
-    </Scaffold>
+    </>
   );
 }

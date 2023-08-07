@@ -42,7 +42,7 @@ export default async function Page({ params}) {
     const CopyBank = dynamic(() => import("../../../components/Bank"), { ssr: false })
 
     return (
-        <Scaffold lang={lang}>
+        <>
             <section className="max-w-1440 mx-auto px-[5vw]">
 
                 <BackHome link={`/${lang}`} language={lang}/>
@@ -52,6 +52,6 @@ export default async function Page({ params}) {
                 <Footer language={lang}/>
             </section>
 
-        </Scaffold>
+        </>
     )
 }

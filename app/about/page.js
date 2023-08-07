@@ -40,9 +40,8 @@ export default async function Page({ params }) {
     const marquee = others.filter(data => data.fields['Type'] === 'Donate-Float').map(marquee => marquee.fields[`Title_${'en'}`]).join('');
     const team = others.filter(data => data.fields['Type'] === 'Team')
     const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
-
     return (
-        <Scaffold lang="en">
+        <>
             <LanguageSelect link={['/about', '/de/about', '/tw/about']} />
             
             <Marquee content={marquee} link={"/"}></Marquee>
@@ -52,6 +51,6 @@ export default async function Page({ params }) {
                 <Team team={team} language={'en'} />
                 <Footer language={'en'}/>
             </section>
-        </Scaffold>
+        </>
     )
 }
