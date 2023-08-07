@@ -19,19 +19,29 @@ export default function Modal(props) {
         <>
         <div className="cta my-5">
             <button className="border-2 border-secondary text-h4 text-white bg-secondary py-3 px-5 rounded-full font-special font-medium mr-4" onClick={toggleModal}>{sectionTitles[language].watchTrailer}</button>
-            <div className={`modal ${isTrailerOpen && 'show'}`}>
-                <div className='video__container'>
-                    <iframe
-                        className='trailer'
-                        src={trailerUrl}>
-                    </iframe>
-                </div>
-            </div>
+            
             <a href={venueLink} target="_blank">
                 <button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[language].buyTicket}</button>
             </a>
-            <div className={`gray ${isTrailerOpen && 'show'}`} onClick={toggleModal}></div>
+            
         </div>
+        
+        {
+                isTrailerOpen &&
+                // <div className='w-100 h-100 relative'>
+                <>
+                <div className={`modal ${isTrailerOpen && 'show'}`}>
+                    <div className='video__container'>
+                        <iframe
+                            className='trailer'
+                            src={trailerUrl}>
+                        </iframe>
+                    </div>
+                </div>
+                <div className={`gray ${isTrailerOpen && 'show'}`} onClick={toggleModal}></div>
+                {/* // </div> */}
+                </>
+            }
         </>
     )
 }
