@@ -72,7 +72,7 @@ export default function Film(props) {
                     <h3 className="name text-h1 text-primary font-sans font-semibold">{name}</h3>
                     <img src={MainImageUrl} className='mainImg' alt={mainImgAltText} />
                     <Modal id={id} language={language} trailerUrl={TrailerLink} venueLink={VenueLink}></Modal>
-                    <div className='genres my-10'>{genre}</div>
+                    <div className='genres my-5 md:my-0 lg:my-0'>{genre}</div>
                     <div className="themes">
                         {themes?.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-1 mb-4 text-h4 font-sans font-medium theme"># {theme}</div>)}
                         {genres?.map(genre => <div className="bg-tertiary text-white inline-block rounded-md px-5 py-1 mb-4 text-h4 font-sans font-medium genre"># {genre}</div>)}
@@ -81,7 +81,7 @@ export default function Film(props) {
                         {Events?.map(event => <FilmEvent id={event.id} language={language} event={event.fields} />)}
                     </div>
 
-                    <div className="synopsis my-5"><RichText content={synopsis}/></div>
+                    <div className="synopsis my-5 md:mt-0"><RichText content={synopsis}/></div>
                     <div className='subImages grid grid-cols-3 gap-4 mt-4'>
                         {SubImageUrls?.map(imgUrl => <div className={SubImagesCropped && 'md:h-[5rem] lg:h-[6rem]'}>
                             <img src={imgUrl} className={SubImagesCropped && 'w-full h-full object-cover'} />
