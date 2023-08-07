@@ -135,7 +135,7 @@ export default async function Page() {
 
       <div id="content">
 
-      <div className='w-full flex min-h-screen flex-col justify-center isolate relative z-50'>
+      <div className='w-full flex min-h-screen flex-col justify-center isolate relative z-[60]'>
 
         <LanguageSelect />
 
