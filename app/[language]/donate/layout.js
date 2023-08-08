@@ -21,7 +21,7 @@ import { validateLanguage, sectionTitles } from '../../../utils/helpers'
 export default function RootLayout({ children, params }) {
 
     return (
-       { children}
+        children
         // <html >
         //   <body>{children}</body>
         // </html>
