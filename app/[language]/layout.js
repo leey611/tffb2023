@@ -14,6 +14,7 @@ export async function generateMetadata({ params }) {
 
 export default function RootLayout({ children, params }) {
     return (
+      children
       // <Scaffolding lang={params.language}>
       //   { children }
       // </Scaffolding>
@@ -22,9 +23,9 @@ export default function RootLayout({ children, params }) {
         //         <div>{params.language}</div>
         //     </body>
         // </html>
-        <html>
-          <body>{children}</body>
-        </html>
+        // <html>
+        //   <body>{children}</body>
+        // </html>
       
     );
   }
