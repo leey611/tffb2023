@@ -32,10 +32,10 @@ export default function Event({ id, language, event }) {
                         <div className="block md:flex">
                             <div className="flex mb-4">
                                 <img src={SpeakerImg} className="self-start w-[6rem] md:w-[10rem]" alt={speaker}/>
-                                <h4 className="block md:hidden self-end ml-6 font-special font-semibold text-h2">{speaker}</h4>
+                                <h4 className="block md:hidden self-end ml-6 font-special text-h2">{speaker}</h4>
                             </div>
                             <div className=" md:ml-6">
-                                <h4 className="hidden md:block mb-4 font-special font-semibold text-h2">{speaker}</h4>
+                                <h4 className="hidden md:block mb-4 font-special text-h2">{speaker}</h4>
                                 <RichText content={speakerIntro}/>
                                 <RichText content={note}/>
                             </div>
