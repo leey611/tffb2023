@@ -2,27 +2,27 @@
 import './globals.css'
 import { validateLanguage, paramToHtmlLang, sectionTitles } from '../utils/helpers'
 
-export async function generateMetadata({ params }) {
-  const languageRoute = validateLanguage(params.language) ? params.language : 'en'
-  const title = sectionTitles[languageRoute].siteTitle
-  const description = sectionTitles[languageRoute].description
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: '/',
-      languages: {
-        'en-US': '/',
-        'de-DE': '/de',
-        'zh-TW': '/tw'
-      },
-    },
-    openGraph: {
-      siteName: title,
-      images: '/img/opengraph.jpg',
-    },
-  }
-}
+// export async function generateMetadata({ params }) {
+//   const languageRoute = validateLanguage(params.language) ? params.language : 'en'
+//   const title = sectionTitles[languageRoute].siteTitle
+//   const description = sectionTitles[languageRoute].description
+//   return {
+//     title,
+//     description,
+//     alternates: {
+//       canonical: '/',
+//       languages: {
+//         'en-US': '/',
+//         'de-DE': '/de',
+//         'zh-TW': '/tw'
+//       },
+//     },
+//     openGraph: {
+//       siteName: title,
+//       images: '/img/opengraph.jpg',
+//     },
+//   }
+// }
 
 
 export default function RootLayout({ children, params }) {
