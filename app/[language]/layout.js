@@ -1,20 +1,19 @@
 import '../globals.css'
 import { validateLanguage, sectionTitles } from '../../utils/helpers'
 
-// export async function generateMetadata({ params }) {
-//   const languageRoute = validateLanguage(params.language) ? params.language : 'en'
-//   const siteText = sectionTitles[languageRoute]
-//   const title = `${siteText.donate} | ${siteText.siteTitle}`
-//   const description = sectionTitles[languageRoute].description
-//   return {
-//     title,
-//     description,
-//   }
-// }
+export async function generateMetadata({ params }) {
+  const languageRoute = validateLanguage(params.language) ? params.language : 'en'
+  const siteText = sectionTitles[languageRoute]
+  const title = `${siteText.donate} | ${siteText.siteTitle}`
+  const description = sectionTitles[languageRoute].description
+  return {
+    title,
+    description,
+  }
+}
 
 export default function RootLayout({ children, params }) {
     return (
-      children
       // <Scaffolding lang={params.language}>
       //   { children }
       // </Scaffolding>
@@ -23,9 +22,9 @@ export default function RootLayout({ children, params }) {
         //         <div>{params.language}</div>
         //     </body>
         // </html>
-        // <html>
-        //   <body>{children}</body>
-        // </html>
+        <html>
+          <body>{children}</body>
+        </html>
       
     );
   }

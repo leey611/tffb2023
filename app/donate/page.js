@@ -9,7 +9,6 @@ import Link from 'next/link'
 import dynamic from "next/dynamic"
 import Bank from '../../components/Bank'
 import Footer from '../../components/Footer'
-import LanguageSelect from '../../components/LanguageSelect'
 
 // Font files can be colocated inside of `pages`
 // const myFont = localFont({ src: '../../fonts/terminal-grotesque-webfont.woff2' })
@@ -41,8 +40,7 @@ export default async function Page() {
     const CopyBank = dynamic(() => import("../../components/Bank"), { ssr: false })
 
     return (
-        <>  
-            <LanguageSelect link={['/donate', '/de/donate', '/tw/donate']}/>
+        <>
             <section className="max-w-1440 mx-auto px-[5vw]">
                 <BackHome link={`/`} language={'en'}/>        
                 <CopyBank bank={donate[0]} language={'en'}/>
