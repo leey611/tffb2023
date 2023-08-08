@@ -15,16 +15,16 @@ import { validateLanguage, sectionTitles } from '../../utils/helpers'
 export default function RootLayout({ children, params }) {
     return (
       // <Scaffolding lang={params.language}>
-        { children }
+        // { children }
       // </Scaffolding>
         // <html lang={params.language}>
         //     <body>
         //         <div>{params.language}</div>
         //     </body>
         // </html>
-        // <html>
-        //   <body>{children}</body>
-        // </html>
+        <html>
+          <body>{children}</body>
+        </html>
       
     );
   }
