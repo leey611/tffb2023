@@ -6,12 +6,12 @@ export default function Team(props) {
             {team?.map((member) => {
                 const imgURL = member.fields["Img"]
                     ? member.fields["Img"].replace(/&dl=0(?!.*&dl=0)/, "&raw=1")
-                    : ("../img/default-profile.jpg");
+                    : ("../img/hero2Img.png");
 
                 return (
                     <li className="w-[250px] flex-col" key={team.id}>
                         <div className="w-full h-[250px] overflow-hidden">
-                            <img className="w-full h-full object-cover filter grayscale contrast-120" src={imgURL} alt="" />
+                            <img className={`w-full h-full ${member.fields["Img"] ? 'object-cover': '' } filter grayscale contrast-120`} src={imgURL} alt="" />
                         </div>
                         <h4 className="mt-5 text-h4 font-sans font-semibold">
                             {member.fields[`Title_${language}`]}

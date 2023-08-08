@@ -49,7 +49,7 @@ export default async function Page({ params }) {
 
             <LanguageSelect link={['/about', '/de/about', '/tw/about']} />
 
-            <Marquee content={marquee} link={`${lang}/donate`}></Marquee>
+            <Marquee content={marquee} link={`/${lang}/donate`}></Marquee>
 
             <section className="max-w-1440 mx-auto px-[5vw]">
 
