@@ -55,6 +55,7 @@ export const sectionTitles = {
     en: {
         siteTitle: 'Taiwan Film Festival Berlin',
         description: 'test description',
+        aboutSectionTitle: 'ABOUT THIS YEAR',
         filmSectionTitle: 'ALL FILMS',
         eventSectionTitle: 'ALL EVENTS',
         sponsorSectionTitle: 'SPONSORS',
@@ -78,6 +79,7 @@ export const sectionTitles = {
     de: {
         siteTitle: 'Taiwan Film Festival Berlin',
         description: 'test description',
+        aboutSectionTitle: 'ABOUT THIS YEAR',
         filmSectionTitle: 'ALLE FILME',
         eventSectionTitle: 'ALLE VERANSTALTUNGEN',
         sponsorSectionTitle: 'SPONSOREN & PARTNER',
@@ -101,6 +103,7 @@ export const sectionTitles = {
     tw: {
         siteTitle: '柏林臺灣影展',
         description: '柏林臺灣影展description',
+        aboutSectionTitle: '關於今年',
         filmSectionTitle: '所有電影',
         eventSectionTitle: '所有活動',
         sponsorSectionTitle: '贊助商',

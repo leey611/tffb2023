@@ -5,22 +5,15 @@ import Film from '../components/Film'
 import Events from '../components/Events'
 import Sponsors from '../components/Sponsors'
 import Footer from '../components/Footer'
-import localFont from 'next/font/local'
 import { isEmpty, validateLanguage, sectionTitles } from '../utils/helpers'
 import SpecialTitle from '../components/SpecialTitle'
 import Questions from '../components/Questions'
 import SectionTitle from '../components/SectionTitle'
-import SocialHandle from '../components/SocialHandle'
 import Marquee from '../components/Marquee'
-import ResponsiveIframe from '../components/ResponsiveIframe'
 
-import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import LanguageSelect from '../components/LanguageSelect'
 import Modal from '../components/Modal'
-
-// Font files can be colocated inside of `pages`
-const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
 
 const airtableApiKey = process.env.AIRTABLE_API_KEY
 const airtableBaseId = process.env.AIRTABLE_BASE_ID
@@ -45,7 +38,6 @@ async function getFilmEvents() {
     console.log(error);
   }
 }
-
 
 async function getFilms() {
   try {
@@ -77,7 +69,20 @@ async function getOthers() {
   }
 }
 
-
+const Dynamicp5TestTwo = dynamic(
+  () => import('../components/Testp5Two/Testp5Two'),
+  {
+    ssr: false,
+    loading: () => (<div className="fixed w-full h-screen bg-white z-[100] flex justify-center items-center">
+      <div className="flex w-[300px] flex-col" >
+        <img src="img/hero2Img.png"></img>
+        <br />
+        <img src="img/loading-text.gif"></img>
+      </div>
+    </div>
+    )
+  }
+)
 
 export default async function Page() {
   let films = await getFilms()
@@ -102,74 +107,45 @@ export default async function Page() {
   const aboutThisYear = others.filter(data => data.fields['Type'] === 'About-This-Year')
   const heroText = websiteGlobal.fields[`Title_${'en'}`].split('\n')
   const trailer = websiteGlobal.fields['TrailerLink']
-
-
-  const Dynamicp5TestTwo = dynamic(
-    () => import('../components/Testp5Two/Testp5Two'),
-    {
-      ssr: false,
-      loading: () => (<div className="fixed w-full h-screen bg-white z-[100] flex justify-center items-center">
-        <div className="flex w-[300px] flex-col" >
-          <img src="img/hero2Img.png"></img>
-          <br />
-          <img src="img/loading-text.gif"></img>
-        </div>
-      </div>
-      )
-    }
-  )
-
   const venueLink = websiteGlobal.fields['VenueLink']
 
   return (
     // <Scaffold lang="en">
     <>
-      {/* ALL Films */}
-
-
       <div id="content relative">
-
         <div className='w-full flex min-h-screen flex-col justify-center isolate relative z-[60]'>
-
           <LanguageSelect />
-
-
           <div className="py-10 mix-blend text-shadow">
             <div className='mix top'>
               <Dynamicp5TestTwo />
             </div>
             <h1 className='text-center text-h1 font-special text-primary'>{websiteGlobal.fields[`Theme_${'en'}`]}</h1>
             {heroText.map(text => <h1 className='text-center text-h1 font-special'>{text}</h1>)}
-
           </div>
-
           <div className='text-center z-50'>
             <Modal language={'en'} trailerUrl={trailer} venueLink={venueLink} />
           </div>
-
-          {/* <ResponsiveIframe /> */}
-
-          {/* <DynamicComponentWithNoSSR></DynamicComponentWithNoSSR> */}
-
         </div>
 
         <Marquee content={marquee} link={"/donate"}></Marquee>
 
         <section className="max-w-1440 mx-auto px-[5vw]">
-
           <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles['en'].filmSectionTitle} img="img/hero2Img.png" />
+          <SectionTitle content={sectionTitles['en'].aboutSectionTitle}></SectionTitle>
           <Questions language={'en'} questions={aboutThisYear} />
 
-          {films.records.map(film =>
-            !isEmpty(film.fields) && <Film
-              key={film.id}
-              id={film.id}
-              language={'en'}
-              film={film.fields}
-            >
-            </Film>
-          )}
-
+          <div className='mt-[6rem]'>
+            {films.records.map(film =>
+              !isEmpty(film.fields) && <Film
+                key={film.id}
+                id={film.id}
+                language={'en'}
+                film={film.fields}
+              >
+              </Film>
+            )}
+          </div>
+          
           {/* ALL Events  */}
           <SectionTitle content={sectionTitles['en'].eventSectionTitle}></SectionTitle>
           <Events language={'en'} />
@@ -186,9 +162,7 @@ export default async function Page() {
 
           <Footer language={'en'} />
         </section>
-
       </div>
-
       {/* // </Scaffold> */}
     </>
   )
