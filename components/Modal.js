@@ -17,7 +17,7 @@ export default function Modal(props) {
 
     return (
         <>
-        <div className="cta my-5">
+        <div className="cta my-5 self-center">
             <button className="border-2 border-secondary text-h4 text-white bg-secondary py-3 px-5 rounded-full font-special font-medium mr-4" onClick={toggleModal}>{sectionTitles[language].watchTrailer}</button>
             
             <a href={venueLink} target="_blank">

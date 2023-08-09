@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import SocialHandle from './SocialHandle'
 import { sectionTitles } from '../utils/helpers'
-export default function Footer({ language}) {
+export default function Footer({ language }) {
     return (
         <footer className="w-full flex flex-col gap-10 items-center my-[10rem]">
           <div className="cursor-pointer z-50">
@@ -15,7 +15,7 @@ export default function Footer({ language}) {
             <SocialHandle logo="../img/social_yt.svg" link="https://www.youtube.com/@taiwanfilmfestivalberlinby1737" />
           </div>
           <div className="z-50">
-            <Link href="about"><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[language].aboutUs}</button>
+            <Link href={`/${language}/about`}><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[language].aboutUs}</button>
             </Link>
           </div>
         </footer>

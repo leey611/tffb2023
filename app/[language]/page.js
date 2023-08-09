@@ -140,18 +140,21 @@ export default async function Page({ params }) {
       <section className="max-w-1440 mx-auto px-[5vw]">
 
         <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles[lang].filmSectionTitle} img="img/hero2Img.png" />
+        <SectionTitle content={sectionTitles[lang].aboutSectionTitle}></SectionTitle>
         <Questions language={lang} questions={aboutThisYear} />
 
-
-        {films.records.map(film =>
-          !isEmpty(film.fields) && <Film
-            key={film.id}
-            id={film.id}
-            language={lang}
-            film={film.fields}
-          >
-          </Film>
-        )}
+        <div className='mt-[6rem]'>
+          {films.records.map(film =>
+            !isEmpty(film.fields) && <Film
+              key={film.id}
+              id={film.id}
+              language={lang}
+              film={film.fields}
+            >
+            </Film>
+          )}
+        </div>
+        
 
         {/* ALL Events  */}
         <SectionTitle content={sectionTitles[lang].eventSectionTitle}></SectionTitle>

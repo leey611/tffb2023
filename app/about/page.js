@@ -43,8 +43,7 @@ export default async function Page({ params }) {
     return (
         <>
             <LanguageSelect link={['/about', '/de/about', '/tw/about']} />
-            
-            <Marquee content={marquee} link={"/"}></Marquee>
+            <Marquee content={marquee} link={"/donate"}></Marquee>
             <section className="max-w-1440 mx-auto px-[5vw]">
                 <BackHome link={'/'} language={'en'}/>
                 <h1 className='text-center text-h1 font-special text-primary'>{sectionTitles[lang].aboutUs}</h1>

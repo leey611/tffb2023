@@ -22,9 +22,10 @@ export default function RootLayout({ children, params }) {
         //         <div>{params.language}</div>
         //     </body>
         // </html>
-        <html>
-          <body>{children}</body>
-        </html>
+        children
+        // <html>
+        //   <body>{children}</body>
+        // </html>
       
     );
   }
