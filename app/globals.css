@@ -107,6 +107,10 @@ a:hover {
     cursor: pointer;
 }
 
+.richtext a {
+    text-decoration: underline;
+}
+
 @media (min-width: 768px) {
     .social:first-child::before, .social:last-child::after {
         content: "";

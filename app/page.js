@@ -112,7 +112,7 @@ export default async function Page() {
   return (
     // <Scaffold lang="en">
     <>
-      <div id="content relative">
+      <div id="content" className='relative'>
         <div className='w-full flex min-h-screen flex-col justify-center isolate relative z-[60]'>
           <LanguageSelect />
           <div className="py-10 mix-blend text-shadow">

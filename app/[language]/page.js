@@ -112,67 +112,54 @@ export default async function Page({ params }) {
   const trailer = websiteGlobal.fields['TrailerLink']
   return (
     <>
-      {/* ALL Films */}
-
-      <div className='w-full min-h-screen flex flex-col justify-center isolate relative'>
-
-        <LanguageSelect />
-
-        <div className="py-10">
-        <h1 className='text-center text-h1 font-special font-semibold text-primary'>{websiteGlobal.fields[`Theme_${lang}`]}</h1>
-          {heroText.map(text => <h1 className='text-center text-h1 font-special font-semibold'>{text}</h1>)}
+      <div id="content" className='relative'>
+        <div className='w-full min-h-screen flex flex-col justify-center isolate relative z-[60]'>
+          <LanguageSelect />
+          <div className="py-10">
+            <h1 className='text-center text-h1 font-special font-semibold text-primary'>{websiteGlobal.fields[`Theme_${lang}`]}</h1>
+            {heroText.map(text => <h1 className='text-center text-h1 font-special font-semibold'>{text}</h1>)}
+          </div>
+          <div className='text-center z-50'>
+            <Modal language={lang} trailerUrl={trailer} venueLink={venueLink} />
+          </div>
         </div>
 
-        {/* <div className='text-center text-h4 py-[5rem] flex gap-5 justify-center'>
-          <Link className="text-white bg-secondary py-3 px-5 rounded-full font-special font-medium" href="/">{sectionTitles[lang].watchTrailer}</Link>
-          <Link href="/" className='border-2 border-secondary py-3 px-5 rounded-full font-special font-medium'>{sectionTitles[lang].buyTicket}</Link>
-        </div> */}
-        <div className='text-center z-50'>
-          <Modal language={lang} trailerUrl={trailer} venueLink={venueLink}/>
-        </div>
-        
+        <Marquee content={marquee} link={`/${lang}/donate`}></Marquee>
 
-        {/* <ResponsiveIframe /> */}
+        <section className="max-w-1440 mx-auto px-[5vw]">
+          <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles[lang].filmSectionTitle} img="img/hero2Img.png" />
+          <SectionTitle content={sectionTitles[lang].aboutSectionTitle}></SectionTitle>
+          <Questions language={lang} questions={aboutThisYear} />
+
+          <div className='mt-[6rem]'>
+            {films.records.map(film =>
+              !isEmpty(film.fields) && <Film
+                key={film.id}
+                id={film.id}
+                language={lang}
+                film={film.fields}
+              >
+              </Film>
+            )}
+          </div>
+
+          {/* ALL Events  */}
+          <SectionTitle content={sectionTitles[lang].eventSectionTitle}></SectionTitle>
+          <Events language={lang} />
+
+          {/* ALL Sponsors  */}
+          <SectionTitle content={sectionTitles[lang].sponsorSectionTitle}></SectionTitle>
+          <Sponsors language={lang} sponsors={sponsors} />
+
+          <SectionTitle content={sectionTitles[lang].partnerSectionTitle}></SectionTitle>
+          <Sponsors language={lang} sponsors={partners} />
+
+          <SectionTitle content={sectionTitles[lang].questionSectionTitle}></SectionTitle>
+          <Questions language={lang} questions={questions} />
+
+          <Footer language={lang} />
+        </section>
       </div>
-
-      <Marquee content={marquee} link={`/${lang}/donate`}></Marquee>
-
-      <section className="max-w-1440 mx-auto px-[5vw]">
-
-        <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles[lang].filmSectionTitle} img="img/hero2Img.png" />
-        <SectionTitle content={sectionTitles[lang].aboutSectionTitle}></SectionTitle>
-        <Questions language={lang} questions={aboutThisYear} />
-
-        <div className='mt-[6rem]'>
-          {films.records.map(film =>
-            !isEmpty(film.fields) && <Film
-              key={film.id}
-              id={film.id}
-              language={lang}
-              film={film.fields}
-            >
-            </Film>
-          )}
-        </div>
-        
-
-        {/* ALL Events  */}
-        <SectionTitle content={sectionTitles[lang].eventSectionTitle}></SectionTitle>
-        <Events language={lang} />
-
-        {/* ALL Sponsors  */}
-        <SectionTitle content={sectionTitles[lang].sponsorSectionTitle}></SectionTitle>
-        <Sponsors language={lang} sponsors={sponsors} />
-
-        <SectionTitle content={sectionTitles[lang].partnerSectionTitle}></SectionTitle>
-        <Sponsors language={lang} sponsors={partners} />
-
-        <SectionTitle content={sectionTitles[lang].questionSectionTitle}></SectionTitle>
-        <Questions language={lang} questions={questions} />
-
-        <Footer language={lang}/>
-      </section>
-
     </>
   );
 }

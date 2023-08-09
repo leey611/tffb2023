@@ -12,6 +12,6 @@ function renderMarkdownToHTML(markdown) {
 export default function RichText({ content }) {
     const markup = renderMarkdownToHTML(content);
     return (
-        <div dangerouslySetInnerHTML={markup}></div>
+        <div dangerouslySetInnerHTML={markup} className='richtext'></div>
     )
 }
