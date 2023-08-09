@@ -1,7 +1,6 @@
 import '../globals.css'
 import '../style.scss'
 import Scaffold from "../../components/Scaffolding";
-import ResponsiveIframe from "../../components/ResponsiveIframe";
 import Marquee from '../../components/Marquee';
 import Film from "../../components/Film";
 import Events from '../../components/Events';
@@ -13,10 +12,9 @@ import { validateLanguage, sectionTitles } from '../../utils/helpers';
 import Questions from '../../components/Questions';
 import LanguageSelect from '../../components/LanguageSelect'
 import SpecialTitle from '../../components/SpecialTitle'
-
-import Link from 'next/link'
 import Modal from '../../components/Modal';
-const myFont = localFont({ src: '../../fonts/terminal-grotesque-webfont.woff2' })
+import dynamic from 'next/dynamic';
+
 
 const airtableApiKey = process.env.AIRTABLE_API_KEY
 const airtableBaseId = process.env.AIRTABLE_BASE_ID
@@ -78,6 +76,21 @@ async function getOthers() {
   }
 }
 
+const Dynamicp5TestTwo = dynamic(
+  () => import('../../components/Testp5Two/Testp5Two'),
+  {
+    ssr: false,
+    loading: () => (<div className="fixed w-full h-screen bg-white z-[100] flex justify-center items-center">
+      <div className="flex w-[300px] flex-col" >
+        <img src="../img/hero2Img.png"></img>
+        <br />
+        <img src="../img/loading-text.gif"></img>
+      </div>
+    </div>
+    )
+  }
+)
+
 // export async function generateMetadata({ params }) {
 //   const languageRoute = validateLanguage(params.language) ? params.language : 'en'
 //   const title = sectionTitles[languageRoute].siteTitle
@@ -115,9 +128,12 @@ export default async function Page({ params }) {
       <div id="content" className='relative'>
         <div className='w-full min-h-screen flex flex-col justify-center isolate relative z-[60]'>
           <LanguageSelect />
-          <div className="py-10">
-            <h1 className='text-center text-h1 font-special font-semibold text-primary'>{websiteGlobal.fields[`Theme_${lang}`]}</h1>
-            {heroText.map(text => <h1 className='text-center text-h1 font-special font-semibold'>{text}</h1>)}
+          <div className="py-10 mix-blend text-shadow">
+            <div className='mix top'>
+              <Dynamicp5TestTwo />
+            </div>
+            <h1 className='text-center text-h1 font-special text-primary'>{websiteGlobal.fields[`Theme_${lang}`]}</h1>
+            {heroText.map(text => <h1 className='text-center text-h1 font-special'>{text}</h1>)}
           </div>
           <div className='text-center z-50'>
             <Modal language={lang} trailerUrl={trailer} venueLink={venueLink} />
