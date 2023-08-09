@@ -32,8 +32,8 @@ export default function Modal(props) {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{
-                        ease: "easeInOut",
-                        duration: 0.5,
+                        ease: "easeIn",
+                        duration: 0.2,
                     }}
                 >
                     <div className={`modal ${isTrailerOpen && 'show'}`}>
