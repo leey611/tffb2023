@@ -28,7 +28,8 @@ export default function Bank({ bank, language }) {
     
     return (
         <>
-            <h1 className="font-special font-medium text-h2 text-primary text-center my-8">{Title}</h1>
+            <h1 className="font-special font-medium text-h1 text-primary text-center my-8">{Title}</h1>
+            <img src='../img/about-img.png' className='block w-20 md:w-36 mx-auto my-24'/>
             <div className="py-8"><RichText content={Content}/></div>
             <h3 className="font-special font-medium text-h2 text-primary text-center my-8">{Subtitle}</h3>
             <div>

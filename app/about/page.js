@@ -47,6 +47,7 @@ export default async function Page({ params }) {
             <section className="max-w-1440 mx-auto px-[5vw]">
                 <BackHome link={'/'} language={'en'}/>
                 <h1 className='text-center text-h1 font-special text-primary'>{sectionTitles[lang].aboutUs}</h1>
+                <img src='../img/about-img.png' className='block w-20 md:w-36 mx-auto my-24'/>
                 <Team team={team} language={'en'} />
                 <Footer language={'en'}/>
             </section>

@@ -55,6 +55,7 @@ export default async function Page({ params }) {
 
                 <BackHome link={`/${lang}`} language={lang}/>
                 <h1 className='text-center text-h1 font-special text-primary'>{sectionTitles[lang].aboutUs}</h1>
+                <img src='../img/about-img.png' className='block w-20 md:w-36 mx-auto my-24'/>
                 <Team team={team} language={lang} />
                 <Footer language={lang}/>
             </section>
