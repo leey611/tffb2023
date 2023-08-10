@@ -13,6 +13,7 @@ export default function Modal(props) {
     useEffect(() => {
         // Change the CSS of the <body> element
         document.body.style.overflowY = isTrailerOpen ? 'hidden' : 'auto';
+        document.getElementById('content').style.overflowY = isTrailerOpen ? 'hidden' : 'auto';
     }, [isTrailerOpen]);
 
     return (
@@ -38,7 +39,7 @@ export default function Modal(props) {
                         </iframe>
                     </div>
                 </div>
-                <div className={`gray ${isTrailerOpen && 'show overflow-scroll lg:overflow-hidden'}`} onClick={toggleModal}></div>
+                <div className={`gray ${isTrailerOpen && 'show'}`} onClick={toggleModal}></div>
                 {/* // </div> */}
                 </>
             }
