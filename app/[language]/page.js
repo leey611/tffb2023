@@ -92,14 +92,6 @@ const Dynamicp5TestTwo = dynamic(
   }
 )
 
-// export async function generateMetadata({ params }) {
-//   const languageRoute = validateLanguage(params.language) ? params.language : 'en'
-//   const title = sectionTitles[languageRoute].siteTitle
-//   return {
-//     title,
-//   }
-// }
-
 export default async function Page({ params }) {
   const lang = validateLanguage(params.language) ? params.language : 'en'
   let films = await getFilms()
