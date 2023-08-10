@@ -6,6 +6,7 @@ import { formatBerlinTime } from '../utils/helpers'
 import FilmEvent from './FilmEvent'
 import CroppedImage from './CroppedImage'
 import RichText from './RichText'
+import dropboxUrl from '../utils/dropboxUrl'
 
 const myFont = localFont({ src: '../fonts/terminal-grotesque-webfont.woff2' })
 
@@ -27,9 +28,9 @@ export default function Film(props) {
         DirecotImageText,
     } = film
     // dropbox image url replacement
-    MainImageUrl = MainImageUrl.replace(/&dl=0(?!.*&dl=0)/, "&raw=1");
-    DirectorImageUrl = DirectorImageUrl.replace(/&dl=0(?!.*&dl=0)/, "&raw=1");
-    SubImageUrls = SubImageUrls.split('\n').map(url => url.replace(/&dl=0(?!.*&dl=0)/, "&raw=1"))
+    MainImageUrl = dropboxUrl(MainImageUrl);
+    DirectorImageUrl = dropboxUrl(DirectorImageUrl);
+    SubImageUrls = SubImageUrls.split('\n').map(url => dropboxUrl(url))
     const name = film[`FilmName_${language}`]
     const director = film[`Director_${language}`]
     const synopsis = film[`Synopsis_${language}`]
