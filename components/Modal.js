@@ -13,7 +13,6 @@ export default function Modal(props) {
     useEffect(() => {
         // Change the CSS of the <body> element
         document.body.style.overflowY = isTrailerOpen ? 'hidden' : 'auto';
-        document.getElementById('content').style.overflowY = isTrailerOpen ? 'hidden' : 'auto';
     }, [isTrailerOpen]);
 
     return (
