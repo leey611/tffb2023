@@ -14,6 +14,7 @@ import Marquee from '../components/Marquee'
 import dynamic from 'next/dynamic'
 import LanguageSelect from '../components/LanguageSelect'
 import Modal from '../components/Modal'
+import dropboxUrl from '../utils/dropboxUrl'
 
 const airtableApiKey = process.env.AIRTABLE_API_KEY
 const airtableBaseId = process.env.AIRTABLE_BASE_ID
@@ -95,11 +96,11 @@ export default async function Page() {
   const others = await getOthers()
   const marquee = others.filter(data => data.fields['Type'] === 'Donate-Float').map(marquee => marquee.fields[`Title_${'en'}`]).join('');
   const sponsors = others.filter(data => data.fields['Type'] === 'Sponsor').map(sponsor => {
-    sponsor.fields['Img'] = sponsor.fields['Img'] ? sponsor.fields['Img'].replace(/&dl=0(?!.*&dl=0)/, "&raw=1") : 'hi'
+    sponsor.fields['Img'] = sponsor.fields['Img'] ? dropboxUrl(sponsor.fields['Img']) : 'hi'
     return sponsor
   })
   const partners = others.filter(data => data.fields['Type'] === 'Partner').map(sponsor => {
-    sponsor.fields['Img'] = sponsor.fields['Img'] ? sponsor.fields['Img'].replace(/&dl=0(?!.*&dl=0)/, "&raw=1") : 'hi'
+    sponsor.fields['Img'] = sponsor.fields['Img'] ? dropboxUrl(sponsor.fields['Img']) : 'hi'
     return sponsor
   })
   const questions = others.filter(data => data.fields['Type'] === 'Question')
@@ -145,7 +146,7 @@ export default async function Page() {
               </Film>
             )}
           </div>
-          
+
           {/* ALL Events  */}
           <SectionTitle content={sectionTitles['en'].eventSectionTitle}></SectionTitle>
           <Events language={'en'} />

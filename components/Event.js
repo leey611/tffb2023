@@ -1,12 +1,14 @@
 import { formatBerlinTime } from "../utils/helpers"
 import RichText from "./RichText"
+import dropboxUrl from "../utils/dropboxUrl"
+
 export default function Event({ id, language, event }) {
     const name = event[`Name_${language}`]
     const note = event[`Note_${language}`]
     const speaker = event[`Speaker_${language}`]
     const speakerIntro = event[`SpeakerIntro_${language}`]
     let { Place, HasSpeakerIntro, SpeakerImg } = event
-    SpeakerImg = SpeakerImg ? SpeakerImg.split('\n').map(url => url.replace(/&dl=0(?!.*&dl=0)/, "&raw=1")) : 'img/hero2Img.png'
+    SpeakerImg = SpeakerImg ? SpeakerImg.split('\n').map(url => dropboxUrl(url)) : 'img/hero2Img.png'
     const { year, month, day, hour, minute } = formatBerlinTime(event.Time)
     return (
         <div>
@@ -28,7 +30,7 @@ export default function Event({ id, language, event }) {
                 {/* when accordion is open */}
                 <div className={`description max-w-3xl ${HasSpeakerIntro ? 'hasSpeakerIntro' : ''}`}>
                     {
-                        HasSpeakerIntro ? 
+                        HasSpeakerIntro ?
                         <div className="block md:flex">
                             <div className="flex mb-4">
                                 <img src={SpeakerImg} className="self-start w-[6rem] md:w-[10rem]" alt={speaker}/>

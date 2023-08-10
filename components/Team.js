@@ -1,3 +1,5 @@
+import dropboxUrl from "../utils/dropboxUrl";
+
 export default function Team(props) {
     const { team, language } = props;
 
@@ -5,7 +7,7 @@ export default function Team(props) {
         <ul className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center lg:justify-between">
             {team?.map((member) => {
                 const imgURL = member.fields["Img"]
-                    ? member.fields["Img"].replace(/&dl=0(?!.*&dl=0)/, "&raw=1")
+                    ? dropboxUrl(member.fields["Img"])
                     : ("../img/hero2Img.png");
 
                 return (
