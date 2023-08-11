@@ -136,7 +136,7 @@ export default async function Page({ params }) {
         <Marquee content={marquee} link={`/${lang}/donate`}></Marquee>
 
         <section className="max-w-1440 mx-auto px-[5vw]">
-          <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles[lang].filmSectionTitle} img="img/hero2Img.png" />
+          <SpecialTitle year={websiteGlobal.fields['Year']} title={sectionTitles[lang].filmSectionTitle} img="../img/hero2Img.png" />
           <SectionTitle content={sectionTitles[lang].aboutSectionTitle}></SectionTitle>
           <Questions language={lang} questions={aboutThisYear} />
 
