@@ -25,7 +25,7 @@ async function getOthers() {
             headers: {
                 Authorization: `Bearer ${airtableApiKey}`,
             },
-            cache: 'no-store'
+            next: { revalidate: 10 }
         });
         const data = await res.json();
         return data.records
