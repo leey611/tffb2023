@@ -7,6 +7,7 @@ export default function Event({ id, language, event }) {
     const note = event[`Note_${language}`]
     const speaker = event[`Speaker_${language}`]
     const speakerIntro = event[`SpeakerIntro_${language}`]
+    const { ImgCropped } = event
     let { Place, HasSpeakerIntro, SpeakerImg } = event
     SpeakerImg = SpeakerImg ? SpeakerImg.split('\n').map(url => dropboxUrl(url)) : 'img/hero2Img.png'
     const { year, month, day, hour, minute } = formatBerlinTime(event.Time)
@@ -32,11 +33,11 @@ export default function Event({ id, language, event }) {
                     {
                         HasSpeakerIntro ?
                         <div className="block md:flex">
-                            <div className="flex mb-4">
-                                <img src={SpeakerImg} className="self-start w-[6rem] md:w-[10rem]" alt={speaker}/>
+                            <div className={`flex mb-4 self-start w-[6rem] md:w-[10rem] lg:w-[15rem] shrink-0 ${ImgCropped ? 'h-[6rem] md:h-[10rem] lg:h-[15rem]' : ''}`}>
+                                <img src={SpeakerImg} className={`w-full ${ImgCropped ? 'object-cover h-full' : ''}`} alt={speaker}/>
                                 <h4 className="block md:hidden self-end ml-6 font-special font-semibold text-h2">{speaker}</h4>
                             </div>
-                            <div className=" md:ml-6">
+                            <div className="md:ml-6">
                                 <h4 className="hidden md:block mb-4 font-special font-semibold text-h2">{speaker}</h4>
                                 <RichText content={speakerIntro}/>
                                 <RichText content={note}/>

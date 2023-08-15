@@ -70,7 +70,7 @@ export default function Film(props) {
 
                 {/* when accordion is open */}
                 <div className="film__info lg:px-6">
-                    <h3 className="name text-h1 text-primary font-sans font-semibold">{name}</h3>
+                    <h3 className="name text-h1 text-primary font-sans font-semibold leading-none mb-2">{name}</h3>
                     <img src={MainImageUrl} className='mainImg' alt={mainImgAltText} />
                     <Modal id={id} language={language} trailerUrl={TrailerLink} venueLink={VenueLink}></Modal>
                     <div className='genres my-5 md:my-0 lg:my-0'>{genre}</div>
@@ -78,7 +78,7 @@ export default function Film(props) {
                         {themes?.map(theme => <div className="bg-primary text-tertiary inline-block rounded-md px-5 py-1 mb-4 text-h4 font-sans font-medium theme"># {theme}</div>)}
                         {genres?.map(genre => <div className="bg-tertiary text-white inline-block rounded-md px-5 py-1 mb-4 text-h4 font-sans font-medium genre"># {genre}</div>)}
                     </div>
-                    <div className='events'>
+                    <div className='events mt-4'>
                         {Events?.map(event => <FilmEvent id={event.id} language={language} event={event.fields} />)}
                     </div>
 

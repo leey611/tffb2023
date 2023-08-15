@@ -91,7 +91,7 @@ export const sectionTitles = {
         closingFilm: 'Schlussfilm',
         aboutUs: 'Über das Kuratorenteam',
         donate: 'Spenden, um uns zu unterstützen',
-        buyTicket: 'Zum Ticketkaufen',
+        buyTicket: 'Zum Ticketkauf',
         watchTrailer: 'Trailer',
         bankName: 'Bank Name',
         swiftCode: 'SWIFT Code BIC',
