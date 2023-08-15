@@ -15,7 +15,7 @@ export default function Footer({ language }) {
             <SocialHandle logo="../img/social_yt.svg" link="https://www.youtube.com/@taiwanfilmfestivalberlinby1737" />
           </div>
           <div className="z-50">
-            <Link href={`/${language}/about`}><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[language].aboutUs}</button>
+            <Link href={language === 'en' ? '/about' : `/${language}/about`}><button className="border-2 border-secondary py-3 px-5 rounded-full text-h4 font-special font-medium">{sectionTitles[language].aboutUs}</button>
             </Link>
           </div>
         </footer>

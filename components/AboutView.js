@@ -33,9 +33,9 @@ export default async function AboutView({ language }) {
     return (
         <>
             <LanguageSelect link={['/about', '/de/about', '/tw/about']} />
-            <Marquee content={marquee} link={`/${language}/donate`} />
+            <Marquee content={marquee} link={language === 'en' ? '/donate' : `/${language}/donate`} />
             <section className="max-w-1440 mx-auto px-[5vw]">
-                <BackHome link={`/${language}`} language={language} />
+                <BackHome link={language === 'en' ? '/' : `/${language}`} language={language} />
                 <h1 className='text-center text-h1 font-special text-primary'>{sectionText.aboutUs}</h1>
                 <img src='../img/about-img.png' className='block w-20 md:w-36 mx-auto my-24'/>
                 <Team team={team} language={language} />

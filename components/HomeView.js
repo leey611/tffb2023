@@ -125,7 +125,7 @@ export default async function HomeView({ language }) {
                 </div>
             </div>
 
-            <Marquee content={marquee} link={`/${language}/donate`} />
+            <Marquee content={marquee} link={language === 'en' ? '/donate' : `/${language}/donate`} />
 
             <section className="max-w-1440 mx-auto px-[5vw]">
                 <SpecialTitle year={websiteGlobalFields['Year']} title={filmSectionTitle} img="../img/hero2Img.png" />
