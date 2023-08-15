@@ -1,6 +1,7 @@
 import BackHome from "./BackHome";
 import Footer from "./Footer";
 import LanguageSelect from "./LanguageSelect";
+import dynamic from 'next/dynamic'
 
 async function getOthers() {
     try {
@@ -18,7 +19,7 @@ async function getOthers() {
 }
 
 export default async function DonateView({ language }) {
-    const CopyBank = dynamic(() => import("./components/Bank"), { ssr: false })
+    const CopyBank = dynamic(() => import("./Bank"), { ssr: false })
     const others = await getOthers()
     const donate = others.filter(data => data.fields['Type'] === 'Donate-Info')
     return(
@@ -26,7 +27,7 @@ export default async function DonateView({ language }) {
             <LanguageSelect link={['/donate', '/de/donate', '/tw/donate']} />
             <section className="max-w-1440 mx-auto px-[5vw]">
                 <BackHome link={`/${language}`} language={language} />
-                <CopyBank />
+                <CopyBank bank={donate[0]} language={language} />
                 <Footer language={language} />
             </section>
         </>
