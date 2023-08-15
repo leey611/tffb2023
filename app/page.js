@@ -31,7 +31,7 @@ async function getFilmEvents() {
       headers: {
         Authorization: `Bearer ${airtableApiKey}`,
       },
-      next: { revalidate: 10 }
+      cache: 'no-store'
     });
     const data = await res.json();
     return data.records
@@ -46,7 +46,7 @@ async function getFilms() {
       headers: {
         Authorization: `Bearer ${airtableApiKey}`,
       },
-      next: { revalidate: 10 }
+      cache: 'no-store'
     });
     const data = await res.json();
     return data
@@ -61,7 +61,7 @@ async function getOthers() {
       headers: {
         Authorization: `Bearer ${airtableApiKey}`,
       },
-      next: { revalidate: 10 }
+      cache: 'no-store'
     });
     const data = await res.json();
     return data.records
