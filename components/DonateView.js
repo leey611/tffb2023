@@ -3,6 +3,11 @@ import Footer from "./Footer";
 import LanguageSelect from "./LanguageSelect";
 import dynamic from 'next/dynamic'
 
+const airtableApiKey = process.env.AIRTABLE_API_KEY
+const airtableBaseId = process.env.AIRTABLE_BASE_ID
+const airtableTableOthersId = process.env.AIRTABLE_TABLE_OTHERS_ID
+const airtableTableOthersViewId = process.env.AIRTABLE_TABLE_OTHERS_VIEW_ID
+
 async function getOthers() {
     try {
         const res = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableOthersId}?view=${airtableTableOthersViewId}`, {
