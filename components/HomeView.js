@@ -11,6 +11,7 @@ import Footer from "./Footer";
 import dropboxUrl from "../utils/dropboxUrl";
 import { sectionTitles, isEmpty } from "../utils/helpers";
 import dynamic from 'next/dynamic'
+import RichText from "./RichText";
 
 const airtableApiKey = process.env.AIRTABLE_API_KEY
 const airtableBaseId = process.env.AIRTABLE_BASE_ID
@@ -117,8 +118,8 @@ export default async function HomeView({ language }) {
                     <div className='mix top'>
                         <Dynamicp5TestTwo />
                     </div>
-                    <h1 className='text-center text-h1 font-special text-primary'>{websiteGlobalFields[`Theme_${language}`]}</h1>
-                    {heroText.map(text => <h1 className='text-center text-h1 font-special'>{text}</h1>)}
+                    <h1 className={`text-center text-h1 font-special text-primary ${language === 'tw' ? 'font-semibold' : ''}`}>{websiteGlobalFields[`Theme_${language}`]}</h1>
+                    {heroText.map((text, i)=> <h1 className={`text-center text-h1 font-special ${language === 'tw' && (i === 0 ) ? 'font-semibold' : ''}`}>{text}</h1>)}
                 </div>
                 <div className='text-center z-50'>
                     <Modal language={language} trailerUrl={trailer} venueLink={venueLink} />
@@ -128,11 +129,19 @@ export default async function HomeView({ language }) {
             <Marquee content={marquee} link={`/${language}/donate`} />
 
             <section className="max-w-1440 mx-auto px-[5vw]">
-                <SpecialTitle year={websiteGlobalFields['Year']} title={filmSectionTitle} img="../img/hero2Img.png" />
-                <SectionTitle content={aboutSectionTitle}></SectionTitle>
-                <Questions language={language} questions={aboutThisYear} />
+                <SpecialTitle year={websiteGlobalFields['Year']} title={aboutSectionTitle} img="../img/hero2Img.png" />
+                <div>
+                    {aboutThisYear?.map(obj => <div key={obj.id} className="my-4">
+                        <h2 className="font-special text-h2 font-semibold mb-2">{obj.fields[`Question_${language}`]}</h2>
+                        <div>
+                            <RichText content={obj.fields[`Answer_${language}`]}/>
+                        </div>
+                    </div>)}
+                </div>
+                <SectionTitle content={filmSectionTitle}></SectionTitle>
+                {/* <Questions language={language} questions={aboutThisYear} /> */}
 
-                <div className='mt-[6rem]'>
+                <div className=''>
                     {films.records.map(film =>
                         !isEmpty(film.fields) && <Film
                             key={film.id}
