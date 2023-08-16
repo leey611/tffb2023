@@ -1,7 +1,5 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react'
-import { Engine, World, Bodies, Composite, Render, Mouse, MouseConstraint, MatterAttractors } from "matter-js";
-import ResponsiveIframe from '../ResponsiveIframe';
 import p5 from 'p5';
 import * as url1 from "./img/il1.png";
 import * as url2 from "./img/il2.png";
