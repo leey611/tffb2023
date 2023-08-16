@@ -47,7 +47,6 @@ export default function Event({ id, language, event }) {
                         </div>
                         :
                         <>
-                            <div className="mb-4"><RichText content={speakerIntro}/></div>
                             <div><RichText content={note}/></div>
                         </>
                     }
