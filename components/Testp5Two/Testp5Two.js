@@ -39,7 +39,7 @@ const P5Wrapper = ({
     }, [sketch, autoResizeToWindow]);
 
     return (
-        <div className='mix top'>
+        <div className={`${!isLoading ? 'mix' : ''} top`}>
             {isLoading && <P5preloader />}
             <div ref={wrapperElement} />
             {children}

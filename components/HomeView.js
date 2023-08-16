@@ -110,9 +110,7 @@ export default async function HomeView({ language }) {
             <div className='w-full min-h-screen flex flex-col justify-center isolate relative z-[60]'>
                 <LanguageSelect />
                 <div className="py-10 mix-blend text-shadow">
-                    {/* <div className='mix top'> */}
-                        <Dynamicp5TestTwo />
-                    {/* </div> */}
+                    <Dynamicp5TestTwo />
                     <h1 className={`text-center text-h1 font-special text-primary ${language === 'tw' ? 'font-semibold' : ''}`}>{websiteGlobalFields[`Theme_${language}`]}</h1>
                     {heroText.map((text, i)=> <h1 className={`text-center text-h1 font-special ${language === 'tw' && (i === 0 ) ? 'font-semibold' : ''}`}>{text}</h1>)}
                 </div>
