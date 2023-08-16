@@ -12,6 +12,7 @@ import dropboxUrl from "../utils/dropboxUrl";
 import { sectionTitles, isEmpty } from "../utils/helpers";
 import dynamic from 'next/dynamic'
 import RichText from "./RichText";
+import P5preloader from "./P5preloader";
 
 const airtableApiKey = process.env.AIRTABLE_API_KEY
 const airtableBaseId = process.env.AIRTABLE_BASE_ID
@@ -73,14 +74,8 @@ const Dynamicp5TestTwo = dynamic(
     () => import('./Testp5Two/Testp5Two'),
     {
         ssr: false,
-        loading: () => (<div className="fixed w-full h-screen bg-white z-[100] flex justify-center items-center">
-            <div className="flex w-[300px] flex-col" >
-                <img src="../img/hero2Img.png"></img>
-                <br />
-                <img src="../img/loading-text.gif"></img>
-            </div>
-        </div>
-        )
+        loading: () => <P5preloader />
+        
     }
 )
 
@@ -115,9 +110,9 @@ export default async function HomeView({ language }) {
             <div className='w-full min-h-screen flex flex-col justify-center isolate relative z-[60]'>
                 <LanguageSelect />
                 <div className="py-10 mix-blend text-shadow">
-                    <div className='mix top'>
+                    {/* <div className='mix top'> */}
                         <Dynamicp5TestTwo />
-                    </div>
+                    {/* </div> */}
                     <h1 className={`text-center text-h1 font-special text-primary ${language === 'tw' ? 'font-semibold' : ''}`}>{websiteGlobalFields[`Theme_${language}`]}</h1>
                     {heroText.map((text, i)=> <h1 className={`text-center text-h1 font-special ${language === 'tw' && (i === 0 ) ? 'font-semibold' : ''}`}>{text}</h1>)}
                 </div>
