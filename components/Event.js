@@ -41,14 +41,14 @@ export default function Event({ id, language, event }) {
                             </div>
                             <div className="md:ml-6">
                                 <h4 className="hidden md:block mb-4 font-special font-semibold text-h2">{speaker}</h4>
-                                <RichText content={speakerIntro}/>
-                                <RichText content={note}/>
+                                <div className="mb-4"><RichText content={speakerIntro}/></div>
+                                <div><RichText content={note}/></div>
                             </div>
                         </div>
                         :
                         <>
-                            <RichText content={speakerIntro}/>
-                            <RichText content={note}/>
+                            <div className="mb-4"><RichText content={speakerIntro}/></div>
+                            <div><RichText content={note}/></div>
                         </>
                     }
                 </div>
