@@ -1,12 +1,11 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react'
-import { Engine, World, Bodies, Composite, Render, Mouse, MouseConstraint, MatterAttractors } from "matter-js";
-import ResponsiveIframe from '../ResponsiveIframe';
 import p5 from 'p5';
 import * as url1 from "./img/il1.png";
 import * as url2 from "./img/il2.png";
 import * as url3 from "./img/il3.png";
 import * as url4 from "./img/il4.png";
+import P5preloader from '../P5preloader';
 
 
 
@@ -38,12 +37,11 @@ const P5Wrapper = ({
     }, [sketch, autoResizeToWindow]);
 
     return (
-        <>
-            {isLoading && <div></div>}
-            {/* {<ResponsiveIframe />} */}
+        <div className={`${!isLoading ? 'mix' : ''} top`}>
+            {isLoading && <P5preloader />}
             <div ref={wrapperElement} />
             {children}
-        </>
+        </div>
     );
 };
 let il1;
