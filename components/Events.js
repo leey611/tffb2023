@@ -25,9 +25,9 @@ async function getEvents() {
 export default async function Events({language}) {
     const events = await getEvents()
     return (
-        <>
+        <div>
           {events?.map(event => !isEmpty(event.fields) && <Event key={event.id} id={event.id} language={language} event={event.fields}></Event>
           )}
-        </>
+        </div>
     )
 }

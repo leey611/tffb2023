@@ -7,6 +7,7 @@ import SpecialTitle from "./SpecialTitle";
 import Film from "./Film";
 import Events from "./Events";
 import Sponsors from "./Sponsors";
+import Calendar from "./MyCalendar";
 import Footer from "./Footer";
 import dropboxUrl from "../utils/dropboxUrl";
 import { sectionTitles, isEmpty } from "../utils/helpers";
@@ -159,7 +160,8 @@ export default async function HomeView({ language }) {
 
                 <SectionTitle content={questionSectionTitle}></SectionTitle>
                 <Questions language={language} questions={questions} />
-
+                
+                <Calendar />
                 <Footer language={language} />
             </section>
         </div>

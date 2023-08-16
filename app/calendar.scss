@@ -1,0 +1,38 @@
+@import 'react-big-calendar/lib/sass/styles';
+
+.rbc-header {
+    // background-color: aqua;
+}
+
+.rbc-calendar {
+    z-index: 59;
+}
+
+.rbc-today {
+    background-color: #FFE1E6;
+}
+
+// .rbc-event-content {
+//     background-color: #D6366F;
+// }
+
+// .rbc-event, .rbc-day-slot .rbc-background-event {
+//     background-color: #D6366F;
+// }
+
+// .rbc-event, .rbc-day-slot .rbc-background-event, .rbc-event.rbc-selected {
+//     background-color: #D6366F;
+//     border: none;
+    
+// }
+
+// .rbc-event {
+//     outline: none;
+// }
+
+// .rbc-event, .rbc-event.rbc-selected {
+//     outline-style: dashed;
+//     outline-color: green;
+// }
+
+
