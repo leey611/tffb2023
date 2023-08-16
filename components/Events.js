@@ -12,7 +12,7 @@ async function getEvents() {
       headers: {
         Authorization: `Bearer ${airtableApiKey}`,
       },
-      cache: 'no-store'
+      next: { revalidate: 60 }
     });
     const data = await res.json();
     //console.log('events', data.records)
