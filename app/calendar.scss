@@ -1,7 +1,7 @@
 @import 'react-big-calendar/lib/sass/styles';
-$event-bg: #D6366F !default;
-$event-border: darken(#D6366F, 10%) !default;
-$event-outline: #D6366F !default;
+$event-mybg: #D6366F !default;
+$event-myborder: darken(#D6366F, 10%) !default;
+$event-myoutline: #D6366F !default;
 
 .rbc-calendar {
     z-index: 59;
@@ -29,7 +29,7 @@ $event-outline: #D6366F !default;
     box-shadow: none;
     margin: 0;
     // padding: $event-padding;
-    background-color: $event-bg;
+    background-color: $event-mybg;
     // border-radius: $event-border-radius;
     // color: $event-color;
     cursor: pointer;
@@ -42,16 +42,16 @@ $event-outline: #D6366F !default;
     }
 
     &.rbc-selected {
-        background-color: darken($event-bg, 10%);
+        background-color: darken($event-mybg, 10%);
     }
 
     &:focus {
-        outline: 5px auto $event-outline;
+        outline: 5px auto $event-myoutline;
     }
 }
 
 .rbc-show-more {
-    color: $event-bg;
+    color: $event-mybg;
 }
 
 // .rbc-event-content {
