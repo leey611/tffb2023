@@ -3,10 +3,6 @@ $event-bg: #D6366F !default;
 $event-border: darken(#D6366F, 10%) !default;
 $event-outline: #D6366F !default;
 
-.rbc-header {
-    // background-color: aqua;
-}
-
 .rbc-calendar {
     z-index: 59;
 }
@@ -27,6 +23,37 @@ $event-outline: #D6366F !default;
     white-space: nowrap;
 }
 
+.rbc-event {
+    border: none;
+    box-sizing: border-box;
+    box-shadow: none;
+    margin: 0;
+    // padding: $event-padding;
+    background-color: $event-bg;
+    // border-radius: $event-border-radius;
+    // color: $event-color;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+
+    .rbc-slot-selecting & {
+        cursor: inherit;
+        pointer-events: none;
+    }
+
+    &.rbc-selected {
+        background-color: darken($event-bg, 10%);
+    }
+
+    &:focus {
+        outline: 5px auto $event-outline;
+    }
+}
+
+.rbc-show-more {
+    color: $event-bg;
+}
+
 // .rbc-event-content {
 //     background-color: #D6366F;
 // }
@@ -38,7 +65,7 @@ $event-outline: #D6366F !default;
 // .rbc-event, .rbc-day-slot .rbc-background-event, .rbc-event.rbc-selected {
 //     background-color: #D6366F;
 //     border: none;
-    
+
 // }
 
 // .rbc-event {
@@ -49,5 +76,3 @@ $event-outline: #D6366F !default;
 //     outline-style: dashed;
 //     outline-color: green;
 // }
-
-
