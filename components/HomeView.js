@@ -23,6 +23,8 @@ const airtableTableFilmEventId = process.env.AIRTABLE_TABLE_FILMEVENTS_ID
 const airtableTableFilmEventViewId = process.env.AIRTABLE_TABLE_FILMEVENTS_VIEW_ID
 const airtableTableOthersId = process.env.AIRTABLE_TABLE_OTHERS_ID
 const airtableTableOthersViewId = process.env.AIRTABLE_TABLE_OTHERS_VIEW_ID
+const airtableTableEventsId = process.env.AIRTABLE_TABLE_EVENTS_ID
+const airtableTableEventsViewId = process.env.AIRTABLE_TABLE_EVENTS_VIEW_ID
 
 async function getFilmEvents() {
     try {
@@ -55,6 +57,22 @@ async function getFilms() {
     }
 }
 
+async function getEvents() {
+    try {
+      const res = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableEventsId}?view=${airtableTableEventsViewId}`, {
+        headers: {
+          Authorization: `Bearer ${airtableApiKey}`,
+        },
+        cache: 'no-store'
+      });
+      const data = await res.json();
+      //console.log('events', data.records)
+      return data.records
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 async function getOthers() {
     try {
         const res = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableOthersId}?view=${airtableTableOthersViewId}`, {
@@ -81,12 +99,17 @@ const Dynamicp5TestTwo = dynamic(
 )
 
 export default async function HomeView({ language }) {
+    const otherEvents = await getEvents()
+    let allEvents = [...otherEvents]
     let films = await getFilms()
     const filmEvents = await getFilmEvents()
     for (let film of films.records) {
         const filmId = film.id
-        film.fields['Events'] = filmEvents.filter(event => event.fields.Film[0] === filmId)
+        const eventsOfFilm = filmEvents.filter(event => event.fields.Film[0] === filmId)
+        film.fields['Events'] = eventsOfFilm
+        allEvents = [...allEvents, ...eventsOfFilm, film]
     }
+    console.log('all event count', allEvents.length)
     const others = await getOthers()
     const marquee = others.filter(data => data.fields['Type'] === 'Donate-Float').map(marquee => marquee.fields[`Title_${language}`]).join('');
     const sponsors = others.filter(data => data.fields['Type'] === 'Sponsor').map(sponsor => {
@@ -149,7 +172,7 @@ export default async function HomeView({ language }) {
 
                 {/* ALL Events  */}
                 <SectionTitle content={eventSectionTitle}></SectionTitle>
-                <Events language={language} />
+                <Events events={otherEvents}language={language} />
 
                 {/* ALL Sponsors  */}
                 <SectionTitle content={sponsorSectionTitle}></SectionTitle>
@@ -161,7 +184,7 @@ export default async function HomeView({ language }) {
                 <SectionTitle content={questionSectionTitle}></SectionTitle>
                 <Questions language={language} questions={questions} />
                 
-                <Calendar />
+                <Calendar events={allEvents} language={language}/>
                 <Footer language={language} />
             </section>
         </div>

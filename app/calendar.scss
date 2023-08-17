@@ -12,6 +12,18 @@
     background-color: #FFE1E6;
 }
 
+.rbc-row-segment {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rbc-show-more {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 // .rbc-event-content {
 //     background-color: #D6366F;
 // }
