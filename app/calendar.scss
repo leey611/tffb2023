@@ -1,4 +1,7 @@
 @import 'react-big-calendar/lib/sass/styles';
+$event-bg: #D6366F !default;
+$event-border: darken(#D6366F, 10%) !default;
+$event-outline: #D6366F !default;
 
 .rbc-header {
     // background-color: aqua;
