@@ -100,7 +100,7 @@ const Dynamicp5TestTwo = dynamic(
 
 export default async function HomeView({ language }) {
     const otherEvents = await getEvents()
-    let allEvents = [...otherEvents]
+    let allEvents = [...otherEvents.filter(evt => evt.fields.Name_en !== 'Opening Ceremony' && evt.fields.Name_en !== 'Closing Party')]
     let films = await getFilms()
     const filmEvents = await getFilmEvents()
     for (let film of films.records) {

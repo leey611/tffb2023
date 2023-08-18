@@ -29,17 +29,29 @@ export default function MyCalendar({ events, language }) {
     if (language === 'de') moment.locale('de')
     if (language === 'tw') moment.locale('zh-tw')
 
-    const myEventList = events.map(event => ({
-        id: event.id,
-        title: event.fields[`Name_${language}`] || event.fields[`FilmName_${language}`],
-        start: moment(event.fields.Date || event.fields.Time || event.fields.ScreenTime).tz(berlinTimezone).toDate(),
-        end: moment(event.fields.Date || event.fields.Time || event.fields.ScreenTime).tz(berlinTimezone).add(1, 'hour').toDate(),
-    }));
+    moment.tz.setDefault(berlinTimezone); //show berlin time in all timezones
+
+    const myEventList = events.map(event => {
+        let time = event.fields.Date || event.fields.Time || event.fields.ScreenTime
+        let duration = event.fields.Length
+        let startTime = moment(time).tz(berlinTimezone).clone(); // Create a clone of the startTime
+        let endTime = startTime.clone().add(duration, 'seconds'); // Create a separate clone for endTime
+        return ({
+            id: event.id,
+            title: event.fields[`Name_${language}`] || event.fields[`FilmName_${language}`],
+            start:startTime.toDate(),
+            end: endTime.toDate(),
+            type: event.fields.ScreenTime ? 'film_event' : 'event_event'
+        })
+    });
 
     const earliestStartDate = myEventList.reduce(
         (earliest, event) => (event.start < earliest ? event.start : earliest),
         myEventList[0]?.start
     )
+
+    const eventPropGetter = (event) => ({ className: event.type })
+    
 
     return (
         <div className='mt-[6rem] font-special'>
@@ -49,10 +61,11 @@ export default function MyCalendar({ events, language }) {
                 defaultDate={earliestStartDate}
                 startAccessor="start"
                 endAccessor="end"
-                onSelectEvent={event => null}
+                onSelectEvent={event => console.log('event', event)}
                 // style={{ height: 'clamp(90vh, 600px, 700px)' }}
                 style={{ height: 'clamp(650px, 80vh, 900px)' }}
                 // style={{ height: 550 }}
+                eventPropGetter={eventPropGetter}
                 messages={{
                     today: calendarToday,
                     previous: calendarPrevious,
