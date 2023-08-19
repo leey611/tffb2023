@@ -5,7 +5,7 @@ const CroppedImage = ({ src, alt, cropped, moreClass }) => {
 
     return (
         <div className={`directorImg lg:grid-item relative overflow-hidden ${divClass}`}>
-            <img src={src} alt={alt} className={`top-0 left-0 w-full ${imageClass} ${otherClass}`} style={{ objectPosition: 'top' }} />
+            <img src={src} alt={alt} title={alt} className={`top-0 left-0 w-full ${imageClass} ${otherClass}`} style={{ objectPosition: 'top' }} />
         </div>
     );
 };
