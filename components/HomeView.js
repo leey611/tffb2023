@@ -125,8 +125,7 @@ export default async function HomeView({ language }) {
     const aboutThisYear = others.filter(data => data.fields['Type'] === 'About-This-Year')
     const websiteGlobalFields = websiteGlobal.fields
     const heroText = websiteGlobalFields[`Title_${language}`].split('\n')
-    const venueLink = websiteGlobalFields['VenueLink']
-    const trailer = websiteGlobalFields['TrailerLink']
+    const { VenueLink, TrailerLink, GoogleCalendarUrl } = websiteGlobalFields
     const sectionText = sectionTitles[language]
     const { filmSectionTitle, aboutSectionTitle, eventSectionTitle, sponsorSectionTitle, partnerSectionTitle, questionSectionTitle } = sectionText
     return (
@@ -139,7 +138,7 @@ export default async function HomeView({ language }) {
                     {heroText.map((text, i)=> <h1 className={`text-center text-h1 font-special ${language === 'tw' && (i === 0 ) ? 'font-semibold' : ''}`}>{text}</h1>)}
                 </div>
                 <div className='text-center z-50'>
-                    <Modal language={language} trailerUrl={trailer} venueLink={venueLink} />
+                    <Modal language={language} trailerUrl={TrailerLink} venueLink={VenueLink} />
                 </div>
             </div>
 
@@ -156,7 +155,6 @@ export default async function HomeView({ language }) {
                     </div>)}
                 </div>
                 <SectionTitle content={filmSectionTitle}></SectionTitle>
-                {/* <Questions language={language} questions={aboutThisYear} /> */}
 
                 <div className=''>
                     {films.records.map(film =>
@@ -185,7 +183,7 @@ export default async function HomeView({ language }) {
                 <Questions language={language} questions={questions} />
                 
                 <Calendar events={allEvents} language={language}/>
-                <Footer language={language} />
+                <Footer language={language} googleCalendar={GoogleCalendarUrl}/>
             </section>
         </div>
     )
