@@ -1,6 +1,5 @@
 'use client'
 import { sectionTitles } from '../utils/helpers';
-import ICalLink from 'react-icalendar-link';
 import { buildUrl, downloadBlob, isIOSSafari, isIOSChrome } from '../utils/calendarHelpers';
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
@@ -31,7 +30,7 @@ export default function MyCalendar({ events, language }) {
     if (language === 'de') moment.locale('de')
     if (language === 'tw') moment.locale('zh-tw')
 
-    //moment.tz.setDefault(berlinTimezone); //show berlin time in all timezones
+    moment.tz.setDefault(berlinTimezone); //show berlin time in all timezones
 
     const myEventList = events.map(event => {
         let time = event.fields.Date || event.fields.Time || event.fields.ScreenTime
@@ -53,6 +52,13 @@ export default function MyCalendar({ events, language }) {
         (earliest, event) => (event.start < earliest ? event.start : earliest),
         myEventList[0]?.start
     )
+    const latestEndDate = myEventList.reduce(
+        (latest, event) => (event.end > latest ? event.end : latest),
+        myEventList[0]?.end
+    );
+    const now = moment().startOf('day');
+    console.log('now', now)
+    const defaultStartDate = now >= earliestStartDate && now <= latestEndDate ? now : earliestStartDate
 
     const eventPropGetter = (event) => ({ className: event.type }) 
 
@@ -92,7 +98,7 @@ export default function MyCalendar({ events, language }) {
             <Calendar
                 localizer={localizer}
                 events={myEventList}
-                defaultDate={earliestStartDate}
+                defaultDate={defaultStartDate}
                 startAccessor="start"
                 endAccessor="end"
                 onSelectEvent={event => handleClick(event)}
