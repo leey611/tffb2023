@@ -1,0 +1,53 @@
+@import 'react-big-calendar/lib/sass/styles';
+$event-primary_bg: #D6366F !default;
+$event-primary_border: darken(#D6366F, 10%) !default;
+$event-primary_outline: #D6366F !default;
+$event-secondary_bg: #D8DF50;
+$event-secondary_border: darken(#D8DF50, 10%);
+$event-secondary_outline: #D8DF50;
+
+
+.rbc-calendar {
+    z-index: 59;
+}
+
+.rbc-today {
+    background-color: #FFE1E6;
+}
+
+.rbc-row-segment {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rbc-show-more {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rbc-event{
+    background-color: $event-primary_bg;
+    &.rbc-selected {
+        background-color: darken($event-primary_bg, 10%);
+    }
+    &:focus {
+        outline: 5px auto $event-primary_outline;
+    }
+}
+
+.rbc-event.event_event {
+    border: $event-secondary_border;
+    background-color: $event-secondary_bg;
+    &.rbc-selected {
+        background-color: darken($event-secondary_bg, 10%);
+    }
+    &:focus {
+        outline: 5px auto $event-secondary_outline;
+    }
+}
+
+.rbc-show-more {
+    color: $event-primary_bg;
+}

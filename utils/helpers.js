@@ -77,6 +77,14 @@ export const sectionTitles = {
         accountTel: "Account Holder's Telephone Number",
         accountEmail: "Account Holder's Email Address",
         backHome: 'Back Home',
+        calendarPrevious: '<',
+        calendarNext: '>',
+        calendarToday: 'Today',
+        calendarMonth: 'Month',
+        calendarWeek: 'Week',
+        calendarDay: 'Day',
+        calendarAgenda: 'Agenda',
+        calendarShowMore: 'more'
     },
     de: {
         siteTitle: '6th Taiwan Film Festival Berlin',
@@ -101,6 +109,14 @@ export const sectionTitles = {
         accountTel: "Telefonnummer Kontoinhaber",
         accountEmail: "E-Mail Adresse Kontoinhaber",
         backHome: 'Zurück zur Startseite',
+        calendarPrevious: '<',
+        calendarNext: '>',
+        calendarToday: 'Heute',
+        calendarMonth: 'Monat',
+        calendarWeek: 'Woche',
+        calendarDay: 'Tag',
+        calendarAgenda: 'Agenda',
+        calendarShowMore: 'weitere'
     },
     tw: {
         siteTitle: '第六屆柏林臺灣影展',
@@ -125,6 +141,14 @@ export const sectionTitles = {
         accountTel: "帳戶持有人電話號碼",
         accountEmail: "帳戶持有人電子信箱",
         backHome: '回到首頁',
+        calendarPrevious: '\uFF1C',
+        calendarNext: '\uFF1E',
+        calendarToday: '今天',
+        calendarMonth: '月',
+        calendarWeek: '週',
+        calendarDay: '日',
+        calendarAgenda: '議程',
+        calendarShowMore: '更多'
     }
 }
 

@@ -29,6 +29,8 @@ export default async function AboutView({ language }) {
     const others = await getOthers()
     const marquee = others.filter(data => data.fields['Type'] === 'Donate-Float').map(marquee => marquee.fields[`Title_${language}`]).join('');
     const team = others.filter(data => data.fields['Type'] === 'Team')
+    const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
+    const { GoogleCalendarUrl } = websiteGlobal.fields
     const sectionText = sectionTitles[language] 
     return (
         <>
@@ -39,7 +41,7 @@ export default async function AboutView({ language }) {
                 <h1 className='text-center text-h1 font-special text-primary'>{sectionText.aboutUs}</h1>
                 <img src='../img/about-img.png' className='block w-20 md:w-36 mx-auto my-24'/>
                 <Team team={team} language={language} />
-                <Footer language={language} />
+                <Footer language={language} googleCalendar={GoogleCalendarUrl}/>
             </section>
         </>
     )

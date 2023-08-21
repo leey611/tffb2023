@@ -27,13 +27,15 @@ export default async function DonateView({ language }) {
     const CopyBank = dynamic(() => import("./Bank"), { ssr: false })
     const others = await getOthers()
     const donate = others.filter(data => data.fields['Type'] === 'Donate-Info')
+    const websiteGlobal = others.filter(data => data.fields['Type'] === 'Website')[0]
+    const { GoogleCalendarUrl } = websiteGlobal.fields
     return(
         <>
             <LanguageSelect link={['/donate', '/de/donate', '/tw/donate']} />
             <section className="max-w-1440 mx-auto px-[5vw]">
                 <BackHome link={`/${language}`} language={language} />
                 <CopyBank bank={donate[0]} language={language} />
-                <Footer language={language} />
+                <Footer language={language} googleCalendar={GoogleCalendarUrl}/>
             </section>
         </>
     )

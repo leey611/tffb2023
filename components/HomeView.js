@@ -7,6 +7,7 @@ import SpecialTitle from "./SpecialTitle";
 import Film from "./Film";
 import Events from "./Events";
 import Sponsors from "./Sponsors";
+import Calendar from "./MyCalendar";
 import Footer from "./Footer";
 import dropboxUrl from "../utils/dropboxUrl";
 import { sectionTitles, isEmpty } from "../utils/helpers";
@@ -22,6 +23,8 @@ const airtableTableFilmEventId = process.env.AIRTABLE_TABLE_FILMEVENTS_ID
 const airtableTableFilmEventViewId = process.env.AIRTABLE_TABLE_FILMEVENTS_VIEW_ID
 const airtableTableOthersId = process.env.AIRTABLE_TABLE_OTHERS_ID
 const airtableTableOthersViewId = process.env.AIRTABLE_TABLE_OTHERS_VIEW_ID
+const airtableTableEventsId = process.env.AIRTABLE_TABLE_EVENTS_ID
+const airtableTableEventsViewId = process.env.AIRTABLE_TABLE_EVENTS_VIEW_ID
 
 async function getFilmEvents() {
     try {
@@ -54,6 +57,22 @@ async function getFilms() {
     }
 }
 
+async function getEvents() {
+    try {
+      const res = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableEventsId}?view=${airtableTableEventsViewId}`, {
+        headers: {
+          Authorization: `Bearer ${airtableApiKey}`,
+        },
+        cache: 'no-store'
+      });
+      const data = await res.json();
+      //console.log('events', data.records)
+      return data.records
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 async function getOthers() {
     try {
         const res = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableOthersId}?view=${airtableTableOthersViewId}`, {
@@ -80,12 +99,17 @@ const Dynamicp5TestTwo = dynamic(
 )
 
 export default async function HomeView({ language }) {
+    const otherEvents = await getEvents()
+    let allEvents = [...otherEvents.filter(evt => evt.fields.Name_en !== 'Opening Ceremony' && evt.fields.Name_en !== 'Closing Party')]
     let films = await getFilms()
     const filmEvents = await getFilmEvents()
     for (let film of films.records) {
         const filmId = film.id
-        film.fields['Events'] = filmEvents.filter(event => event.fields.Film[0] === filmId)
+        const eventsOfFilm = filmEvents.filter(event => event.fields.Film[0] === filmId)
+        film.fields['Events'] = eventsOfFilm
+        allEvents = [...allEvents, ...eventsOfFilm, film]
     }
+    console.log('all event count', allEvents.length)
     const others = await getOthers()
     const marquee = others.filter(data => data.fields['Type'] === 'Donate-Float').map(marquee => marquee.fields[`Title_${language}`]).join('');
     const sponsors = others.filter(data => data.fields['Type'] === 'Sponsor').map(sponsor => {
@@ -101,8 +125,7 @@ export default async function HomeView({ language }) {
     const aboutThisYear = others.filter(data => data.fields['Type'] === 'About-This-Year')
     const websiteGlobalFields = websiteGlobal.fields
     const heroText = websiteGlobalFields[`Title_${language}`].split('\n')
-    const venueLink = websiteGlobalFields['VenueLink']
-    const trailer = websiteGlobalFields['TrailerLink']
+    const { VenueLink, TrailerLink, GoogleCalendarUrl } = websiteGlobalFields
     const sectionText = sectionTitles[language]
     const { filmSectionTitle, aboutSectionTitle, eventSectionTitle, sponsorSectionTitle, partnerSectionTitle, questionSectionTitle } = sectionText
     return (
@@ -115,7 +138,7 @@ export default async function HomeView({ language }) {
                     {heroText.map((text, i)=> <h1 className={`text-center text-h1 font-special ${language === 'tw' && (i === 0 ) ? 'font-semibold' : ''}`}>{text}</h1>)}
                 </div>
                 <div className='text-center z-50'>
-                    <Modal language={language} trailerUrl={trailer} venueLink={venueLink} />
+                    <Modal language={language} trailerUrl={TrailerLink} venueLink={VenueLink} />
                 </div>
             </div>
 
@@ -132,7 +155,6 @@ export default async function HomeView({ language }) {
                     </div>)}
                 </div>
                 <SectionTitle content={filmSectionTitle}></SectionTitle>
-                {/* <Questions language={language} questions={aboutThisYear} /> */}
 
                 <div className=''>
                     {films.records.map(film =>
@@ -148,7 +170,7 @@ export default async function HomeView({ language }) {
 
                 {/* ALL Events  */}
                 <SectionTitle content={eventSectionTitle}></SectionTitle>
-                <Events language={language} />
+                <Events events={otherEvents}language={language} />
 
                 {/* ALL Sponsors  */}
                 <SectionTitle content={sponsorSectionTitle}></SectionTitle>
@@ -159,8 +181,9 @@ export default async function HomeView({ language }) {
 
                 <SectionTitle content={questionSectionTitle}></SectionTitle>
                 <Questions language={language} questions={questions} />
-
-                <Footer language={language} />
+                
+                <Calendar events={allEvents} language={language}/>
+                <Footer language={language} googleCalendar={GoogleCalendarUrl}/>
             </section>
         </div>
     )

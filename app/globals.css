@@ -107,6 +107,10 @@ a:hover {
     cursor: pointer;
 }
 
+.richtext {
+    pointer-events: none;
+}
+
 .richtext p:not(:last-child) {
     margin-bottom: 1rem;
 }
@@ -116,6 +120,7 @@ a:hover {
 }
 
 .richtext a {
+    pointer-events: auto;
     text-decoration: underline;
 }
 
