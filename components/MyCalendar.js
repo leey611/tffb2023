@@ -57,7 +57,6 @@ export default function MyCalendar({ events, language }) {
         myEventList[0]?.end
     );
     const now = moment().startOf('day');
-    console.log('now', now)
     const defaultStartDate = now >= earliestStartDate && now <= latestEndDate ? now : earliestStartDate
 
     const eventPropGetter = (event) => ({ className: event.type }) 
@@ -94,7 +93,7 @@ export default function MyCalendar({ events, language }) {
     };
 
     return (
-        <div className='mt-[6rem] font-special'>
+        <div className={`mt-[6rem] font-special`}>
             <Calendar
                 localizer={localizer}
                 events={myEventList}
@@ -104,6 +103,7 @@ export default function MyCalendar({ events, language }) {
                 onSelectEvent={event => handleClick(event)}
                 style={{ height: 'clamp(650px, 80vh, 900px)' }}
                 eventPropGetter={eventPropGetter}
+                views={['month', 'day', 'agenda']}
                 messages={{
                     today: calendarToday,
                     previous: calendarPrevious,

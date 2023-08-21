@@ -1,14 +1,18 @@
 @import 'react-big-calendar/lib/sass/styles';
 $event-primary_bg: #D6366F !default;
-$event-primary_border: darken(#D6366F, 10%) !default;
+$event-primary_border: darken(#D6366F, 18%) !default;
 $event-primary_outline: #D6366F !default;
 $event-secondary_bg: #D8DF50;
-$event-secondary_border: darken(#D8DF50, 10%);
+$event-secondary_border: darken(#D8DF50, 18%);
 $event-secondary_outline: #D8DF50;
 
 
 .rbc-calendar {
     z-index: 59;
+}
+
+.rbc-toolbar button:active, .rbc-toolbar button.rbc-active {
+    box-shadow: none;
 }
 
 .rbc-today {
@@ -21,33 +25,68 @@ $event-secondary_outline: #D8DF50;
 }
 
 .rbc-show-more {
+    color: $event-primary_bg;
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.rbc-event{
-    background-color: $event-primary_bg;
+.rbc-event.film_event, .rbc-event.event_event {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #D9D9D9;
+    font-family: Roboto, Helvetica, Arial, "微軟正黑體", "PingFang", "STHeiti", "黑體-繁", "Noto Sans TC", sans-serif;
+}
+
+.rbc-event-content {
+    @media (min-width: 768px) {
+        font-weight: bold;
+    }
+}
+
+.rbc-event.film_event {
+    border: 1px solid $event-primary_border;
+    // background-color: $event-primary_bg;
     &.rbc-selected {
         background-color: darken($event-primary_bg, 10%);
     }
     &:focus {
         outline: 5px auto $event-primary_outline;
     }
+
+    @media (min-width: 768px) {
+        .rbc-event-content::before {
+            display: inline-block;
+            content: "\25CF";
+            color: $event-primary_bg;
+            padding-right: 2px;
+        }
+    }
+    
 }
 
+
 .rbc-event.event_event {
-    border: $event-secondary_border;
-    background-color: $event-secondary_bg;
+    border: 1px solid $event-secondary_border;
+    // background-color: $event-secondary_bg;
     &.rbc-selected {
         background-color: darken($event-secondary_bg, 10%);
     }
     &:focus {
         outline: 5px auto $event-secondary_outline;
     }
+
+    
+
+    @media (min-width: 768px) {
+        .rbc-event-content::before {
+            display: inline-block;
+            content: "\25CF";
+            color: $event-secondary_bg;
+            padding-right: 2px;
+        }
+    }
 }
 
-.rbc-show-more {
-    color: $event-primary_bg;
-}
+
