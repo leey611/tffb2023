@@ -49,7 +49,8 @@ $event-secondary_outline: #D8DF50;
     border: 1px solid $event-primary_border;
     // background-color: $event-primary_bg;
     &.rbc-selected {
-        background-color: darken($event-primary_bg, 10%);
+        // background-color: darken($event-primary_bg, 10%);
+        background-color: #fff;
     }
     &:focus {
         outline: 5px auto $event-primary_outline;
@@ -71,7 +72,8 @@ $event-secondary_outline: #D8DF50;
     border: 1px solid $event-secondary_border;
     // background-color: $event-secondary_bg;
     &.rbc-selected {
-        background-color: darken($event-secondary_bg, 10%);
+        // background-color: darken($event-secondary_bg, 10%);
+        background-color: #fff;
     }
     &:focus {
         outline: 5px auto $event-secondary_outline;
