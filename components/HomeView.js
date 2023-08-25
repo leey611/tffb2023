@@ -100,7 +100,7 @@ const Dynamicp5TestTwo = dynamic(
 
 export default async function HomeView({ language }) {
     const otherEvents = await getEvents()
-    let allEvents = [...otherEvents.filter(evt => evt.fields.Name_en !== 'Opening Ceremony' && evt.fields.Name_en !== 'Closing Party')]
+    let allEvents = [...otherEvents.filter(evt => evt.fields.ShowInCalendar)]
     let films = await getFilms()
     const filmEvents = await getFilmEvents()
     for (let film of films.records) {
@@ -148,7 +148,7 @@ export default async function HomeView({ language }) {
                 <SpecialTitle year={websiteGlobalFields['Year']} title={aboutSectionTitle} img="../img/hero2Img.png" />
                 <div>
                     {aboutThisYear?.map(obj => <div key={obj.id} className="my-4">
-                        <h2 className="font-special text-h2 font-semibold mb-2">{obj.fields[`Question_${language}`]}</h2>
+                        <h2 className="text-left md:text-center font-special text-h2 font-semibold mb-2">{obj.fields[`Question_${language}`]}</h2>
                         <div>
                             <RichText content={obj.fields[`Answer_${language}`]}/>
                         </div>
