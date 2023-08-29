@@ -1,15 +1,11 @@
 'use client'
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState, useMemo } from 'react'
 import p5 from 'p5';
 import * as url1 from "./img/il1.png";
 import * as url2 from "./img/il2.png";
 import * as url3 from "./img/il3.png";
 import * as url4 from "./img/il4.png";
 import P5preloader from '../P5preloader';
-
-
-
-
 
 const P5Wrapper = ({
     sketch,
@@ -19,13 +15,13 @@ const P5Wrapper = ({
 }) => {
     const [isLoading, setIsLoading] = useState(true);
     const wrapperElement = useRef(null);
-
+    const onComplete = () => setIsLoading(false);
+    const memoizedSketch = useMemo(() => sketch(onComplete), []);
     useEffect(() => {
-        const onComplete = () => setIsLoading(false);
 
         console.log('TEST CANVAS: P5 Setup')
 
-        const canvas = new p5(sketch(onComplete), wrapperElement.current);
+        const canvas = new p5(memoizedSketch, wrapperElement.current);
         console.log(wrapperElement);
         if (autoResizeToWindow) {
             canvas.windowResized = () => {
