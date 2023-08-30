@@ -22,7 +22,7 @@ const P5Wrapper = ({
         console.log('TEST CANVAS: P5 Setup')
 
         const canvas = new p5(memoizedSketch, wrapperElement.current);
-        console.log(wrapperElement);
+        //console.log(wrapperElement);
         if (autoResizeToWindow) {
             canvas.windowResized = () => {
                 canvas.resizeCanvas(canvas.windowWidth, canvas.windowHeight);

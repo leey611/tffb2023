@@ -89,7 +89,7 @@ export const sectionTitles = {
     de: {
         siteTitle: '6th Taiwan Film Festival Berlin',
         description: 'Zuhause, Wo Auch Immer',
-        aboutSectionTitle: 'ÜBER DIESES JAHR',
+        aboutSectionTitle: 'UEBER DIESES JAHR',
         filmSectionTitle: 'ALLE FILME',
         eventSectionTitle: 'ALLE VERANSTALTUNGEN',
         sponsorSectionTitle: 'SPONSOREN & PARTNER',
@@ -97,7 +97,7 @@ export const sectionTitles = {
         questionSectionTitle: 'FAQ',
         openingFilm: 'Eröffnungsfilm',
         closingFilm: 'Schlussfilm',
-        aboutUs: 'Über das Kuratorenteam',
+        aboutUs: 'Ueber das Kuratorenteam',
         donate: 'Spenden, um uns zu unterstützen',
         buyTicket: 'Zum Ticketkauf',
         watchTrailer: 'Trailer',
