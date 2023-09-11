@@ -4,7 +4,7 @@ export default function P5preloader() {
             <div className="flex w-[300px] flex-col" >
                 <img src="../img/hero2Img.png"></img>
                 <br />
-                <img src="../img/loading-text.gif"></img>
+                <img src="../img/logo-load.gif"></img>
             </div>
         </div>
     )
