@@ -18,7 +18,7 @@ export default function Event({ id, language, event }) {
             <div className="event__item item w-full">
                 {/* when accordion is close */}
                 <label htmlFor={id}>
-                    <div className='date'>{`${month}.${day}.${year}`}</div>
+                    <div className='date'>{`${day}.${month}.${year}`}</div>
                     <div className="time">{`${hour}:${minute}`}</div>
                     <h3 className="name font-semibold">{name}</h3>
                     <div className="place">{Place}</div>
